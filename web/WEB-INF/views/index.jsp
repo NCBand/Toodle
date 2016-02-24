@@ -2,14 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<head>
-  <title>Index Page</title>
-</head>
-<body>
-<spring:form method="post"  modelAttribute="userJSP" action="check-user">
-  Name: <spring:input path="name"/> (path="" - указывает путь, используемый в modelAttribute=''. в нашем случае User.name)  <br/>
-  Password: <spring:input path="password"/>   <br/>
-  <spring:button>Next Page</spring:button>
-</spring:form>
-</body>
+  <head>
+    <meta name='gwt:module' content='ru.ncband.web.LoginApp'>
+    <title>Toodle Page</title>
+  </head>
 </html>

@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class User {
-
-    private String name;
-    private String password;
+    private String name = "";
+    private String password = "";
+    private String status = "";
 
     public String getName() {
         return name;
@@ -22,5 +22,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -3,7 +3,6 @@
 <module>
 
     <inherits name='com.google.gwt.user.User'/>
-
-    <entry-point class='ru.nc.web.client.LoginApp'/>
+    <entry-point class='ru.ncband.web.client.LoginApp'/>
 
 </module>

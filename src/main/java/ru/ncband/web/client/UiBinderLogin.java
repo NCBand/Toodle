@@ -10,9 +10,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
-/**
- * Created by rewweRrr on 16.02.2016.
- */
 public class UiBinderLogin extends Composite{
     interface UiBinderLoginUiBinder extends UiBinder<HTMLPanel, UiBinderLogin> {
     }
