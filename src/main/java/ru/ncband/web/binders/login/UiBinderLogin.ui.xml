@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:style src="MyStyle.css" />
+    <ui:style src="myStyle.css" />
     <g:HTMLPanel>
         <div align="center">
             <g:VerticalPanel styleName="{style.background}">

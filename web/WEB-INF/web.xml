@@ -4,8 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!-- Add Support for Spring -->
-    <!-- Создает Spring Container, доступный всем сервлетам и фильтрам -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/application-context.xml</param-value>
@@ -14,7 +12,6 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- Обрабатывает все запросы. Центральное понятие-->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -30,8 +27,4 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <welcome-file-list>
-        <welcome-file>/views/index.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>

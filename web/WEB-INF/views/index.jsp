@@ -3,7 +3,10 @@
 
 <html>
   <head>
-    <meta name='gwt:module' content='ru.ncband.web.LoginApp'>
     <title>Toodle Page</title>
   </head>
+
+  <body>
+    <script language="javascript" src="login/login.nocache.js"></script>
+  </body>
 </html>
