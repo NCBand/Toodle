@@ -1,4 +1,4 @@
-package ru.ncband.web.server.controller;
+package ru.ncband.web.server;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import ru.ncband.rest.model.User;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", new User());

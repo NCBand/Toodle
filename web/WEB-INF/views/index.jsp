@@ -8,6 +8,5 @@
 
   <body>
     <script language="javascript" src="toodle/toodle.nocache.js"></script>
-    HellO!
   </body>
 </html>
