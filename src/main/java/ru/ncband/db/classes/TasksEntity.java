@@ -5,11 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by Дом on 29.02.2016.
- */
 @Entity
-@Table(name = "tasks", schema = "toodle", catalog = "")
+@Table(name = "tasks", schema = "toodle")
 public class TasksEntity {
     private int id;
 

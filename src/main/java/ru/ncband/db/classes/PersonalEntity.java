@@ -2,11 +2,8 @@ package ru.ncband.db.classes;
 
 import javax.persistence.*;
 
-/**
- * Created by Дом on 29.02.2016.
- */
 @Entity
-@Table(name = "personal", schema = "toodle", catalog = "")
+@Table(name = "personal", schema = "toodle")
 public class PersonalEntity {
     private int id;
     private String firstname;
