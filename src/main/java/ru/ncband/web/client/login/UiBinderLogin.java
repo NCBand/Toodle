@@ -35,29 +35,6 @@ public class UiBinderLogin extends Composite{
         }
     }
 
-    @UiHandler("loginBox")
-    void checkLoginSize(ValueChangeEvent<String> event) {
-        if (event.getValue().length() < 6) {
-            errorLabel1.setText("Login too short (Size must be > 6)");
-            tooShort = true;
-        } else {
-            tooShort = false;
-            errorLabel1.setText("Size is Ok!");
-        }
-    }
-
-    @UiHandler("passwordBox")
-    void checkPasswordSize(ValueChangeEvent<String> event) {
-        if (event.getValue().length() < 6) {
-            tooShort = true;
-            errorLabel2.setText("Password too short (Size must be > 6)");
-        } else {
-            tooShort = false;
-            errorLabel2.setText("Size is Ok!");
-        }
-    }
-
-
     public UiBinderLogin() {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
