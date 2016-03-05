@@ -20,19 +20,11 @@ public class UiBinderLogin extends Composite{
     @UiField
     PasswordTextBox passwordBox;
     @UiField
-    Label errorLabel1;
-    @UiField
-    Label errorLabel2;
-
-    private boolean tooShort = false;
+    Label errorLabel;
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        if(tooShort){
-            Window.alert("Success!");
-        } else {
-            Window.alert("Login or password is too short!");
-        }
+
     }
 
     public UiBinderLogin() {

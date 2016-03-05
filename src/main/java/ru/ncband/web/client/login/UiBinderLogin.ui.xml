@@ -11,8 +11,7 @@
                 <g:HorizontalPanel>
                     <g:Button ui:field="loginButton" text="login" styleName="{style.loginButton}"/>
                 </g:HorizontalPanel>
-                <g:Label ui:field="errorLabel1" styleName="{style.greenText}"/>
-                <g:Label ui:field="errorLabel2" styleName="{style.redText}"/>
+                <g:Label ui:field="errorLabel" styleName="{style.redText}"/>
             </g:VerticalPanel>
         </div>
     </g:HTMLPanel>
