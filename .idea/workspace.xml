@@ -1262,7 +1262,7 @@
       <workItem from="1457008817335" duration="1382000" />
       <workItem from="1457186775713" duration="20000" />
       <workItem from="1457186921433" duration="19000" />
-      <workItem from="1457186968065" duration="12554000" />
+      <workItem from="1457186968065" duration="12659000" />
     </task>
     <task id="LOCAL-00001" summary="+basic project structure">
       <created>1456260244149</created>
@@ -1306,7 +1306,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457199654279</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="+registretion">
+      <created>1457199750163</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1457199750163</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1318,7 +1324,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57434000" />
+    <option name="totallyTimeSpent" value="57539000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1409,7 +1415,8 @@
     <MESSAGE value="+spring connected with gwt" />
     <MESSAGE value="+structure changed" />
     <MESSAGE value="+work, conflict with get toodle/toodle.nocache.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="+work, conflict with get toodle/toodle.nocache.js" />
+    <MESSAGE value="+registretion" />
+    <option name="LAST_COMMIT_MESSAGE" value="+registretion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
