@@ -10,10 +10,10 @@
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
 
-        <mapping class="ru.ncband.db.classes.UserEntity"/>
-        <mapping class="ru.ncband.db.classes.PersonalEntity"/>
-        <mapping class="ru.ncband.db.classes.TasksEntity"/>
-        <mapping class="ru.ncband.db.classes.ClassesEntity"/>
-        <mapping class="ru.ncband.db.classes.StatisticEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.UserEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.PersonalEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.TasksEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.ClassesEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.StatisticEntity"/>
     </session-factory>
 </hibernate-configuration>

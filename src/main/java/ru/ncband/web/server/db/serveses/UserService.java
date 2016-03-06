@@ -1,10 +1,10 @@
-package ru.ncband.db.serveses;
+package ru.ncband.web.server.db.serveses;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import ru.ncband.db.classes.UserEntity;
+import ru.ncband.web.server.db.classes.UserEntity;
 
 import javax.annotation.Resource;
 import java.util.List;

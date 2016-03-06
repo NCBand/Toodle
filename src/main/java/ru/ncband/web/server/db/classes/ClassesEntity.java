@@ -1,13 +1,14 @@
-package ru.ncband.db.classes;
+package ru.ncband.web.server.db.classes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "tasks", schema = "toodle")
-public class TasksEntity {
+@Table(name = "classes", schema = "toodle")
+public class ClassesEntity {
     private int id;
 
     @Id
@@ -25,7 +26,7 @@ public class TasksEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TasksEntity that = (TasksEntity) o;
+        ClassesEntity that = (ClassesEntity) o;
 
         if (id != that.id) return false;
 

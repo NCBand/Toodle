@@ -7,6 +7,18 @@
     <groupId>ru.ncband</groupId>
     <artifactId>toodle</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <spring-framework-version>4.1.5.RELEASE</spring-framework-version>
@@ -42,12 +54,6 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwtVersion}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
             <version>${gwtVersion}</version>
         </dependency>
 
@@ -121,6 +127,19 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.52</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.fusesource.restygwt</groupId>
+            <artifactId>restygwt</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
     </dependencies>
+
 
 </project>

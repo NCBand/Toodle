@@ -1,4 +1,4 @@
-package ru.ncband.db.classes;
+package ru.ncband.web.server.db.classes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

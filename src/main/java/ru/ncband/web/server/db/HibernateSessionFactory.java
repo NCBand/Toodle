@@ -1,4 +1,4 @@
-package ru.ncband.db;
+package ru.ncband.web.server.db;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

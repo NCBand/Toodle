@@ -1,4 +1,4 @@
-package ru.ncband.logic;
+package ru.ncband.web.server.logic;
 
 import org.bouncycastle.jcajce.provider.digest.SHA3.Digest256;
 import org.bouncycastle.jcajce.provider.digest.SHA3.DigestSHA3;
