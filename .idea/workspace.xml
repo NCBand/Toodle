@@ -1204,7 +1204,7 @@
       <workItem from="1457186775713" duration="20000" />
       <workItem from="1457186921433" duration="19000" />
       <workItem from="1457186968065" duration="13321000" />
-      <workItem from="1457260154610" duration="7843000" />
+      <workItem from="1457260154610" duration="7890000" />
     </task>
     <task id="LOCAL-00001" summary="+basic project structure">
       <created>1456260244149</created>
@@ -1272,7 +1272,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457286599183</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="registration: add reg exp in pas">
+      <created>1457286646802</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1457286646802</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1284,7 +1290,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66044000" />
+    <option name="totallyTimeSpent" value="66091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1376,7 +1382,8 @@
     <MESSAGE value="+structure changed" />
     <MESSAGE value="+work, conflict with get toodle/toodle.nocache.js" />
     <MESSAGE value="+registretion" />
-    <option name="LAST_COMMIT_MESSAGE" value="+registretion" />
+    <MESSAGE value="registration: add reg exp in pas" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration: add reg exp in pas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
