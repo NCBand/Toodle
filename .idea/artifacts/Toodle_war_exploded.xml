@@ -1,0 +1,35 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Toodle:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Toodle_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Toodle" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.5.RELEASE" />
+          <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.7.0" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:sources:1.0.0.GA" />
+          <element id="library" level="project" name="Maven: com.google.gwt:gwt-user:2.7.0" />
+          <element id="library" level="project" name="gwt-user" />
+          <element id="library" level="project" name="Maven: com.google.gwt:gwt-dev:2.7.0" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-commons:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-tree:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-util:5.0.3" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Toodle/web/Web" />
+      <element id="gwt-compiler-output" facet="Toodle/gwt/GWT" />
+    </root>
+  </artifact>
+</component>
