@@ -11,7 +11,7 @@ public class Salt {
     }
 
     public static String createSalt(){
-        return null;
+        return null;// TODO: 06.03.2016  
     }
 
     public static String sha3(final String input) {

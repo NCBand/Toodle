@@ -21,7 +21,7 @@ public class UiBinderLogin extends Composite{
     Label errorLabel;
 
     @UiHandler("loginButton")
-    void doClickSubmit(ClickEvent event) {
+    void doClickSubmit(ClickEvent event) {// TODO: 06.03.2016  
 
     }
 
