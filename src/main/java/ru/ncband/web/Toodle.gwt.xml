@@ -2,5 +2,6 @@
         "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
 <module rename-to="toodle">
     <inherits name="com.google.gwt.user.UI"/>
+    <inherits name="ru.ncband.web.Toodle"/>
     <entry-point class='ru.ncband.web.client.Toodle'/>
 </module>

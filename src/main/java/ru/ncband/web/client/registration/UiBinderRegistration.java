@@ -10,6 +10,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+import ru.ncband.web.shared.RegularExpressions;
+import ru.ncband.web.shared.RegularExpressionsImpl;
 
 public class UiBinderRegistration extends Composite{
     interface UiBinderRegistrationUiBinder extends UiBinder<HTMLPanel, UiBinderRegistration> {
@@ -60,13 +62,13 @@ public class UiBinderRegistration extends Composite{
 
     void checkPassword(ValueChangeEvent<String> event) {
         firstPassword = event.getValue();
-        RegExp regExp = RegExp.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$");
-        if (regExp.test(firstPassword)) {
+        RegularExpressionsImpl testString = new RegularExpressions();
+        if (testString.test(RegularExpressions.PASSWORD, firstPassword)) {
             tooShort = true;
             errorPassword.setText("is Ok");
         } else {
             tooShort = false;
-            errorPassword.setText("must contain uppercase and lowercase letters, numbers");
+            Window.alert(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
         }
     }
 
