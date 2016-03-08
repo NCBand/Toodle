@@ -3,8 +3,6 @@ package ru.ncband.web.client.registration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.regexp.shared.MatchResult;
-import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -13,7 +11,7 @@ import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.shared.RegularExpressions;
 import ru.ncband.web.shared.RegularExpressionsImpl;
 
-public class UiBinderRegistration extends Composite{
+public class UiBinderRegistration extends Composite {
     interface UiBinderRegistrationUiBinder extends UiBinder<HTMLPanel, UiBinderRegistration> {
     }
 
@@ -23,6 +21,8 @@ public class UiBinderRegistration extends Composite{
 
     @UiField
     TextBox loginBox;
+    @UiField
+    TextBox email;
     @UiField
     PasswordTextBox passwordBox;
     @UiField
@@ -34,57 +34,73 @@ public class UiBinderRegistration extends Composite{
     @UiField
     Label errorRepeatPassword;
     @UiField
-    TextBox firstNameBox;
+    Label statusFirstName;
+    @UiField
+    Label statusSecondName;
+
 
     private boolean tooShort = false;
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        if(tooShort){
+        if (tooShort) {
             Window.alert("Success!");
         } else {
             Window.alert("Login or password is too short!");
         }
     }
 
-    @UiHandler("loginBox")
-    void checkLoginSize(ValueChangeEvent<String> event) {
-        if (event.getValue().length() < 6) {
-            errorLogin.setText("must be more than 6 characters");
-            tooShort = true;
+
+    @UiHandler("firstNameBox")
+    void checkFirstNameBox(ValueChangeEvent<String> event) {
+        RegularExpressionsImpl testString = new RegularExpressions();
+        if (testString.test(RegularExpressions.NAME, event.getValue())) {
+            statusFirstName.setText("is Ok");
         } else {
-            tooShort = false;
-            errorLogin.setText("is Ok!");
+            statusFirstName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+        }
+    }
+
+    @UiHandler("secondNameBox")
+    void checkSecondNameBox(ValueChangeEvent<String> event) {
+        RegularExpressionsImpl testString = new RegularExpressions();
+        if (testString.test(RegularExpressions.NAME, event.getValue())) {
+            statusSecondName.setText("is Ok");
+        } else {
+            statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+        }
+    }
+
+
+    @UiHandler("loginBox")
+    void checkLogin(ValueChangeEvent<String> event) {
+        RegularExpressionsImpl testString = new RegularExpressions();
+        if (testString.test(RegularExpressions.LOGIN, event.getValue())) {
+            errorPassword.setText("is Ok");
+        } else {
+            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
         }
     }
 
     @UiHandler("passwordBox")
-
     void checkPassword(ValueChangeEvent<String> event) {
         firstPassword = event.getValue();
         RegularExpressionsImpl testString = new RegularExpressions();
         if (testString.test(RegularExpressions.PASSWORD, firstPassword)) {
-            tooShort = true;
             errorPassword.setText("is Ok");
         } else {
-            tooShort = false;
-            Window.alert(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
+            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
         }
     }
-
-
 
     @UiHandler("passwordRepeatBox")
     void checkRepeatPassword(ValueChangeEvent<String> event) {
         if (!event.getValue().equals(firstPassword)) {
-            tooShort = true;
             errorRepeatPassword.setText("doesn't match");
         } else {
-            tooShort = false;
             errorRepeatPassword.setText("is Ok!");
         }
     }
-
 
     public UiBinderRegistration() {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
