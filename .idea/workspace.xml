@@ -1285,7 +1285,7 @@
       <workItem from="1457260154610" duration="7890000" />
       <workItem from="1457287644995" duration="85000" />
       <workItem from="1457288330466" duration="4292000" />
-      <workItem from="1457347472279" duration="6999000" />
+      <workItem from="1457347472279" duration="7003000" />
     </task>
     <task id="LOCAL-00001" summary="+basic project structure">
       <created>1456260244149</created>
@@ -1371,7 +1371,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457444073654</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="registration: add regular expression class">
+      <created>1457444079633</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1457444079633</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1383,7 +1389,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77467000" />
+    <option name="totallyTimeSpent" value="77471000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
