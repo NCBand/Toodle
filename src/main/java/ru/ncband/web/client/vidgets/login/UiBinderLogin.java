@@ -30,6 +30,7 @@ public class UiBinderLogin extends Composite{
         authEvent.setLogin(loginBox.getValue());
         authEvent.setPassword(passwordBox.getValue());
         eventBus.fireEvent(authEvent);
+        errorLabel.setText("Done.");
     }
 
     public UiBinderLogin(EventBus bus) {

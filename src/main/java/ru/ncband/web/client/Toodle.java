@@ -16,7 +16,7 @@ public class Toodle implements EntryPoint {
         final SimpleEventBus bus = new SimpleEventBus();
         RootPanel rootPanel = RootPanel.get();
 
-        UiBinderLogin loginUI = new UiBinderLogin(bus);
+        final UiBinderLogin loginUI = new UiBinderLogin(bus);
         rootPanel.add(loginUI);
 
         bus.addHandler(AuthEvent.TYPE, new AuthHandler() {
@@ -26,14 +26,12 @@ public class Toodle implements EntryPoint {
                 userService.getUser(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Id>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {
-                        //errorLabel.setText("Not suitable login or password");
-                        int i = 0;
+                        loginUI.setErrorMessage("Not suitable login or password");
                     }
 
                     @Override
                     public void onSuccess(Method method, Id id) {
-                        //errorLabel.setText("Good");
-                        int i = 0;
+                        loginUI.setErrorMessage("Good");
                     }
                 });
             }
