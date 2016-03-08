@@ -6,11 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6387ecd-0814-4b07-811c-56a56aafd1b6" name="Default" comment="registration: add reg exp in pas">
+    <list default="true" id="a6387ecd-0814-4b07-811c-56a56aafd1b6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/registration/UiBinderRegistration.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/registration/UiBinderRegistration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/registration/UiBinderRegistration.ui.xml" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/registration/UiBinderRegistration.ui.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/RegularExpressions.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/RegularExpressions.java" />
     </list>
     <ignored path="Toodle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1288,7 +1285,7 @@
       <workItem from="1457260154610" duration="7890000" />
       <workItem from="1457287644995" duration="85000" />
       <workItem from="1457288330466" duration="4292000" />
-      <workItem from="1457347472279" duration="6968000" />
+      <workItem from="1457347472279" duration="6999000" />
     </task>
     <task id="LOCAL-00001" summary="+basic project structure">
       <created>1456260244149</created>
@@ -1368,7 +1365,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457348933269</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="registration: add regular expression class">
+      <created>1457444073654</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1457444073654</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1380,7 +1383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77436000" />
+    <option name="totallyTimeSpent" value="77467000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1473,7 +1476,8 @@
     <MESSAGE value="+work, conflict with get toodle/toodle.nocache.js" />
     <MESSAGE value="+registretion" />
     <MESSAGE value="registration: add reg exp in pas" />
-    <option name="LAST_COMMIT_MESSAGE" value="registration: add reg exp in pas" />
+    <MESSAGE value="registration: add regular expression class" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration: add regular expression class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
