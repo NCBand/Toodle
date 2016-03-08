@@ -1,12 +1,13 @@
 package ru.ncband.web.server.db.serveses;
 
 import org.apache.log4j.Logger;
+import org.fusesource.restygwt.client.MethodCallback;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import ru.ncband.web.client.Id;
 import ru.ncband.web.server.db.classes.UserEntity;
 import ru.ncband.web.server.logic.Salt;
-import ru.ncband.web.shared.Id;
 
 import javax.annotation.Resource;
 import javax.ws.rs.GET;
@@ -16,7 +17,7 @@ import javax.ws.rs.Produces;
 import java.util.List;
 
 @Path("/main/user")
-public class UserService {
+public class UserService implements UserServiceInt{
     protected static Logger logger = Logger.getLogger("user-service");
 
     @Resource(name="sessionFactory")
@@ -35,10 +36,8 @@ public class UserService {
         return session.get(UserEntity.class, id);
     }
 
-    @GET
-    @Produces("application/json")
-    @Path("{login}&{password}")
-    public Id get(@PathParam("login") String login,@PathParam("password") String password) {
+    @Override
+    public Id get( String login, String password) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("FROM UserEntity where login = "+login);
 
@@ -51,7 +50,7 @@ public class UserService {
             }
         }
         
-        return new Id(-1); //// TODO: 06.03.2016  
+        return new Id(-1); //// TODO: 08.03.2016
     }
 
     public void add(UserEntity person) {

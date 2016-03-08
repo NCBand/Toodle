@@ -1,4 +1,4 @@
-package ru.ncband.web.shared;
+package ru.ncband.web.client;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Id {
     private int id;
 
-    @JsonCreator
-    public Id(@JsonProperty final int id){
+    public Id(){}
+
+    public Id( int id){
         this.id = id;
     }
 

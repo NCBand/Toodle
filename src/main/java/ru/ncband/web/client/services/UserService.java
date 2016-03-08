@@ -6,12 +6,14 @@ import javax.ws.rs.PathParam;
 
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
-import ru.ncband.web.shared.Id;
+import ru.ncband.web.client.Id;
+
 
 @Path("/main/user")
 public interface UserService extends RestService {
 
     @GET
     @Path("{login}&{password}")
+
     void getUser(@PathParam("login") String login, @PathParam("password") String password ,MethodCallback<Id> callback);
 }
