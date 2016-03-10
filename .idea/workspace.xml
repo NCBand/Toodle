@@ -6,13 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6387ecd-0814-4b07-811c-56a56aafd1b6" name="Default" comment="first commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/header/HeaderWidget.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/header/HeaderWidget.ui.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/sidebar/SidebarWidget.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/style.nocache.css" />
+    <list default="true" id="a6387ecd-0814-4b07-811c-56a56aafd1b6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Toodle.iml" afterPath="$PROJECT_DIR$/Toodle.iml" />
     </list>
     <ignored path="Toodle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1186,7 +1181,7 @@
       <workItem from="1457287644995" duration="85000" />
       <workItem from="1457288330466" duration="4292000" />
       <workItem from="1457347472279" duration="7003000" />
-      <workItem from="1457625121222" duration="1354000" />
+      <workItem from="1457625121222" duration="1366000" />
     </task>
     <task id="LOCAL-00001" summary="+basic project structure">
       <created>1456260244149</created>
@@ -1278,7 +1273,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457444079633</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="first commit">
+      <created>1457626498373</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1457626498373</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1290,7 +1291,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78825000" />
+    <option name="totallyTimeSpent" value="78837000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
