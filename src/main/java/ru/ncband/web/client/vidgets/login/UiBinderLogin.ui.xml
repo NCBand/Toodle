@@ -9,7 +9,8 @@
                 <g:Label text="password" styleName="{style.blackText}"/>
                 <g:PasswordTextBox ui:field="passwordBox" styleName="{style.box}"/>
                 <g:HorizontalPanel>
-                    <g:Button ui:field="loginButton" text="login" styleName="{style.loginButton}"/>
+                    <g:Button ui:field="loginButton" text="Login in" styleName="{style.loginButton}"/>
+                    <g:Button ui:field="registration" text="Sign up" styleName="{style.loginButton}"/>
                 </g:HorizontalPanel>
                 <g:Label ui:field="errorLabel" styleName="{style.redText}"/>
             </g:VerticalPanel>

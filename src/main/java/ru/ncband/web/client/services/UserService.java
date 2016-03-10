@@ -11,9 +11,9 @@ import ru.ncband.web.client.Id;
 
 @Path("/main/user")
 public interface UserService extends RestService {
-
     @GET
     @Path("{login}&{password}")
-
     void getUser(@PathParam("login") String login, @PathParam("password") String password ,MethodCallback<Id> callback);
+
+
 }

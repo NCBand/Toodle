@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.AuthEvent;
+import ru.ncband.web.client.events.SignUpEvent;
 
 public class UiBinderLogin extends Composite{
     interface UiBinderLoginUiBinder extends UiBinder<HTMLPanel, UiBinderLogin> {
@@ -25,12 +26,18 @@ public class UiBinderLogin extends Composite{
     Label errorLabel;
 
     @UiHandler("loginButton")
-    void doClickSubmit(ClickEvent event) {// TODO: 06.03.2016
+    void doClickSubmit(ClickEvent event) {
         AuthEvent authEvent = GWT.create(AuthEvent.class);
         authEvent.setLogin(loginBox.getValue());
         authEvent.setPassword(passwordBox.getValue());
         eventBus.fireEvent(authEvent);
-        errorLabel.setText("Done.");
+    }
+
+    @UiHandler("registration")
+    void doSigning(ClickEvent event){
+        SignUpEvent signup = GWT.create(SignUpEvent.class);
+        eventBus.fireEvent(signup);
+        errorLabel.setText("Sign in");
     }
 
     public UiBinderLogin(EventBus bus) {

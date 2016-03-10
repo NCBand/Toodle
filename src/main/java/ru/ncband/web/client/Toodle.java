@@ -10,6 +10,7 @@ import ru.ncband.web.client.events.AuthEvent;
 import ru.ncband.web.client.handlers.AuthHandler;
 import ru.ncband.web.client.services.UserService;
 import ru.ncband.web.client.vidgets.login.UiBinderLogin;
+import ru.ncband.web.client.vidgets.registration.UiBinderRegistration;
 
 public class Toodle implements EntryPoint {
     public void onModuleLoad() {
@@ -36,5 +37,9 @@ public class Toodle implements EntryPoint {
                 });
             }
         });
+
+        final UiBinderRegistration registrationUI = new UiBinderRegistration(bus);
+
+
     }
 }
