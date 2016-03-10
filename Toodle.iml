@@ -79,7 +79,6 @@
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate:3.2.6.ga" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: javax.transaction:jta:1.0.1B" level="project" />
     <orderEntry type="library" name="Maven: asm:asm-attrs:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:2.1_3" level="project" />
     <orderEntry type="library" name="Maven: asm:asm:1.5.3" level="project" />
@@ -108,5 +107,6 @@
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.52" level="project" />
     <orderEntry type="library" name="Maven: org.fusesource.restygwt:restygwt:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.transaction:jta:1.1" level="project" />
   </component>
 </module>
