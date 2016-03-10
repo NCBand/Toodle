@@ -34,7 +34,7 @@ public class UiBinderLogin extends Composite{
     }
 
     @UiHandler("registration")
-    void doSigning(ClickEvent event){
+    void doSigning(ClickEvent event){//// TODO: 11.03.2016  
         SignUpEvent signup = GWT.create(SignUpEvent.class);
         eventBus.fireEvent(signup);
         errorLabel.setText("Sign in");

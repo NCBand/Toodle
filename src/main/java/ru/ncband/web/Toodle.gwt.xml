@@ -3,6 +3,7 @@
 <module rename-to="toodle">
     <inherits name="com.google.gwt.user.UI"/>
     <inherits name="org.fusesource.restygwt.RestyGWT"/>
-    <inherits name="ru.ncband.web.Toodle"/>
+    <source path='client'/>
+    <source path='shared'/>
     <entry-point class='ru.ncband.web.client.Toodle'/>
 </module>

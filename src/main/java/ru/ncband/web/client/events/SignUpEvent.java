@@ -15,6 +15,6 @@ public class SignUpEvent extends GwtEvent<SignUpHandler> {
 
     @Override
     protected void dispatch(SignUpHandler handler) {
-        handler.onAuthenticationChanged(this);
+        handler.onSignUp(this);
     }
 }

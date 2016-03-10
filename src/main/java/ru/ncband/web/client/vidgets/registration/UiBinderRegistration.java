@@ -50,46 +50,42 @@ public class UiBinderRegistration extends Composite {
         }
     }
 
-    /*
     @UiHandler("firstNameBox")
     void checkFirstNameBox(ValueChangeEvent<String> event) {
-        RegularExpressions testString = com.google.gwt.core.shared.GWT.create(RegularExpressions.class);
-        if (testString.test(testString.getNAME(), event.getValue())) {
+        if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
             statusFirstName.setText("is Ok");
         } else {
-            statusFirstName.setText(testString.getRequirementForName());
+            statusFirstName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
         }
     }
 
     @UiHandler("secondNameBox")
     void checkSecondNameBox(ValueChangeEvent<String> event) {
         RegularExpressions testString = com.google.gwt.core.shared.GWT.create(RegularExpressions.class);
-        if (testString.test(testString.getNAME(), event.getValue())) {
+        if (testString.test(RegularExpressions.NAME, event.getValue())) {
             statusSecondName.setText("is Ok");
         } else {
-            statusSecondName.setText(testString.getRequirementForName());
+            statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
         }
     }
 
 
     @UiHandler("loginBox")
     void checkLogin(ValueChangeEvent<String> event) {
-        RegularExpressions testString = com.google.gwt.core.shared.GWT.create(RegularExpressions.class);
-        if (testString.test(testString.getLOGIN(), event.getValue())) {
+        if (RegularExpressions.test(RegularExpressions.LOGIN, event.getValue())) {
             errorPassword.setText("is Ok");
         } else {
-            errorPassword.setText(testString.getRequirementForLogin());
+            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
         }
     }
 
     @UiHandler("passwordBox")
     void checkPassword(ValueChangeEvent<String> event) {
         firstPassword = event.getValue();
-        RegularExpressions testString = com.google.gwt.core.shared.GWT.create(RegularExpressions.class);
-        if (testString.test(testString.getPASSWORD(), firstPassword)) {
+        if (RegularExpressions.test(RegularExpressions.PASSWORD, firstPassword)) {
             errorPassword.setText("is Ok");
         } else {
-            errorPassword.setText(testString.getRequirementForPassword());
+            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
         }
     }
 
@@ -100,7 +96,7 @@ public class UiBinderRegistration extends Composite {
         } else {
             errorRepeatPassword.setText("is Ok!");
         }
-    }*/
+    }
 
     public UiBinderRegistration(EventBus bus) {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);

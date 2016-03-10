@@ -35,7 +35,10 @@
                     <g:Label ui:field="errorRepeatPassword" styleName="{style.blackText}"/>
                 </g:HorizontalPanel>
                 <g:PasswordTextBox ui:field="passwordRepeatBox" styleName="{style.box}"/>
-                <g:Button ui:field="loginButton" text="Registration" styleName="{style.loginButton}"/>
+                <g:HorizontalPanel>
+                    <g:Button ui:field="loginButton" text="Registration" styleName="{style.loginButton}"/>
+                    <g:Button ui:field="backButton" text="Back" styleName="{style.loginButton}"/>
+                </g:HorizontalPanel>
             </g:VerticalPanel>
         </div>
     </g:HTMLPanel>
