@@ -9,7 +9,7 @@ import org.fusesource.restygwt.client.RestService;
 import ru.ncband.web.shared.Id;
 
 @Path("/main/user")
-public interface CheckUserImpl extends RestService {
+public interface CheckUser extends RestService {
     @GET
     @Path("{login}&{password}")
     void getUser(@PathParam("login") String login,

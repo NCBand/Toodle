@@ -1,17 +1,13 @@
 package ru.ncband.web.server.db.serveses;
 
 import org.fusesource.restygwt.client.DirectRestService;
-import ru.ncband.web.shared.Id;
 
-import javax.ws.rs.*;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 @Path("/main/user")
-public interface UserServiceInt extends DirectRestService {
-    @GET
-    @Path("{login}&{password}")
-    Id get(@PathParam("login") String login,
-           @PathParam("password") String password);
-
+public interface AddUser extends DirectRestService {
     @PUT
     @Path("{firstname}&{lastname}&{mail}&{login}&{password}&{age}&{sex}")
     void setUser(@PathParam("firstname") String firstname,

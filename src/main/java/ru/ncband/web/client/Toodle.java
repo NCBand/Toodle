@@ -8,14 +8,19 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.AuthEvent;
 import ru.ncband.web.client.events.ErrorAuthEvent;
+import ru.ncband.web.client.events.MakeUserEvent;
 import ru.ncband.web.client.events.SignUpEvent;
 import ru.ncband.web.client.handlers.AuthHandler;
 import ru.ncband.web.client.handlers.ErrorAuthHandler;
+import ru.ncband.web.client.handlers.MakeUserHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
-import ru.ncband.web.client.services.CheckUserImpl;
+import ru.ncband.web.client.services.AddUser;
+import ru.ncband.web.client.services.CheckUser;
 import ru.ncband.web.client.vidgets.login.UiBinderLogin;
 import ru.ncband.web.client.vidgets.registration.UiBinderRegistration;
 import ru.ncband.web.shared.Id;
+
+import javax.validation.constraints.Null;
 
 public class Toodle implements EntryPoint {
     public void onModuleLoad() {
@@ -32,8 +37,8 @@ public class Toodle implements EntryPoint {
         bus.addHandler(AuthEvent.TYPE, new AuthHandler() {
             @Override
             public void onAuthenticationChanged(AuthEvent authenticationEvent) {
-                CheckUserImpl checkUserImpl = GWT.create(CheckUserImpl.class);
-                checkUserImpl.getUser(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Id>() {
+                CheckUser checkUser = GWT.create(CheckUser.class);
+                checkUser.getUser(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Id>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {
                         RootPanel rootPanel = RootPanel.get();
@@ -84,6 +89,38 @@ public class Toodle implements EntryPoint {
                         widget.setVisible(true);
                     }
                 }
+            }
+        });
+
+        bus.addHandler(MakeUserEvent.TYPE, new MakeUserHandler() {
+            @Override
+            public void addUser(MakeUserEvent authenticationEvent) {
+                AddUser addUser = GWT.create(AddUser.class);
+                addUser.setUser(authenticationEvent.getFirstname(),
+                        authenticationEvent.getLastname(),
+                        authenticationEvent.getLogin(),
+                        authenticationEvent.getMail(),
+                        authenticationEvent.getPassword(),
+                        authenticationEvent.getAge(),
+                        authenticationEvent.getSex(),
+                        new MethodCallback<Null>() {
+                            @Override
+                            public void onFailure(Method method, Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onSuccess(Method method, Null aNull) {
+                                RootPanel rootPanel = RootPanel.get();
+                                for (Widget widget : rootPanel) {
+                                    if(!widget.getClass().equals(UiBinderLogin.class)) {
+                                        widget.setVisible(false);
+                                    }else {
+                                        widget.setVisible(true);
+                                    }
+                                }
+                            }
+                        });
             }
         });
     }

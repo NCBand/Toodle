@@ -10,11 +10,10 @@ import ru.ncband.web.server.logic.Salt;
 
 import javax.annotation.Resource;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Path("/main/user")
-public class UserService implements UserServiceInt{
+public class UserService implements CheckUser, AddUser {
     protected static Logger logger = Logger.getLogger("user-service");
 
     @Resource(name="sessionFactory")

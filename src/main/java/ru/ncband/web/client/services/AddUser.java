@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 @Path("/main/user")
-public interface AddUserInt extends RestService {
+public interface AddUser extends RestService {
     @PUT
     @Path("{firstname}&{lastname}&{mail}&{login}&{password}&{age}&{sex}")
     void setUser(@PathParam("firstname") String firstname,

@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
+import ru.ncband.web.client.events.MakeUserEvent;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -47,7 +48,18 @@ public class UiBinderRegistration extends Composite {
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        Window.alert("Success!");
+        if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
+            MakeUserEvent makeUserEvent = new MakeUserEvent();
+            makeUserEvent.setLogin(loginBox.getValue());
+            makeUserEvent.setPassword(passwordBox.getValue());
+            makeUserEvent.setAge(" ");
+            makeUserEvent.setSex(" ");
+            makeUserEvent.setFirstname(firstNameBox.getValue());
+            makeUserEvent.setLastname(secondNameBox.getValue());
+            eventBus.fireEvent(makeUserEvent);
+        }else {
+            Window.setTitle("Wrong!");
+        }
     }
 
     @UiHandler("backButton")
