@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -20,8 +21,11 @@ public class UiBinderRegistration extends Composite {
     private EventBus eventBus;
 
     private String firstPassword;
-    private boolean tooShort = false;
 
+    @UiField
+    TextBox firstNameBox;
+    @UiField
+    TextBox secondNameBox;
     @UiField
     TextBox loginBox;
     @UiField
@@ -43,11 +47,13 @@ public class UiBinderRegistration extends Composite {
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        if (tooShort) {
-            Window.alert("Success!");
-        } else {
-            Window.alert("Login or password is too short!");
-        }
+        Window.alert("Success!");
+    }
+
+    @UiHandler("backButton")
+    void doBack(ClickEvent event){
+        ErrorAuthEvent errorAuthEvent = new ErrorAuthEvent();
+        eventBus.fireEvent(errorAuthEvent);
     }
 
     @UiHandler("firstNameBox")
@@ -61,8 +67,7 @@ public class UiBinderRegistration extends Composite {
 
     @UiHandler("secondNameBox")
     void checkSecondNameBox(ValueChangeEvent<String> event) {
-        RegularExpressions testString = com.google.gwt.core.shared.GWT.create(RegularExpressions.class);
-        if (testString.test(RegularExpressions.NAME, event.getValue())) {
+        if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
             statusSecondName.setText("is Ok");
         } else {
             statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);

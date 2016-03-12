@@ -1,4 +1,4 @@
-package ru.ncband.web.client;
+package ru.ncband.web.shared;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

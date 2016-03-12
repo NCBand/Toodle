@@ -1,7 +1,7 @@
 package ru.ncband.web.server.db.serveses;
 
 import org.fusesource.restygwt.client.DirectRestService;
-import ru.ncband.web.client.Id;
+import ru.ncband.web.shared.Id;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

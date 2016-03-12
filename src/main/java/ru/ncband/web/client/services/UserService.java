@@ -6,8 +6,7 @@ import javax.ws.rs.PathParam;
 
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
-import ru.ncband.web.client.Id;
-
+import ru.ncband.web.shared.Id;
 
 @Path("/main/user")
 public interface UserService extends RestService {
