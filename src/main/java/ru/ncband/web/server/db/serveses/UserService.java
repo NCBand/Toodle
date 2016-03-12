@@ -10,6 +10,7 @@ import ru.ncband.web.server.logic.Salt;
 
 import javax.annotation.Resource;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Path("/main/user")
@@ -40,8 +41,8 @@ public class UserService implements UserServiceInt{
         List<UserEntity> users = query.list();
         for (UserEntity user:
              users) {
-            String saltpassword = Salt.salting(user.getSalt(),password);
-            if(saltpassword.equals(user.getPassword())){
+            String salting = Salt.salting(user.getSalt(),password);
+            if(salting.equals(user.getPassword())){
                 return new Id(user.getId());
             }
         }
@@ -49,10 +50,28 @@ public class UserService implements UserServiceInt{
         return new Id(-1); //// TODO: 08.03.2016
     }
 
-    public void add(UserEntity person) {
-        logger.debug("Adding new person");
+    @Override
+    public void setUser(String firstname, String lastname, String login, String mail, String password, String age, String sex) {
+        logger.debug("Add person");
 
         Session session = sessionFactory.getCurrentSession();
+        UserEntity person = new UserEntity();
+
+        person.setFirstname(firstname);
+        person.setLastname(lastname);
+        person.setAge(Integer.getInteger(age));
+        person.setMail(mail);
+        person.setSex(sex);
+
+        Integer salt = 0; //// TODO: 12.03.2016  
+        String salting = Salt.salting(salt,password);
+        Integer id = 0;
+        
+        person.setId(id);
+        person.setLogin(login);
+        person.setPassword(salting);
+        person.setSalt(salt);
+        
         session.save(person);
     }
 

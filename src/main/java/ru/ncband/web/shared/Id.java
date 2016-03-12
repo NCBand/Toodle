@@ -1,10 +1,8 @@
 package ru.ncband.web.shared;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Id {
     private int id;
+    private int hash;
 
     public Id(){}
 
@@ -18,5 +16,13 @@ public class Id {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getHash() {
+        return hash;
+    }
+
+    public void setHash(int hash) {
+        this.hash = hash;
     }
 }

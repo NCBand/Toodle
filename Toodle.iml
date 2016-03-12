@@ -37,7 +37,7 @@
           <unit-entry name="hibernate.cfg.xml" value="6d2bd9c6-aca8-4b3f-a58b-8bcf181d53e2" />
         </datasource-map>
         <naming-strategy-map />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/java/ru/ncband/web/server/db/hibernate.cfg.xml" />
       </configuration>
     </facet>
   </component>

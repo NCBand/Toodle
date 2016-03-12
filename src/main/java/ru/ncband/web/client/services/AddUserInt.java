@@ -1,17 +1,15 @@
-package ru.ncband.web.server.db.serveses;
+package ru.ncband.web.client.services;
 
-import org.fusesource.restygwt.client.DirectRestService;
-import ru.ncband.web.shared.Id;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.fusesource.restygwt.client.RestService;
 
-import javax.ws.rs.*;
+import javax.validation.constraints.Null;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 @Path("/main/user")
-public interface UserServiceInt extends DirectRestService {
-    @GET
-    @Path("{login}&{password}")
-    Id get(@PathParam("login") String login,
-           @PathParam("password") String password);
-
+public interface AddUserInt extends RestService {
     @PUT
     @Path("{firstname}&{lastname}&{mail}&{login}&{password}&{age}&{sex}")
     void setUser(@PathParam("firstname") String firstname,
@@ -20,5 +18,6 @@ public interface UserServiceInt extends DirectRestService {
                  @PathParam("mail") String mail,
                  @PathParam("password") String password,
                  @PathParam("age") String age,
-                 @PathParam("sex") String sex);
+                 @PathParam("sex") String sex,
+                 MethodCallback<Null> callback);
 }

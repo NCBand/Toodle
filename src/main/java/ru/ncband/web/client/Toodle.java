@@ -12,7 +12,7 @@ import ru.ncband.web.client.events.SignUpEvent;
 import ru.ncband.web.client.handlers.AuthHandler;
 import ru.ncband.web.client.handlers.ErrorAuthHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
-import ru.ncband.web.client.services.UserService;
+import ru.ncband.web.client.services.CheckUserImpl;
 import ru.ncband.web.client.vidgets.login.UiBinderLogin;
 import ru.ncband.web.client.vidgets.registration.UiBinderRegistration;
 import ru.ncband.web.shared.Id;
@@ -32,8 +32,8 @@ public class Toodle implements EntryPoint {
         bus.addHandler(AuthEvent.TYPE, new AuthHandler() {
             @Override
             public void onAuthenticationChanged(AuthEvent authenticationEvent) {
-                UserService userService = GWT.create(UserService.class);
-                userService.getUser(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Id>() {
+                CheckUserImpl checkUserImpl = GWT.create(CheckUserImpl.class);
+                checkUserImpl.getUser(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Id>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {
                         RootPanel rootPanel = RootPanel.get();
