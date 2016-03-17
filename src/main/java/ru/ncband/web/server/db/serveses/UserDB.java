@@ -1,6 +1,8 @@
 package ru.ncband.web.server.db.serveses;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.apache.log4j.Logger;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,11 +11,10 @@ import ru.ncband.web.server.db.classes.UserEntity;
 import ru.ncband.web.server.logic.Salt;
 
 import javax.annotation.Resource;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import java.util.List;
 
-@Path("/main/user")
-public class UserService implements CheckUser, AddUser {
+public class UserDB {
     protected static Logger logger = Logger.getLogger("user-service");
 
     @Resource(name="sessionFactory")
@@ -32,8 +33,7 @@ public class UserService implements CheckUser, AddUser {
         return session.get(UserEntity.class, id);
     }
 
-    @Override
-    public Id get( String login, String password) {
+    public Id get(String login, String password) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("FROM UserEntity where login = "+login);
 
@@ -49,8 +49,14 @@ public class UserService implements CheckUser, AddUser {
         return new Id(-1); //// TODO: 08.03.2016
     }
 
-    @Override
-    public void setUser(String firstname, String lastname, String login, String mail, String password, String age, String sex) {
+
+    public void setUser( String firstname,
+                  String lastname,
+                  String login,
+                  String mail,
+                  String password,
+                  String age,
+                  String sex) {
         logger.debug("Add person");
 
         Session session = sessionFactory.getCurrentSession();
