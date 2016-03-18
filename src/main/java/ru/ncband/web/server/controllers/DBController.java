@@ -6,21 +6,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ncband.web.server.db.serveses.UserDB;
 import ru.ncband.web.shared.Id;
 
-import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 
 @Controller
 public class DBController {
-    @RequestMapping(value = "/main/user/", method = RequestMethod.GET)
-    @Path("{login}&{password}")
+    @RequestMapping(value = "/main/user/getUser", method = RequestMethod.POST , consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
     public Id getUser(@PathParam("login") String login,
                       @PathParam("password") String password){
         UserDB userDB = new UserDB();
         return userDB.get(login, password);
     }
 
-    @RequestMapping(value = "/main/user/", method = RequestMethod.PUT)
-    @Path("{firstname}&{lastname}&{mail}&{login}&{password}&{age}&{sex}")
+    @RequestMapping(value = "/main/user/setUser", method = RequestMethod.POST)
     public void setUser(@PathParam("firstname") String firstname,
                  @PathParam("lastname") String lastname,
                  @PathParam("login") String login,
