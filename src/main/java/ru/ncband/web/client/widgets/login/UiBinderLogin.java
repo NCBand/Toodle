@@ -1,4 +1,4 @@
-package ru.ncband.web.client.vidgets.login;
+package ru.ncband.web.client.widgets.login;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -7,7 +7,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
-import ru.ncband.web.client.events.AuthEvent;
+import ru.ncband.web.client.events.SignInEvent;
 import ru.ncband.web.client.events.SignUpEvent;
 
 public class UiBinderLogin extends Composite{
@@ -27,10 +27,10 @@ public class UiBinderLogin extends Composite{
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        AuthEvent authEvent = GWT.create(AuthEvent.class);
-        authEvent.setLogin(loginBox.getValue());
-        authEvent.setPassword(passwordBox.getValue());
-        eventBus.fireEvent(authEvent);
+        SignInEvent signInEvent = GWT.create(SignInEvent.class);
+        signInEvent.setLogin(loginBox.getValue());
+        signInEvent.setPassword(passwordBox.getValue());
+        eventBus.fireEvent(signInEvent);
     }
 
     @UiHandler("registration")

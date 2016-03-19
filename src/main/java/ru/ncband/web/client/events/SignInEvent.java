@@ -1,22 +1,22 @@
 package ru.ncband.web.client.events;
 
 import com.google.gwt.event.shared.GwtEvent;
-import ru.ncband.web.client.handlers.AuthHandler;
+import ru.ncband.web.client.handlers.SignInHandler;
 
-public class AuthEvent extends GwtEvent<AuthHandler> {
+public class SignInEvent extends GwtEvent<SignInHandler> {
 
-    public static Type<AuthHandler> TYPE = new Type<AuthHandler>();
+    public static Type<SignInHandler> TYPE = new Type<SignInHandler>();
 
     private String login;
     private String password;
 
     @Override
-    public Type<AuthHandler> getAssociatedType() {
+    public Type<SignInHandler> getAssociatedType() {
         return TYPE;
     }
 
     @Override
-    protected void dispatch(AuthHandler handler) {
+    protected void dispatch(SignInHandler handler) {
         handler.onAuthenticationChanged(this);
     }
 

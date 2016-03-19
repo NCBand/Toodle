@@ -1,4 +1,4 @@
-package ru.ncband.web.client.vidgets.sidebar;
+package ru.ncband.web.client.widgets.sidebar;
 
 /**
  * Created by Andrew on 06.03.2016.

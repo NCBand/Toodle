@@ -1,7 +1,8 @@
-package ru.ncband.web.client.vidgets.header;
+package ru.ncband.web.client.widgets.header;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.SpanElement;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -13,6 +14,7 @@ public class HeaderWidget extends Composite {
     }
 
     private static HeaderUiBinder uiBinder = GWT.create(HeaderUiBinder.class);
+    private SimpleEventBus eventBus;
 
     @UiField
     SpanElement userName;
@@ -25,8 +27,9 @@ public class HeaderWidget extends Composite {
     @UiField
     MenuItem signOut;
 
-    public HeaderWidget() {
+    public HeaderWidget(SimpleEventBus bus) {
         initWidget(uiBinder.createAndBindUi(this));
+        this.eventBus = bus;
     }
 
     public void setUserName(String userName) {

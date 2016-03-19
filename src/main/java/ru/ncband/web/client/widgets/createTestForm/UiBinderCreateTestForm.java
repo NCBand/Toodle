@@ -1,4 +1,4 @@
-package ru.ncband.web.client.vidgets.createTestForm;
+package ru.ncband.web.client.widgets.createTestForm;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -22,7 +22,7 @@ public class UiBinderCreateTestForm extends Composite{
 //
 //    @UiHandler("loginButton")
 //    void doClickSubmit(ClickEvent event) {
-//        AuthEvent authEvent = GWT.create(AuthEvent.class);
+//        SignInEvent authEvent = GWT.create(SignInEvent.class);
 //        authEvent.setLogin(loginBox.getValue());
 //        authEvent.setPassword(passwordBox.getValue());
 //        eventBus.fireEvent(authEvent);

@@ -63,33 +63,24 @@
             <version>5.1.34</version>
         </dependency>
 
-        <!-- Hibernate -->
-        <!-- to start need only this -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate</artifactId>-->
-            <!--<version>5.1.0.Final</version>-->
-        <!--</dependency>-->
-
-        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
 
-        <!-- optional -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-osgi</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
@@ -100,6 +91,7 @@
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-proxool</artifactId>
@@ -110,6 +102,7 @@
             <artifactId>hibernate-infinispan</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
@@ -139,30 +132,5 @@
             <artifactId>jsr311-api</artifactId>
             <version>1.1.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <version>2.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
-        </dependency>
     </dependencies>
-
-
 </project>

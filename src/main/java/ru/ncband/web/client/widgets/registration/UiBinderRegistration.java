@@ -1,4 +1,4 @@
-package ru.ncband.web.client.vidgets.registration;
+package ru.ncband.web.client.widgets.registration;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -10,7 +10,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
-import ru.ncband.web.client.events.MakeUserEvent;
+import ru.ncband.web.client.events.RegistrationEvent;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -49,14 +49,14 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
         if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
-            MakeUserEvent makeUserEvent = new MakeUserEvent();
-            makeUserEvent.setLogin(loginBox.getValue());
-            makeUserEvent.setPassword(passwordBox.getValue());
-            makeUserEvent.setAge(" ");
-            makeUserEvent.setSex(" ");
-            makeUserEvent.setFirstname(firstNameBox.getValue());
-            makeUserEvent.setLastname(secondNameBox.getValue());
-            eventBus.fireEvent(makeUserEvent);
+            RegistrationEvent registrationEvent = new RegistrationEvent();
+            registrationEvent.setLogin(loginBox.getValue());
+            registrationEvent.setPassword(passwordBox.getValue());
+            registrationEvent.setAge(" ");
+            registrationEvent.setSex(" ");
+            registrationEvent.setFirstname(firstNameBox.getValue());
+            registrationEvent.setLastname(secondNameBox.getValue());
+            eventBus.fireEvent(registrationEvent);
         }else {
             Window.setTitle("Wrong!");
         }
@@ -85,7 +85,6 @@ public class UiBinderRegistration extends Composite {
             statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
         }
     }
-
 
     @UiHandler("loginBox")
     void checkLogin(ValueChangeEvent<String> event) {

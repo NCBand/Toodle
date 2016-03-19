@@ -27,4 +27,9 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/main/*</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/toodle/user/*</url-pattern>
+    </servlet-mapping>
 </web-app>

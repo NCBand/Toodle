@@ -1,11 +1,11 @@
 package ru.ncband.web.client.events;
 
 import com.google.gwt.event.shared.GwtEvent;
-import ru.ncband.web.client.handlers.MakeUserHandler;
+import ru.ncband.web.client.handlers.RegistrationHandler;
 
-public class MakeUserEvent extends GwtEvent<MakeUserHandler> {
+public class RegistrationEvent extends GwtEvent<RegistrationHandler> {
 
-    public static Type<MakeUserHandler> TYPE = new Type<MakeUserHandler>();
+    public static Type<RegistrationHandler> TYPE = new Type<RegistrationHandler>();
 
     private String firstname;
     private String lastname;
@@ -72,12 +72,12 @@ public class MakeUserEvent extends GwtEvent<MakeUserHandler> {
     }
 
     @Override
-    public Type<MakeUserHandler> getAssociatedType() {
+    public Type<RegistrationHandler> getAssociatedType() {
         return TYPE;
     }
 
     @Override
-    protected void dispatch(MakeUserHandler handler) {
+    protected void dispatch(RegistrationHandler handler) {
         handler.addUser(this);
     }
 }
