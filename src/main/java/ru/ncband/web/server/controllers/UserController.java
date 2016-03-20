@@ -1,15 +1,15 @@
 package ru.ncband.web.server.controllers;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import ru.ncband.web.server.db.serveses.UserDB;
 import ru.ncband.web.shared.Id;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.core.MediaType;
 
-@Controller
+@RestController
 @RequestMapping("/toodle/user")
 public class UserController {
     @RequestMapping(value = "/getUser", method = RequestMethod.POST , consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
