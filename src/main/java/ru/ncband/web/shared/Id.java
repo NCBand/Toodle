@@ -1,8 +1,11 @@
 package ru.ncband.web.shared;
 
+import com.google.gwt.core.client.GWT;
+import org.fusesource.restygwt.client.JsonEncoderDecoder;
+
 public class Id {
-    private int id;
-    private int hash;
+    private int id = 0;
+    private int hash = 0;
 
     public Id(){}
 

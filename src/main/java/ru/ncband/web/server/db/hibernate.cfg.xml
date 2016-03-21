@@ -11,7 +11,6 @@
         <property name="connection.password">root</property>
 
         <mapping class="ru.ncband.web.server.db.classes.UserEntity"/>
-        <mapping class="ru.ncband.web.server.db.classes.PersonalEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.TasksEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.ClassesEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.StatisticEntity"/>

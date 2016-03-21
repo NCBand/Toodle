@@ -1,4 +1,4 @@
-package ru.ncband.web.client.widgets.createTestForm;
+package ru.ncband.web.client.widgets.testform;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

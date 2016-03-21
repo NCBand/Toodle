@@ -1,6 +1,5 @@
-package ru.ncband.web.server.db.serveses;
+package ru.ncband.web.server.db.servises;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.apache.log4j.Logger;
 
 import org.hibernate.Query;
@@ -9,9 +8,9 @@ import org.hibernate.SessionFactory;
 import ru.ncband.web.shared.Id;
 import ru.ncband.web.server.db.classes.UserEntity;
 import ru.ncband.web.server.logic.Salt;
+import ru.ncband.web.shared.Registration;
 
 import javax.annotation.Resource;
-import javax.ws.rs.*;
 import java.util.List;
 
 public class UserDB {
@@ -24,7 +23,7 @@ public class UserDB {
         logger.debug("Retrieving all persons");
 
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM UserEntity");
+        Query query = session.createQuery("FROM UserEntity ");
         return query.list();
     }
 
@@ -34,46 +33,44 @@ public class UserDB {
     }
 
     public Id get(String login, String password) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM UserEntity where login = "+login);
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query query = session.createQuery("FROM UserEntity where login = "+login);
 
-        List<UserEntity> users = query.list();
-        for (UserEntity user:
-             users) {
-            String salting = Salt.salting(user.getSalt(),password);
-            if(salting.equals(user.getPassword())){
-                return new Id(user.getId());
+            List<UserEntity> users = query.list();
+            for (UserEntity user :
+                    users) {
+                String salting = Salt.salting(user.getSalt(), password);
+                if (salting.equals(user.getPassword())) {
+                    return new Id(user.getId());
+                }
             }
+        } catch (NullPointerException e){
+            logger.trace(e.getMessage());
         }
         
-        return new Id(-1); //// TODO: 08.03.2016
+        return new Id(-1);
     }
 
 
-    public void setUser( String firstname,
-                  String lastname,
-                  String login,
-                  String mail,
-                  String password,
-                  String age,
-                  String sex) {
+    public void set(Registration registration) {
         logger.debug("Add person");
 
         Session session = sessionFactory.getCurrentSession();
         UserEntity person = new UserEntity();
 
-        person.setFirstname(firstname);
-        person.setLastname(lastname);
-        person.setAge(Integer.getInteger(age));
-        person.setMail(mail);
-        person.setSex(sex);
+        person.setFirstname(registration.getFirstname());
+        person.setLastname(registration.getLastname());
+        person.setAge(Integer.getInteger(registration.getAge()));
+        person.setMail(registration.getMail());
+        person.setSex(registration.getSex());
 
         Integer salt = 0; //// TODO: 12.03.2016  
-        String salting = Salt.salting(salt,password);
+        String salting = Salt.salting(salt,registration.getPassword());
         Integer id = 0;
         
         person.setId(id);
-        person.setLogin(login);
+        person.setLogin(registration.getLogin());
         person.setPassword(salting);
         person.setSalt(salt);
         

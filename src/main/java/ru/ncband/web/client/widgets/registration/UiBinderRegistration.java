@@ -11,6 +11,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
+import ru.ncband.web.shared.Registration;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -50,12 +51,13 @@ public class UiBinderRegistration extends Composite {
     void doClickSubmit(ClickEvent event) {
         if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
             RegistrationEvent registrationEvent = new RegistrationEvent();
-            registrationEvent.setLogin(loginBox.getValue());
-            registrationEvent.setPassword(passwordBox.getValue());
-            registrationEvent.setAge(" ");
-            registrationEvent.setSex(" ");
-            registrationEvent.setFirstname(firstNameBox.getValue());
-            registrationEvent.setLastname(secondNameBox.getValue());
+            Registration registration = new Registration();
+            registration.setLogin(loginBox.getValue());
+            registration.setPassword(passwordBox.getValue());
+            registration.setAge(" ");
+            registration.setSex(" ");
+            registration.setFirstname(firstNameBox.getValue());
+            registration.setLastname(secondNameBox.getValue());
             eventBus.fireEvent(registrationEvent);
         }else {
             Window.setTitle("Wrong!");

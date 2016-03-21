@@ -8,6 +8,8 @@ public class SignUpEvent extends GwtEvent<SignUpHandler> {
 
     public static Type<SignUpHandler> TYPE = new Type<SignUpHandler>();
 
+    public SignUpEvent(){}
+
     @Override
     public Type<SignUpHandler> getAssociatedType() {
         return TYPE;

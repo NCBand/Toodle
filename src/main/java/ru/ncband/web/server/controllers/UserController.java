@@ -1,33 +1,32 @@
 package ru.ncband.web.server.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import ru.ncband.web.server.db.serveses.UserDB;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.web.bind.annotation.*;
+import ru.ncband.web.server.db.servises.UserDB;
 import ru.ncband.web.shared.Id;
+import ru.ncband.web.shared.Registration;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 
 @RestController
-@RequestMapping("/toodle/user")
 public class UserController {
-    @RequestMapping(value = "/getUser", method = RequestMethod.POST , consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
-    public Id getUser(@FormParam("login") String login,
-                      @FormParam("password") String password){
+    @RequestMapping(value = "/sign_in", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
+    public @ResponseBody String getUser(@FormParam("login") String login,
+                                        @FormParam("password") String password){
         UserDB userDB = new UserDB();
-        return userDB.get(login, password);
+        Id res = userDB.get(login, password);
+        System.out.println(res.getId());
+        return "done";
     }
 
-    @RequestMapping(value = "/setUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
-    public void setUser(@FormParam("firstname") String firstname,
-                        @FormParam("lastname") String lastname,
-                        @FormParam("login") String login,
-                        @FormParam("mail") String mail,
-                        @FormParam("password") String password,
-                        @FormParam("age") String age,
-                        @FormParam("sex") String sex){
+    @RequestMapping(value = "/registration", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED, produces = MediaType.APPLICATION_JSON)
+    public @ResponseBody String setUser(@RequestParam("form") String registration_string) throws IOException {
+        Registration registration  = new ObjectMapper().readValue(registration_string, Registration.class);
         UserDB userDB = new UserDB();
-        userDB.setUser(firstname, lastname, login, mail, password, age, sex);
+        userDB.set(registration);
+        return "done";
     }
-}
+    }
+

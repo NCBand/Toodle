@@ -30,6 +30,11 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/toodle/user/*</url-pattern>
+        <url-pattern>/user/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.xml</url-pattern>
     </servlet-mapping>
 </web-app>

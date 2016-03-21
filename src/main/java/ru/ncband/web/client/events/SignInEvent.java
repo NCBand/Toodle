@@ -7,8 +7,10 @@ public class SignInEvent extends GwtEvent<SignInHandler> {
 
     public static Type<SignInHandler> TYPE = new Type<SignInHandler>();
 
-    private String login;
-    private String password;
+    private String login = null;
+    private String password = null;
+
+    public SignInEvent(){}
 
     @Override
     public Type<SignInHandler> getAssociatedType() {
