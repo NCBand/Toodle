@@ -1,4 +1,4 @@
-package ru.ncband.web.shared;
+package ru.ncband.web.shared.classes;
 
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.JsonEncoderDecoder;
