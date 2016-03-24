@@ -11,7 +11,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
-import ru.ncband.web.shared.Registration;
+import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -120,5 +120,9 @@ public class UiBinderRegistration extends Composite {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
         this.eventBus = bus;
+    }
+
+    void clear(){
+
     }
 }

@@ -36,8 +36,8 @@ public class UiBinderLogin extends Composite{
     @UiHandler("registration")
     void doSigning(ClickEvent event){
         SignUpEvent signup = GWT.create(SignUpEvent.class);
+        clear();
         eventBus.fireEvent(signup);
-        errorLabel.setText("Sign in");
     }
 
     public UiBinderLogin(EventBus bus) {
@@ -48,5 +48,10 @@ public class UiBinderLogin extends Composite{
 
     public void setErrorMessage(String text){
         errorLabel.setText(text);
+    }
+
+    public void clear(){
+        loginBox.setValue("");
+        passwordBox.setValue("");
     }
 }
