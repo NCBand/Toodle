@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserFilter implements HandlerInterceptor {
+
+    //@Autowired Id session = null;
+
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,

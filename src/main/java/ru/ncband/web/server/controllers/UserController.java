@@ -25,7 +25,7 @@ public class UserController {
         return st;
     }
 
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public Status setUser(@RequestBody Registration form) throws IOException {
