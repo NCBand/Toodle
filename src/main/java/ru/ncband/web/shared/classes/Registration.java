@@ -1,7 +1,5 @@
 package ru.ncband.web.shared.classes;
 
-import org.fusesource.restygwt.client.JsonEncoderDecoder;
-
 public class Registration {
     private String login = null;
     private String password = null;

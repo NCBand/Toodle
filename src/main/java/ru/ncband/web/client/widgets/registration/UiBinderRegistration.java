@@ -21,7 +21,6 @@ public class UiBinderRegistration extends Composite {
     private static UiBinderRegistrationUiBinder ourUiBinder = GWT.create(UiBinderRegistrationUiBinder.class);
 
     private EventBus eventBus;
-
     private String firstPassword;
 
     @UiField
@@ -122,7 +121,11 @@ public class UiBinderRegistration extends Composite {
         this.eventBus = bus;
     }
 
-    void clear(){
+    private void clear(){
 
+    }
+
+    public boolean isValidForm(){
+        return false;
     }
 }

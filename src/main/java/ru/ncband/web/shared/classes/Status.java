@@ -1,7 +1,5 @@
 package ru.ncband.web.shared.classes;
 
-import java.io.Serializable;
-
 public class Status {
     private String msg = null;
 
@@ -18,10 +16,5 @@ public class Status {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    @Override
-    public String toString() {
-        return "Status " + msg;
     }
 }

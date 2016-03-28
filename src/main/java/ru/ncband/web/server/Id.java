@@ -1,8 +1,10 @@
-package ru.ncband.web.shared.classes;
+package ru.ncband.web.server;
 
-import com.google.gwt.core.client.GWT;
-import org.fusesource.restygwt.client.JsonEncoderDecoder;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope(value = "session")
 public class Id {
     private int id = 0;
     private int hash = 0;

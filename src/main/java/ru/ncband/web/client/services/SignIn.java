@@ -19,7 +19,7 @@ public interface SignIn extends RestService {
 
     @POST
     @Path("/user/registration")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     void doRegistration(Registration registration_form,
                         MethodCallback<Status> callback);
