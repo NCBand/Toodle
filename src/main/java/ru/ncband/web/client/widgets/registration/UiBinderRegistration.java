@@ -11,8 +11,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
-import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.RegularExpressions;
+import ru.ncband.web.shared.classes.Registration;
 
 public class UiBinderRegistration extends Composite {
     interface UiBinderRegistrationUiBinder extends UiBinder<HTMLPanel, UiBinderRegistration> {
@@ -33,6 +33,8 @@ public class UiBinderRegistration extends Composite {
     @UiField
     TextBox email;
     @UiField
+    TextBox ageBox;
+    @UiField
     PasswordTextBox passwordBox;
     @UiField
     PasswordTextBox passwordRepeatBox;
@@ -43,9 +45,13 @@ public class UiBinderRegistration extends Composite {
     @UiField
     Label errorRepeatPassword;
     @UiField
+    Label errorAge;
+    @UiField
     Label statusFirstName;
     @UiField
     Label statusSecondName;
+    @UiField
+    ListBox sexBox;
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
@@ -54,8 +60,8 @@ public class UiBinderRegistration extends Composite {
             Registration registration = new Registration();
             registration.setLogin(loginBox.getValue());
             registration.setPassword(passwordBox.getValue());
-            registration.setAge(" ");
-            registration.setSex(" ");
+            registration.setAge(ageBox.getValue());
+            registration.setSex(sexBox.getSelectedValue());
             registration.setFirstname(firstNameBox.getValue());
             registration.setLastname(secondNameBox.getValue());
             eventBus.fireEvent(registrationEvent);
@@ -91,9 +97,18 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("loginBox")
     void checkLogin(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.LOGIN, event.getValue())) {
-            errorPassword.setText("is Ok");
+            errorLogin.setText("is Ok");
         } else {
-            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
+            errorLogin.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
+        }
+    }
+
+    @UiHandler("ageBox")
+    void checkAge(ValueChangeEvent<String> event) {
+        if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
+            errorAge.setText("is Ok");
+        } else {
+            errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
         }
     }
 

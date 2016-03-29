@@ -9,6 +9,8 @@ public class RegularExpressions {
     public static final String REQUIREMENT_FOR_PASSWORD = "Password contains uppercase and lowercase letters, numbers";
     public static final String LOGIN = "^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$";
     public static final String REQUIREMENT_FOR_LOGIN = "login contains 2-20 characters, which can be letters or numbers. the first character must be a letter";
+    public static final String AGE = "^[0-9]+$";
+    public static final String REQUIREMENT_FOR_AGE = "Age contains numbers";
 
     public static boolean test(String pattern, String testString) {
         RegExp regExp = RegExp.compile(pattern);

@@ -20,6 +20,20 @@
                 <g:Label text="E-mail:" styleName="{style.blackText}"/>
                 <g:TextBox ui:field="email" styleName="{style.box}"/>
                 <g:HorizontalPanel>
+                    <g:Label text="Age: " styleName="{style.blackText}"/>
+                    <g:Label ui:field="errorAge" styleName="{style.blackText}"/>
+                </g:HorizontalPanel>
+                <g:TextBox ui:field="ageBox" styleName="{style.box}"/>
+                    <g:Label text="Sex: " styleName="{style.blackText}"/>
+                    <g:ListBox ui:field="sexBox" styleName="{style.listBoxStyle}">
+                        <g:item value='man'>
+                            man
+                        </g:item>
+                        <g:item value='woman'>
+                            woman
+                        </g:item>
+                    </g:ListBox>
+                <g:HorizontalPanel>
                     <g:Label text="Login: " styleName="{style.blackText}"/>
                     <g:Label ui:field="errorLogin" styleName="{style.blackText}"/>
                 </g:HorizontalPanel>
@@ -34,6 +48,7 @@
                     <g:Label ui:field="errorRepeatPassword" styleName="{style.blackText}"/>
                 </g:HorizontalPanel>
                 <g:PasswordTextBox ui:field="passwordRepeatBox" styleName="{style.box}"/>
+
                 <g:HorizontalPanel>
                     <g:Button ui:field="loginButton" text="Registration" styleName="{style.loginButton}"/>
                     <g:Button ui:field="backButton" text="Back" styleName="{style.loginButton}"/>
