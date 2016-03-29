@@ -4,30 +4,6 @@
              xmlns:i='urn:import:com.vaadin.polymer.iron.widget'>
 
         <g:HTMLPanel>
-            <p:PaperIconItem ui:field="menuMain">
-                <i:IronIcon icon="delete"/>
-                <div>Clear All</div>
-                <p:PaperRipple/>
-            </p:PaperIconItem>
-            <p:PaperIconItem ui:field="menuTasks">
-                <i:IronIcon icon="delete"/>
-                <div>Clear All</div>
-                <p:PaperRipple/>
-            </p:PaperIconItem>
-            <p:PaperIconItem ui:field="menuResults">
-                <i:IronIcon icon="clear"/>
-                <div>Tasks</div>
-                <p:PaperRipple/>
-            </p:PaperIconItem>
-            <p:PaperIconItem ui:field="menuSettings">
-                <i:IronIcon icon="settings"/>
-                <div>Settings</div>
-                <p:PaperRipple/>
-            </p:PaperIconItem>
-            <p:PaperIconItem ui:field="menuAbout">
-                <i:IronIcon icon="help"/>
-                <div>About</div>
-                <p:PaperRipple/>
-            </p:PaperIconItem>
+
         </g:HTMLPanel>
     </ui:UiBinder>

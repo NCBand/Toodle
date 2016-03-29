@@ -1,33 +1,28 @@
 package ru.ncband.web.server.classes;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-@Component
-@Scope("session")
 public class Id {
-    private int id = 0;
-    private int hash = 0;
+    private String id = null;
+    private String hash = null;
 
     public Id(){}
 
-    public Id( int id){
+    public Id( String id){
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getHash() {
+    public String getHash() {
         return hash;
     }
 
-    public void setHash(int hash) {
+    public void setHash(String hash) {
         this.hash = hash;
     }
 }

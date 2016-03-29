@@ -35,6 +35,9 @@
                 </g:HorizontalPanel>
                 <g:PasswordTextBox ui:field="passwordRepeatBox" styleName="{style.box}"/>
                 <g:HorizontalPanel>
+                    <g:Label ui:field="mainError" styleName="{style.blackText}"/>
+                </g:HorizontalPanel>
+                <g:HorizontalPanel>
                     <g:Button ui:field="loginButton" text="Registration" styleName="{style.loginButton}"/>
                     <g:Button ui:field="backButton" text="Back" styleName="{style.loginButton}"/>
                 </g:HorizontalPanel>

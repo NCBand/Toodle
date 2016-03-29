@@ -1,25 +1,25 @@
 package ru.ncband.web.server.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import ru.ncband.web.server.classes.Id;
+import ru.ncband.web.server.logic.Salt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class UserFilter implements HandlerInterceptor {
-
-    @Autowired
-    private Id user;
 
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws Exception {
         String uri = request.getRequestURI();
-        if(uri.contains("/user/")){
-          int i = 0;
+        if(uri.contains("data")) {
+            HttpSession session = request.getSession();
+            Id id = (Id) session.getAttribute("userId");
+            return id != null && id.getHash().equals(Salt.sha3(id.getId()));
         }
 
         return true;
@@ -37,6 +37,7 @@ public class UserFilter implements HandlerInterceptor {
                                 HttpServletResponse httpServletResponse,
                                 Object o,
                                 Exception e) throws Exception {
+
     }
 
 }

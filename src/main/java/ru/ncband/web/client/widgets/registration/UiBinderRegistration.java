@@ -7,7 +7,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
@@ -45,21 +44,32 @@ public class UiBinderRegistration extends Composite {
     Label statusFirstName;
     @UiField
     Label statusSecondName;
+    @UiField
+    Label mainError;
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
         if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
             RegistrationEvent registrationEvent = new RegistrationEvent();
+            if(registrationEvent == null){
+                mainError.setText("!");
+                return;
+            }
             Registration registration = new Registration();
+            if(registration == null){
+                mainError.setText("?");
+                return;
+            }
             registration.setLogin(loginBox.getValue());
             registration.setPassword(passwordBox.getValue());
             registration.setAge(" ");
             registration.setSex(" ");
             registration.setFirstname(firstNameBox.getValue());
             registration.setLastname(secondNameBox.getValue());
+            registration.setMail(email.getValue());
             eventBus.fireEvent(registrationEvent);
         }else {
-            Window.setTitle("Wrong!");
+            mainError.setText("Repeate");
         }
     }
 

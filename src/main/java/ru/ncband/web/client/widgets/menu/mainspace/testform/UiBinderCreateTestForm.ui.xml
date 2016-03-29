@@ -4,7 +4,6 @@
     <g:HTMLPanel>
         <div align="center">
             <g:VerticalPanel styleName="{style.background}">
-
                 <g:Label text="Questin" styleName="{style.blackText}"/>
                 <g:Label text="Answer" styleName="{style.blackText}"/>
                 <g:Label text="1." styleName="{style.blackText}"/>

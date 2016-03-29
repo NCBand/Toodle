@@ -11,7 +11,7 @@ public class MainController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public ModelAndView main() {
-        ModelAndView modelAndView = new ModelAndView("index", "user", new Id(-1));
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         return modelAndView;
     }

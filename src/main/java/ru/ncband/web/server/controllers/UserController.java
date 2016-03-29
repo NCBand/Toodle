@@ -1,8 +1,8 @@
 package ru.ncband.web.server.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import ru.ncband.web.server.db.servises.UserDB;
 import ru.ncband.web.server.classes.Id;
+import ru.ncband.web.server.db.servises.UserDB;
 import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.classes.Status;
 
@@ -19,11 +19,13 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
-    public Status getUser(@FormParam("login") String login,
-                          @FormParam("password") String password){
+    public Status sign_in(  @FormParam("login") String login,
+                            @FormParam("password") String password){
         UserDB userDB = new UserDB();
-        Id res = userDB.get(login, password);
-        return new Status(res.toString());
+        Status status = new Status();
+        Id id = userDB.get(login, password);
+        status.setMsg("done");
+        return status;
     }
 
     @POST
@@ -32,7 +34,13 @@ public class UserController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public Status setUser(@RequestBody Registration form) throws IOException {
         UserDB userDB = new UserDB();
-        userDB.set(form);
+        return userDB.set(form);
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/sign_out", method = RequestMethod.POST)
+    public Status sign_out(){
         return new Status("done");
     }
 }
