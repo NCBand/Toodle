@@ -2,7 +2,7 @@ package ru.ncband.web.server.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import ru.ncband.web.server.db.servises.UserDB;
-import ru.ncband.web.server.Id;
+import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.classes.Status;
 
@@ -35,5 +35,5 @@ public class UserController {
         userDB.set(form);
         return new Status("done");
     }
-    }
+}
 

@@ -1,4 +1,4 @@
-package ru.ncband.web.client.widgets.header;
+package ru.ncband.web.client.widgets.menu.workspace.workmenu;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.SpanElement;

@@ -1,10 +1,10 @@
-package ru.ncband.web.server;
+package ru.ncband.web.server.classes;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value = "session")
+@Scope("session")
 public class Id {
     private int id = 0;
     private int hash = 0;

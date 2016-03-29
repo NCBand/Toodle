@@ -81,6 +81,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:sources:2.5.3" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0" />
           <element id="library" level="project" name="Maven: org.fusesource.restygwt:restygwt:2.1.1" />
+          <element id="library" level="project" name="Maven: com.vaadin.polymer:vaadin-gwt-polymer-elements:1.2.3.0" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Toodle/web/Web" />

@@ -17,7 +17,7 @@ import ru.ncband.web.client.handlers.SignInHandler;
 import ru.ncband.web.client.handlers.ErrorAuthHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
 import ru.ncband.web.client.services.SignIn;
-import ru.ncband.web.client.widgets.header.HeaderWidget;
+import ru.ncband.web.client.widgets.menu.workspace.workmenu.HeaderWidget;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
 import ru.ncband.web.client.widgets.registration.UiBinderRegistration;
 import ru.ncband.web.shared.classes.Status;

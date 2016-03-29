@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import ru.ncband.web.server.Id;
+import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.classes.UserEntity;
 import ru.ncband.web.server.logic.Salt;
 import ru.ncband.web.shared.classes.Registration;
