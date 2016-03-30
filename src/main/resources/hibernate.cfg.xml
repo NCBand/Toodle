@@ -10,6 +10,9 @@
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
 
+        <property name="show_sql">true</property>
+        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+
         <mapping class="ru.ncband.web.server.db.classes.UserEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.TasksEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.ClassesEntity"/>

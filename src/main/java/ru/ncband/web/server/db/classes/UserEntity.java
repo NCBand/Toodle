@@ -3,7 +3,7 @@ package ru.ncband.web.server.db.classes;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user", schema = "toodle")
+@Table(name = "user")
 public class UserEntity {
     private int id;
     private String login;
