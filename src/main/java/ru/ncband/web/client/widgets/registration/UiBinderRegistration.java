@@ -7,6 +7,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
@@ -20,6 +21,7 @@ public class UiBinderRegistration extends Composite {
     private static UiBinderRegistrationUiBinder ourUiBinder = GWT.create(UiBinderRegistrationUiBinder.class);
 
     private EventBus eventBus;
+
     private String firstPassword;
 
     @UiField
@@ -31,6 +33,8 @@ public class UiBinderRegistration extends Composite {
     @UiField
     TextBox email;
     @UiField
+    TextBox ageBox;
+    @UiField
     PasswordTextBox passwordBox;
     @UiField
     PasswordTextBox passwordRepeatBox;
@@ -41,9 +45,13 @@ public class UiBinderRegistration extends Composite {
     @UiField
     Label errorRepeatPassword;
     @UiField
+    Label errorAge;
+    @UiField
     Label statusFirstName;
     @UiField
     Label statusSecondName;
+    @UiField
+    ListBox sexBox;
     @UiField
     Label mainError;
 
@@ -51,19 +59,11 @@ public class UiBinderRegistration extends Composite {
     void doClickSubmit(ClickEvent event) {
         if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
             RegistrationEvent registrationEvent = new RegistrationEvent();
-            if(registrationEvent == null){
-                mainError.setText("!");
-                return;
-            }
             Registration registration = new Registration();
-            if(registration == null){
-                mainError.setText("?");
-                return;
-            }
             registration.setLogin(loginBox.getValue());
             registration.setPassword(passwordBox.getValue());
-            registration.setAge(" ");
-            registration.setSex(" ");
+            registration.setAge(ageBox.getValue());
+            registration.setSex(sexBox.getSelectedValue());
             registration.setFirstname(firstNameBox.getValue());
             registration.setLastname(secondNameBox.getValue());
             registration.setMail(email.getValue());
@@ -100,9 +100,18 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("loginBox")
     void checkLogin(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.LOGIN, event.getValue())) {
-            errorPassword.setText("is Ok");
+            errorLogin.setText("is Ok");
         } else {
-            errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
+            errorLogin.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
+        }
+    }
+
+    @UiHandler("ageBox")
+    void checkAge(ValueChangeEvent<String> event) {
+        if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
+            errorAge.setText("is Ok");
+        } else {
+            errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
         }
     }
 
