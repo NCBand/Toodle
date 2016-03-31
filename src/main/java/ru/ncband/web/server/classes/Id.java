@@ -1,6 +1,8 @@
 package ru.ncband.web.server.classes;
 
-public class Id {
+import java.io.Serializable;
+
+public class Id implements Serializable{
     private String id = null;
     private String hash = null;
 

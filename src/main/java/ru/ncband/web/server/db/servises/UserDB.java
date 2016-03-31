@@ -3,6 +3,7 @@ package ru.ncband.web.server.db.servises;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.hql.internal.ast.QuerySyntaxException;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.UserEntity;
@@ -14,14 +15,9 @@ import ru.ncband.web.shared.classes.Status;
 import java.util.List;
 
 public class UserDB {
-    private SessionFactory sessionFactory;
-
-    public UserDB(){
-        sessionFactory = HibernateSessionFactory.getSessionFactory();
-    }
-
-    public Id get(String login, String password) {
+    public static Id get(String login, String password) {
         try {
+            SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             Query query = session.createQuery("FROM UserEntity where login =:param");
@@ -32,18 +28,27 @@ public class UserDB {
                     users) {
                 String salting = Salt.salting(user.getSalt().toString(), password);
                 if (salting.equals(user.getPassword())) {
-                    return new Id(Integer.toString(user.getId()));
+                    Id id = new Id();
+                    id.setId(Integer.toString(user.getId()));
+
+                    String hash = Salt.sha3(Integer.toString(user.getId()));
+                    id.setHash(hash);
+
+                    return id;
                 }
             }
         } catch (NullPointerException e){
             e.printStackTrace();
+        } catch (QuerySyntaxException e){
+            e.printStackTrace();
         }
-        return new Id("-1");
+        return null;
     }
 
 
-    public Status set(Registration registration) {
+    public static Status set(Registration registration) {
         try {
+            SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
             UserEntity person = new UserEntity();
 
@@ -56,9 +61,7 @@ public class UserDB {
             Generator generator = Generator.getInstance();
             String salt = generator.createNum(11);
             String salting = Salt.salting(salt, registration.getPassword());
-            String id = generator.createNum(11);
 
-            person.setId(Integer.getInteger(id));
             person.setLogin(registration.getLogin());
             person.setPassword(salting);
             person.setSalt(Integer.getInteger(salt));
@@ -67,6 +70,8 @@ public class UserDB {
             return new Status("done");
         }catch(NullPointerException e){
             e.printStackTrace();
+        } catch (QuerySyntaxException e){
+        e.printStackTrace();
         }
         return new Status("fault");
     }

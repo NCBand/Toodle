@@ -60,6 +60,7 @@ public class UiBinderRegistration extends Composite {
         if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
             RegistrationEvent registrationEvent = new RegistrationEvent();
             Registration registration = new Registration();
+
             registration.setLogin(loginBox.getValue());
             registration.setPassword(passwordBox.getValue());
             registration.setAge(ageBox.getValue());
@@ -67,6 +68,8 @@ public class UiBinderRegistration extends Composite {
             registration.setFirstname(firstNameBox.getValue());
             registration.setLastname(secondNameBox.getValue());
             registration.setMail(email.getValue());
+
+            registrationEvent.setForm(registration);
             eventBus.fireEvent(registrationEvent);
         }else {
             mainError.setText("Repeate");

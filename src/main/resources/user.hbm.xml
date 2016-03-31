@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.ncband.web.server.db.classes.UserEntity" table="user">
+        <meta attribute="class-description">This class contains student details.</meta>
+        <id name="Id" type="int" column="id">
+            <generator class="native" />
+        </id>
+        <property name="login" type="string" column="login" />
+        <property name="password" type="string" column="password" />
+        <property name="salt" type="int" column="salt" />
+        <property name="firstname" type="string" column="firstname" />
+        <property name="lastname" type="string" column="lastname" />
+        <property name="age" type="string" column="age" />
+        <property name="sex" type="string" column="sex" />
+        <property name="age" type="int" column="mail" />
+    </class>
+</hibernate-mapping>

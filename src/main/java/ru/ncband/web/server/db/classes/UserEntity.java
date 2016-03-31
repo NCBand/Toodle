@@ -3,8 +3,9 @@ package ru.ncband.web.server.db.classes;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "toodle")
 public class UserEntity {
+    @GeneratedValue
     private int id;
     private String login;
     private String password;
