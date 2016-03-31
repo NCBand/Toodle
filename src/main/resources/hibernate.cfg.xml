@@ -14,8 +14,5 @@
         <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
 
         <mapping class="ru.ncband.web.server.db.classes.UserEntity"/>
-        <mapping class="ru.ncband.web.server.db.classes.TasksEntity"/>
-        <mapping class="ru.ncband.web.server.db.classes.ClassesEntity"/>
-        <mapping class="ru.ncband.web.server.db.classes.StatisticEntity"/>
     </session-factory>
 </hibernate-configuration>

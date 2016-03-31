@@ -48,7 +48,7 @@ public class Toodle implements EntryPoint {
                         for (Widget widget : rootPanel) {
                             if(widget.getClass().equals(UiBinderLogin.class)) {
                                 UiBinderLogin login = (UiBinderLogin) widget;
-                                login.setErrorMessage("Not suitable login or password");
+                                login.setErrorMessage("Server error");
                             }
                         }
                     }
@@ -56,15 +56,26 @@ public class Toodle implements EntryPoint {
                     @Override
                     public void onSuccess(Method method, Status id) {
                         RootPanel rootPanel = RootPanel.get();
-                        for (Widget widget : rootPanel) {
-                            if(widget.getClass().equals(UiBinderLogin.class)) {
-                                UiBinderLogin login = (UiBinderLogin) widget;
-                                login.clear();
+
+                        if (id.getMsg().equals("fault")){
+                            for (Widget widget : rootPanel) {
+                                if(widget.getClass().equals(UiBinderLogin.class)) {
+                                    UiBinderLogin login = (UiBinderLogin) widget;
+                                    login.setErrorMessage("Not suitable login or password");
+                                }
                             }
-                            if(widget.getClass().equals(HeaderWidget.class)){
-                                widget.setVisible(true);
-                            }else {
-                                widget.setVisible(false);
+                        }else {
+
+                            for (Widget widget : rootPanel) {
+                                if (widget.getClass().equals(UiBinderLogin.class)) {
+                                    UiBinderLogin login = (UiBinderLogin) widget;
+                                    login.clear();
+                                }
+                                if (widget.getClass().equals(HeaderWidget.class)) {
+                                    widget.setVisible(true);
+                                } else {
+                                    widget.setVisible(false);
+                                }
                             }
                         }
                     }
@@ -109,17 +120,30 @@ public class Toodle implements EntryPoint {
                                         new MethodCallback<Status>() {
                             @Override
                             public void onFailure(Method method, Throwable throwable) {
-
+                                RootPanel rootPanel = RootPanel.get();
+                                for (Widget widget : rootPanel) {
+                                    if (widget.getClass().equals(UiBinderRegistration.class)) {
+                                        ((UiBinderRegistration) widget).setMainError("Server error");
+                                    }
+                                }
                             }
 
                             @Override
                             public void onSuccess(Method method, Status s){
                                 RootPanel rootPanel = RootPanel.get();
-                                for (Widget widget : rootPanel) {
-                                    if(!widget.getClass().equals(UiBinderLogin.class)) {
-                                        widget.setVisible(false);
-                                    }else {
-                                        widget.setVisible(true);
+                                if(s.getMsg().equals("fault")){
+                                    for (Widget widget : rootPanel) {
+                                        if (widget.getClass().equals(UiBinderRegistration.class)) {
+                                            ((UiBinderRegistration)widget).setMainError("Error");
+                                        }
+                                    }
+                                }else {
+                                    for (Widget widget : rootPanel) {
+                                        if (!widget.getClass().equals(UiBinderLogin.class)) {
+                                            widget.setVisible(false);
+                                        } else {
+                                            widget.setVisible(true);
+                                        }
                                     }
                                 }
                             }

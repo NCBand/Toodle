@@ -7,7 +7,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.ErrorAuthEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
@@ -72,7 +71,7 @@ public class UiBinderRegistration extends Composite {
             registrationEvent.setForm(registration);
             eventBus.fireEvent(registrationEvent);
         }else {
-            mainError.setText("Repeate");
+            mainError.setText("Not valid form");
         }
     }
 
@@ -143,9 +142,15 @@ public class UiBinderRegistration extends Composite {
         this.eventBus = bus;
     }
 
+    public void setMainError(String msg){
+        mainError.setText(msg);
+    }
+
     private void clear(){
 
     }
+
+
 
     public boolean isValidForm(){
         return false;

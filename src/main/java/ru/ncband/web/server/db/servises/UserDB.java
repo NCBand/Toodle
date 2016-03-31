@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
+import org.hibernate.transform.Transformers;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.UserEntity;
@@ -20,10 +21,10 @@ public class UserDB {
             SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
-            Query query = session.createQuery("FROM UserEntity where login =:param");
+            Query query = session.createSQLQuery("SELECT id, login, password FROM user where login =:param");
             query.setParameter("param",login);
 
-            List<UserEntity> users = query.list();
+            List<UserEntity> users = (List<UserEntity>) query.setResultTransformer(Transformers.aliasToBean(UserEntity.class)).list();
             for (UserEntity user :
                     users) {
                 String salting = Salt.salting(user.getSalt().toString(), password);
@@ -38,8 +39,6 @@ public class UserDB {
                 }
             }
         } catch (NullPointerException e){
-            e.printStackTrace();
-        } catch (QuerySyntaxException e){
             e.printStackTrace();
         }
         return null;
