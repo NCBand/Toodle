@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
-import org.hibernate.transform.Transformers;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.UserEntity;
@@ -33,7 +32,7 @@ public class UserDB {
             Query query = session.createQuery("FROM UserEntity where login =:param");
             query.setParameter("param",login);
 
-            List<UserEntity> users = (List<UserEntity>) query.setResultTransformer(Transformers.aliasToBean(UserEntity.class)).list();
+            List<UserEntity> users = (List<UserEntity>) query.list();
             for (UserEntity user :
                     users) {
                 String salting = Salt.salting(user.getSalt().toString(), password);
@@ -69,7 +68,7 @@ public class UserDB {
             person.setLastname(registration.getLastname());
             person.setAge(Integer.getInteger(registration.getAge()));
             person.setMail(registration.getMail());
-            person.setSex(registration.getSex());
+            person.setSex(registration.getSex().substring(0,1)); //// TODO: 05.04.2016
 
             Generator generator = Generator.getInstance();
             int salt = generator.createNumInt();

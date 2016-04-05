@@ -17,7 +17,7 @@ import ru.ncband.web.client.handlers.SignInHandler;
 import ru.ncband.web.client.handlers.LogOutHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
 import ru.ncband.web.client.services.SignIn;
-import ru.ncband.web.client.widgets.menu.workspace.workmenu.HeaderWidget;
+import ru.ncband.web.client.widgets.menu.UiMainSpace;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
 import ru.ncband.web.client.widgets.registration.UiBinderRegistration;
 import ru.ncband.web.shared.Property;
@@ -31,12 +31,13 @@ public class Toodle implements EntryPoint {
         RootPanel rootPanel = RootPanel.get();
         UiBinderLogin loginUI = new UiBinderLogin(bus);
         UiBinderRegistration regUI = new UiBinderRegistration(bus);
-        HeaderWidget headerWidget = new HeaderWidget(bus);
+        UiMainSpace mainSpace = new UiMainSpace(bus);
 
         rootPanel.add(loginUI);
         rootPanel.add(regUI);
+        rootPanel.add(mainSpace);
         regUI.setVisible(false);
-        headerWidget.setVisible(false);
+        mainSpace.setVisible(false);
 
         bus.addHandler(SignInEvent.TYPE, new SignInHandler() {
             @Override
@@ -72,7 +73,7 @@ public class Toodle implements EntryPoint {
                                     UiBinderLogin login = (UiBinderLogin) widget;
                                     login.clear();
                                 }
-                                if (widget.getClass().equals(HeaderWidget.class)) {
+                                if (widget.getClass().equals(UiMainSpace.class)) {
                                     widget.setVisible(true);
                                 } else {
                                     widget.setVisible(false);
@@ -101,14 +102,25 @@ public class Toodle implements EntryPoint {
         bus.addHandler(LogOutEvent.TYPE, new LogOutHandler() {
             @Override
             public void onAuthenticationChanged(LogOutEvent authenticationEvent) {
-                RootPanel rootPanel = RootPanel.get();
-                for (Widget widget : rootPanel) {
-                    if(!widget.getClass().equals(UiBinderLogin.class)) {
-                        widget.setVisible(false);
-                    }else {
-                        widget.setVisible(true);
+                SignIn logOut = GWT.create(SignIn.class);
+                logOut.signOut(new MethodCallback<Status>() {
+                    @Override
+                    public void onFailure(Method method, Throwable throwable) {
+
                     }
-                }
+
+                    @Override
+                    public void onSuccess(Method method, Status status) {
+                        RootPanel rootPanel = RootPanel.get();
+                        for (Widget widget : rootPanel) {
+                            if(!widget.getClass().equals(UiBinderLogin.class)) {
+                                widget.setVisible(false);
+                            }else {
+                                widget.setVisible(true);
+                            }
+                        }
+                    }
+                });
             }
         });
 

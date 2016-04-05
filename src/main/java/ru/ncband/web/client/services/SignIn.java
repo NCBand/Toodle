@@ -23,4 +23,16 @@ public interface SignIn extends RestService {
     @Produces(MediaType.APPLICATION_JSON)
     void doRegistration(Registration registration_form,
                         MethodCallback<Status> callback);
+
+    @POST
+    @Path("/user/sign_out")
+    @Produces(MediaType.APPLICATION_JSON)
+    void signOut(MethodCallback<Status> callback);
+
+    @POST
+    @Path("/user/settings")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    void changeUserData(Registration registration_form,
+                        MethodCallback<Status> callback);
 }

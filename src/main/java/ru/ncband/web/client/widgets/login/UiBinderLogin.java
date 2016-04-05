@@ -15,7 +15,6 @@ public class UiBinderLogin extends Composite{
     }
 
     private static UiBinderLoginUiBinder ourUiBinder = GWT.create(UiBinderLoginUiBinder.class);
-
     private EventBus eventBus;
 
     @UiField

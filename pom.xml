@@ -17,6 +17,13 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <jsInteropMode>JS</jsInteropMode>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

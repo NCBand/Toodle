@@ -5,7 +5,8 @@
       <configuration>
         <setting name="compilerMaxHeapSize" value="1024" />
         <setting name="gwtScriptOutputStyle" value="DETAILED" />
-        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../gwt-2.7.0/gwt-2.7.0" />
+        <setting name="gwtSdkUrl" value="file://$MAVEN_REPOSITORY$/com/google/gwt/gwt-dev/2.7.0/" />
+        <setting name="gwtSdkType" value="maven" />
         <setting name="webFacet" value="Web" />
         <packaging>
           <module name="ru.ncband.web.shared.Shared" enabled="false" />
@@ -59,6 +60,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gwt-user" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.polymer:vaadin-gwt-polymer-elements:1.2.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.1.5.RELEASE" level="project" />
