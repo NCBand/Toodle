@@ -10,16 +10,17 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.RegistrationEvent;
 import ru.ncband.web.client.events.SignInEvent;
-import ru.ncband.web.client.events.ErrorAuthEvent;
+import ru.ncband.web.client.events.LogOutEvent;
 import ru.ncband.web.client.events.SignUpEvent;
 import ru.ncband.web.client.handlers.RegistrationHandler;
 import ru.ncband.web.client.handlers.SignInHandler;
-import ru.ncband.web.client.handlers.ErrorAuthHandler;
+import ru.ncband.web.client.handlers.LogOutHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
 import ru.ncband.web.client.services.SignIn;
 import ru.ncband.web.client.widgets.menu.workspace.workmenu.HeaderWidget;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
 import ru.ncband.web.client.widgets.registration.UiBinderRegistration;
+import ru.ncband.web.shared.Property;
 import ru.ncband.web.shared.classes.Status;
 
 public class Toodle implements EntryPoint {
@@ -57,7 +58,7 @@ public class Toodle implements EntryPoint {
                     public void onSuccess(Method method, Status id) {
                         RootPanel rootPanel = RootPanel.get();
 
-                        if (id.getMsg().equals("fault")){
+                        if (id.getMsg().equals(Property.fault())){
                             for (Widget widget : rootPanel) {
                                 if(widget.getClass().equals(UiBinderLogin.class)) {
                                     UiBinderLogin login = (UiBinderLogin) widget;
@@ -97,9 +98,9 @@ public class Toodle implements EntryPoint {
             }
         });
 
-        bus.addHandler(ErrorAuthEvent.TYPE, new ErrorAuthHandler() {
+        bus.addHandler(LogOutEvent.TYPE, new LogOutHandler() {
             @Override
-            public void onAuthenticationChanged(ErrorAuthEvent authenticationEvent) {
+            public void onAuthenticationChanged(LogOutEvent authenticationEvent) {
                 RootPanel rootPanel = RootPanel.get();
                 for (Widget widget : rootPanel) {
                     if(!widget.getClass().equals(UiBinderLogin.class)) {
@@ -131,7 +132,7 @@ public class Toodle implements EntryPoint {
                             @Override
                             public void onSuccess(Method method, Status s){
                                 RootPanel rootPanel = RootPanel.get();
-                                if(s.getMsg().equals("fault")){
+                                if(s.getMsg().equals(Property.fault())){
                                     for (Widget widget : rootPanel) {
                                         if (widget.getClass().equals(UiBinderRegistration.class)) {
                                             ((UiBinderRegistration)widget).setMainError("Error");

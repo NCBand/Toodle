@@ -8,7 +8,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
-import ru.ncband.web.client.events.ErrorAuthEvent;
+import ru.ncband.web.client.events.LogOutEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
 import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.RegularExpressions;
@@ -77,8 +77,8 @@ public class UiBinderRegistration extends Composite {
 
     @UiHandler("backButton")
     void doBack(ClickEvent event){
-        ErrorAuthEvent errorAuthEvent = new ErrorAuthEvent();
-        eventBus.fireEvent(errorAuthEvent);
+        LogOutEvent logOutEvent = new LogOutEvent();
+        eventBus.fireEvent(logOutEvent);
     }
 
     @UiHandler("firstNameBox")

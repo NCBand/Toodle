@@ -7,7 +7,11 @@ import java.security.MessageDigest;
 
 public class Salt {
     public static String salting(String salt, String password){
-        return sha3(salt+password);
+        String res = sha3(salt+password);
+        if(res.length() > 30){
+            res = res.substring(0,30);
+        }
+        return res;
     }
 
     public static String sha3(final String input) {

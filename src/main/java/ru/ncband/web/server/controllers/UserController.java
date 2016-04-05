@@ -3,6 +3,7 @@ package ru.ncband.web.server.controllers;
 import org.springframework.web.bind.annotation.*;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.servises.UserDB;
+import ru.ncband.web.shared.Property;
 import ru.ncband.web.shared.classes.Registration;
 import ru.ncband.web.shared.classes.Status;
 
@@ -24,18 +25,19 @@ public class UserController {
     public Status sign_in(  @FormParam("login") String login,
                             @FormParam("password") String password,
                             HttpServletRequest request){
+        UserDB userDB = new UserDB();
         Status status = new Status();
-        Id id = UserDB.get(login, password);
+        Id id = userDB.get(login, password);
 
         if(id == null){
-            status.setMsg("fault");
+            status.setMsg(Property.fault());
             return status;
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("userId", id);
+        session.setAttribute(Property.sessionName(), id);
 
-        status.setMsg("done");
+        status.setMsg(Property.done());
         return status;
     }
 
@@ -44,7 +46,8 @@ public class UserController {
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public Status setUser(@RequestBody Registration form) throws IOException {
-        return UserDB.set(form);
+        UserDB userDB = new UserDB();
+        return userDB.set(form);
     }
 
     @POST
@@ -52,8 +55,15 @@ public class UserController {
     @RequestMapping(value = "/sign_out", method = RequestMethod.POST)
     public Status sign_out(HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.removeAttribute("userId");
-        return new Status("done");
+        session.removeAttribute(Property.sessionName());
+        return new Status(Property.done());
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/settings", method = RequestMethod.POST)
+    public Status edit(@RequestBody Registration form){
+        return new Status(Property.done());
     }
 }
 

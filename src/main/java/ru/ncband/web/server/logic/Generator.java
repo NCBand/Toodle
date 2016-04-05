@@ -26,4 +26,8 @@ public class Generator {
         random.nextBytes(num);
         return new String(num);
     }
+
+    public int createNumInt(){
+        return random.nextInt();
+    }
 }

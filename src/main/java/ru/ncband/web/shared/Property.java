@@ -1,10 +1,15 @@
 package ru.ncband.web.shared;
 
 public class Property {
+    public static String fault(){
+        return "fault";
+    }
 
-    public static String getProperties(){
-        //ServerGwtBridge.Properties = new ServerGwtBridge.Properties();
+    public static String done(){
+        return "done";
+    }
 
-        return null;
+    public static String sessionName(){
+        return "userId";
     }
 }
