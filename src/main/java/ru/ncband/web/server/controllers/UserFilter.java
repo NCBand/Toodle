@@ -16,7 +16,8 @@ public class UserFilter implements HandlerInterceptor {
         return  uri.contains("settings")||
                 uri.contains("data") ||
                 uri.contains("stat") ||
-                uri.contains("sign_out");
+                uri.contains("sign_out")||
+                uri.contains("message");
     }
 
     @Override

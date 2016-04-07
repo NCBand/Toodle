@@ -6,29 +6,33 @@ body {
     margin: 8px;
 }
 
-.blackText {
-    font-family: Arial, Sans-serif;
+.header{
+    background-color: #999999;
+    border: 1px none transparent;
     color: #000000;
     font-size: 11px;
-    text-align: left;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -5px;
+    padding: 6px;
+    width: 100%;
 }
 
-.redText {
-    font-family: Arial, Sans-serif;
-    color: darkred;
-    font-size: 11px;
-    text-align: left;
+.left{
+    position:relative;
+    top:0;
+    left:0;
+    width: 1600px;
 }
 
-
-.greenText {
-    font-family: Arial, Sans-serif;
-    color: green;
-    font-size: 11px;
-    text-align: left;
+.right{
+    position:relative;
+    top:0;
+    left:0;
+    width: 200px;
 }
 
-.loginButton {
+.button_left {
     border: 1px solid #3399DD;
     color: #FFFFFF;
     background: #555555;
@@ -37,16 +41,21 @@ body {
     margin: 0 5px 0 0;
     padding: 4px 10px 5px;
     text-shadow: 0 -1px 0 #3399DD;
+    left: 0;
 }
 
-.box {
-    border: 1px solid #AACCEE;
-    display: block;
-    font-size: 12px;
-    margin: 0 0 5px;
-    padding: 3px;
-    width: 203px;
+.button_right {
+    border: 1px solid #3399DD;
+    color: #FFFFFF;
+    background: #555555;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+    padding: 4px 10px 5px;
+    text-shadow: 0 -1px 0 #3399DD;
+    right: 0;
 }
+
 
 .background {
     background-color: #999999;
@@ -56,4 +65,7 @@ body {
     margin-left: -8px;
     margin-top: 5px;
     padding: 6px;
+}
+
+.workspace {
 }

@@ -16,7 +16,7 @@ import ru.ncband.web.client.handlers.RegistrationHandler;
 import ru.ncband.web.client.handlers.SignInHandler;
 import ru.ncband.web.client.handlers.LogOutHandler;
 import ru.ncband.web.client.handlers.SignUpHandler;
-import ru.ncband.web.client.services.SignIn;
+import ru.ncband.web.client.services.UserService;
 import ru.ncband.web.client.widgets.menu.UiMainSpace;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
 import ru.ncband.web.client.widgets.registration.UiBinderRegistration;
@@ -42,7 +42,7 @@ public class Toodle implements EntryPoint {
         bus.addHandler(SignInEvent.TYPE, new SignInHandler() {
             @Override
             public void onAuthenticationChanged(SignInEvent authenticationEvent) {
-                SignIn checkUser = GWT.create(SignIn.class);
+                UserService checkUser = GWT.create(UserService.class);
                 checkUser.signIn(authenticationEvent.getLogin(), authenticationEvent.getPassword(), new MethodCallback<Status>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {
@@ -102,7 +102,7 @@ public class Toodle implements EntryPoint {
         bus.addHandler(LogOutEvent.TYPE, new LogOutHandler() {
             @Override
             public void onAuthenticationChanged(LogOutEvent authenticationEvent) {
-                SignIn logOut = GWT.create(SignIn.class);
+                UserService logOut = GWT.create(UserService.class);
                 logOut.signOut(new MethodCallback<Status>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {
@@ -128,7 +128,7 @@ public class Toodle implements EntryPoint {
         bus.addHandler(RegistrationEvent.TYPE, new RegistrationHandler() {
             @Override
             public void addUser(RegistrationEvent registrationEvent) {
-                SignIn addUser = GWT.create(SignIn.class);
+                UserService addUser = GWT.create(UserService.class);
                 addUser.doRegistration( registrationEvent.getForm(),
                                         new MethodCallback<Status>() {
                             @Override

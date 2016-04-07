@@ -8,7 +8,7 @@ import ru.ncband.web.shared.classes.Status;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-public interface SignIn extends RestService {
+public interface UserService extends RestService {
     @POST
     @Path("/user/sign_in")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)

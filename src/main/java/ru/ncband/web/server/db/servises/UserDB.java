@@ -17,13 +17,9 @@ import ru.ncband.web.shared.classes.Status;
 import java.util.List;
 
 public class UserDB {
-    private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
 
-    public UserDB(){
-        if(sessionFactory == null) {
-            sessionFactory = HibernateSessionFactory.getSessionFactory();
-        }
-    }
+    public UserDB(){}
 
     public Id get(String login, String password) {
         try {
