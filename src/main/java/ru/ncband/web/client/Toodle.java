@@ -8,14 +8,8 @@ import com.google.gwt.user.client.ui.Widget;
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
-import ru.ncband.web.client.events.RegistrationEvent;
-import ru.ncband.web.client.events.SignInEvent;
-import ru.ncband.web.client.events.LogOutEvent;
-import ru.ncband.web.client.events.SignUpEvent;
-import ru.ncband.web.client.handlers.RegistrationHandler;
-import ru.ncband.web.client.handlers.SignInHandler;
-import ru.ncband.web.client.handlers.LogOutHandler;
-import ru.ncband.web.client.handlers.SignUpHandler;
+import ru.ncband.web.client.events.*;
+import ru.ncband.web.client.handlers.*;
 import ru.ncband.web.client.services.UserService;
 import ru.ncband.web.client.widgets.menu.UiMainSpace;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
@@ -25,7 +19,7 @@ import ru.ncband.web.shared.classes.Status;
 
 public class Toodle implements EntryPoint {
     public void onModuleLoad() {
-        SimpleEventBus bus = new SimpleEventBus();
+        final SimpleEventBus bus = new SimpleEventBus();
         Defaults.setServiceRoot(GWT.getHostPageBaseURL());
 
         RootPanel rootPanel = RootPanel.get();
@@ -78,6 +72,7 @@ public class Toodle implements EntryPoint {
                                 } else {
                                     widget.setVisible(false);
                                 }
+                                bus.fireEvent(new LoadDataEvent());
                             }
                         }
                     }

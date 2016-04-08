@@ -2,20 +2,34 @@ package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
 
+/**
+ * Created by Дом on 08.04.2016.
+ */
 @Entity
-@Table(name = "message", schema = "toodle")
+@Table(name = "message", schema = "toodle", catalog = "")
 public class MessageEntity {
-    private String time;
+    private int id;
+    private String date;
     private String text;
 
-    @Basic
-    @Column(name = "time")
-    public String getTime() {
-        return time;
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "date")
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Basic
@@ -33,29 +47,20 @@ public class MessageEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MessageEntity that = (MessageEntity) o;
+        MessageEntity entity = (MessageEntity) o;
 
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
-        if (text != null ? !text.equals(that.text) : that.text != null) return false;
+        if (id != entity.id) return false;
+        if (date != null ? !date.equals(entity.date) : entity.date != null) return false;
+        if (text != null ? !text.equals(entity.text) : entity.text != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = time != null ? time.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
         return result;
-    }
-
-    private String id;
-
-    @Id
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

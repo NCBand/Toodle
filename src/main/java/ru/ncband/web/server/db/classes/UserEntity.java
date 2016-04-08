@@ -2,10 +2,12 @@ package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
 
+/**
+ * Created by Дом on 08.04.2016.
+ */
 @Entity
-@Table(name = "user", schema = "toodle")
+@Table(name = "user", schema = "toodle", catalog = "")
 public class UserEntity {
-    @GeneratedValue
     private int id;
     private String login;
     private String password;

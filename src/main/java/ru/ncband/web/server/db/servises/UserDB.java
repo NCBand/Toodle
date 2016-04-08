@@ -85,4 +85,12 @@ public class UserDB {
         }
         return new Status(Property.fault());
     }
+
+    public Status delete(){
+        return null;
+    }
+
+    public Status update(Registration registration){
+        return null;
+    }
 }

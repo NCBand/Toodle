@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.MessageEntity;
+import ru.ncband.web.server.logic.MessageCreator;
 import ru.ncband.web.shared.classes.Messages;
 
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ public class MessageDB{
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
 
-            if(date == null){
+            if(date == null || !MessageCreator.isValidDate(date)){
                 throw new TypeNotPresentException(date, new Throwable());
             }
 
-            Query query = session.createQuery("FROM MessageEntity where time =:param");
+            Query query = session.createQuery("FROM MessageEntity where date =:param");
             query.setParameter("param", date);
 
             List<MessageEntity> messages = query.list();

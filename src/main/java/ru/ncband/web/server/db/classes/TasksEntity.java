@@ -1,17 +1,16 @@
 package ru.ncband.web.server.db.classes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Created by Дом on 02.04.2016.
+ * Created by Дом on 08.04.2016.
  */
 @Entity
-@Table(name = "tasks", schema = "toodle")
+@Table(name = "tasks", schema = "toodle", catalog = "")
 public class TasksEntity {
     private int id;
+    private String question;
+    private int type;
 
     @Id
     @Column(name = "id")
@@ -23,6 +22,26 @@ public class TasksEntity {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "question")
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    @Basic
+    @Column(name = "type")
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,12 +50,17 @@ public class TasksEntity {
         TasksEntity that = (TasksEntity) o;
 
         if (id != that.id) return false;
+        if (type != that.type) return false;
+        if (question != null ? !question.equals(that.question) : that.question != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        int result = id;
+        result = 31 * result + (question != null ? question.hashCode() : 0);
+        result = 31 * result + type;
+        return result;
     }
 }

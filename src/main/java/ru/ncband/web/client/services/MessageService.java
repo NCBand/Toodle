@@ -13,6 +13,6 @@ public interface MessageService {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    void getMessages(@FormParam("date") String login,
+    void getMessages(@FormParam("date") String date,
                      MethodCallback<Messages> messageMethodCallback);
 }
