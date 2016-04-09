@@ -15,18 +15,6 @@ public class Generator {
         random = new SecureRandom();
     }
 
-    public String createNum(int sz){
-        byte[] num = new byte[sz];
-        random.nextBytes(num);
-        return new String(num);
-    }
-
-    public String createNum(){
-        byte[] num = new byte[32];
-        random.nextBytes(num);
-        return new String(num);
-    }
-
     public int createNumInt(){
         return random.nextInt();
     }

@@ -1,10 +1,6 @@
 package ru.ncband.web.server.db.servises;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.hql.internal.ast.QuerySyntaxException;
+import org.hibernate.*;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.UserEntity;
@@ -49,6 +45,8 @@ public class UserDB {
 
         } catch (NullPointerException e){
             e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -80,17 +78,70 @@ public class UserDB {
             return new Status(Property.done());
         }catch(NullPointerException e){
             e.printStackTrace();
-        } catch (QuerySyntaxException e){
-        e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
         return new Status(Property.fault());
     }
 
-    public Status delete(){
-        return null;
+    public Status delete(String id){
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Transaction transaction = session.beginTransaction();
+            Query query = session.createQuery("delete UserEntity where id =:param");
+            query.setParameter("param",id);
+
+            int res = query.executeUpdate();
+            transaction.commit();
+            if(res == 0){
+                return new Status(Property.done());
+            }
+            return new Status(Property.fault());
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return new Status(Property.fault());
     }
 
-    public Status update(Registration registration){
-        return null;
+    public Status update(Registration registration, String id){
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Transaction transaction = session.beginTransaction();
+            UserEntity user = session.get(UserEntity.class, Integer.parseInt(id));
+
+            if(registration.getAge() != null){
+                user.setAge(Integer.parseInt(registration.getAge()));
+            }
+            if(registration.getMail() != null){
+                user.setMail(registration.getMail());
+            }
+            if(registration.getLastname() != null){
+                user.setLastname(registration.getLastname());
+            }
+            if(registration.getFirstname() != null){
+                user.setFirstname(registration.getFirstname());
+            }
+            if(registration.getLogin() != null){
+                user.setLogin(registration.getLogin());
+            }
+            if(registration.getSex() != null){
+                user.setSex(registration.getSex().substring(0,1));
+            }
+            if(registration.getPassword() != null){
+                String salting = Salt.salting(user.getSalt().toString(), registration.getPassword());
+                user.setPassword(salting);
+            }
+
+            session.update(user);
+            transaction.commit();
+
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return new Status(Property.fault());
     }
 }

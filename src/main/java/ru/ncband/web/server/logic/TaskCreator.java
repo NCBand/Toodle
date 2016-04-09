@@ -22,36 +22,47 @@ public class TaskCreator {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         TasksEntity task = new TasksEntity();
 
-        printTypes();
-        System.out.print("Print type: ");
-        int type = Integer.parseInt(reader.readLine());
-        session.save(task);
+        System.out.println("Task name:");
+        task.setName(reader.readLine());
 
-        if(type != Property.typeTest()){
+        printTypes();
+        System.out.println("Print type:");
+        int type = Integer.parseInt(reader.readLine());
+        int id = Generator.getInstance().createNumInt();
+
+        System.out.println("Print question/text:");
+        task.setId(id);
+        task.setQuestion(reader.readLine());
+        task.setType(type);
+        session.save(task);
+        transaction.commit();
+
+        if(type != Property.typeText()){
             String answer;
 
             do {
+                session = sessionFactory.openSession();
+                transaction = session.beginTransaction();
                 AnswersEntity answersEntity = new AnswersEntity();
                 System.out.print("Answer: ");
                 answersEntity.setAnswer(reader.readLine());
                 System.out.print("It is right (y - 1/n - 0): ");
                 answersEntity.setRight(Integer.parseInt(reader.readLine()));
-                answersEntity.setTaskId(task.getId());
+                answersEntity.setTaskId(id);
 
                 session.save(answersEntity);
 
                 System.out.print("Add another answer (y/n): ");
                 answer = reader.readLine();
+                transaction.commit();
             }while(answer.equals("y"));
         }
-
-        transaction.commit();
         reader.close();
     }
 
     private static void printTypes(){
-        System.out.println("Text - "+Property.typeText());
-        System.out.println("Test - "+Property.typeTest());
-        System.out.println("MultiTest - "+Property.typeMultiTest());
+        System.out.print("Text - "+Property.typeText());
+        System.out.print(", Test - "+Property.typeTest());
+        System.out.println(", MultiTest - "+Property.typeMultiTest());
     }
 }

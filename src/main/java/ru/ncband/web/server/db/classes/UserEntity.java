@@ -1,13 +1,12 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-/**
- * Created by Дом on 08.04.2016.
- */
 @Entity
-@Table(name = "user", schema = "toodle", catalog = "")
-public class UserEntity {
+@Table(name = "user", schema = "toodle")
+public class UserEntity implements Serializable {
+    @GeneratedValue
     private int id;
     private String login;
     private String password;

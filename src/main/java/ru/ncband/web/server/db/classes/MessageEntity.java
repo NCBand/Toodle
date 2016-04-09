@@ -1,13 +1,14 @@
 package ru.ncband.web.server.db.classes;
 
-import javax.persistence.*;
+import com.google.gwt.i18n.client.LocalizableResource;
 
-/**
- * Created by Дом on 08.04.2016.
- */
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
-@Table(name = "message", schema = "toodle", catalog = "")
-public class MessageEntity {
+@Table(name = "message", schema = "toodle")
+public class MessageEntity implements Serializable {
+    @GeneratedValue
     private int id;
     private String date;
     private String text;

@@ -1,16 +1,16 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-/**
- * Created by Дом on 08.04.2016.
- */
 @Entity
-@Table(name = "tasks", schema = "toodle", catalog = "")
-public class TasksEntity {
+@Table(name = "tasks", schema = "toodle")
+public class TasksEntity implements Serializable {
+    @GeneratedValue
     private int id;
     private String question;
     private int type;
+    private String name;
 
     @Id
     @Column(name = "id")
@@ -42,6 +42,16 @@ public class TasksEntity {
         this.type = type;
     }
 
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +62,7 @@ public class TasksEntity {
         if (id != that.id) return false;
         if (type != that.type) return false;
         if (question != null ? !question.equals(that.question) : that.question != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
@@ -61,6 +72,7 @@ public class TasksEntity {
         int result = id;
         result = 31 * result + (question != null ? question.hashCode() : 0);
         result = 31 * result + type;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }

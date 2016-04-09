@@ -4,7 +4,8 @@ package ru.ncband.web.shared.classes;
 import java.util.List;
 
 public class Answer {
-    List<Integer> answers = null;
+    private int id;
+    private List<Integer> answers = null;
 
     public Answer() {}
 
@@ -14,5 +15,13 @@ public class Answer {
 
     public void setAnswers(List<Integer> answers) {
         this.answers = answers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

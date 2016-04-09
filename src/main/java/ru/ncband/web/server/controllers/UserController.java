@@ -60,10 +60,29 @@ public class UserController {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/settings", method = RequestMethod.POST)
-    public Status edit(@RequestBody Registration form){
-        return new Status(Property.done());
+    public Status edit(@RequestBody Registration form,
+                       HttpServletRequest request){
+        UserDB userDB = new UserDB();
+        HttpSession session = request.getSession();
+        Id id = (Id)session.getAttribute(Property.sessionName());
+        return userDB.update(form,id.getId());
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/settings", method = RequestMethod.POST)
+    public Status delete(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Id id = (Id)session.getAttribute(Property.sessionName());
+        UserDB userDB = new UserDB();
+        Status status = userDB.delete(id.getId());
+        if(status.getMsg().equals(Property.fault())){
+            session.removeAttribute(Property.sessionName());
+        }
+        return status;
     }
 }
 

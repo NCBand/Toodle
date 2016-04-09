@@ -14,7 +14,7 @@ public class UserFilter implements HandlerInterceptor {
 
     private boolean isUserRequest(String uri){
         return  uri.contains("settings")||
-                uri.contains("data") ||
+                uri.contains("task") ||
                 uri.contains("stat") ||
                 uri.contains("sign_out")||
                 uri.contains("message");

@@ -1,13 +1,12 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-/**
- * Created by Дом on 08.04.2016.
- */
 @Entity
-@Table(name = "answers", schema = "toodle", catalog = "")
-public class AnswersEntity {
+@Table(name = "answers", schema = "toodle")
+public class AnswersEntity implements Serializable {
+    @GeneratedValue
     private int id;
     private String answer;
     private int taskId;
@@ -24,7 +23,7 @@ public class AnswersEntity {
     }
 
     @Basic
-    @Column(name = "answer")
+    @Column(name = "answ")
     public String getAnswer() {
         return answer;
     }
@@ -34,7 +33,7 @@ public class AnswersEntity {
     }
 
     @Basic
-    @Column(name = "task_id")
+    @Column(name = "task")
     public int getTaskId() {
         return taskId;
     }
@@ -44,7 +43,7 @@ public class AnswersEntity {
     }
 
     @Basic
-    @Column(name = "right")
+    @Column(name = "rght")
     public int getRight() {
         return right;
     }

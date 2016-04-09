@@ -3,8 +3,9 @@ package ru.ncband.web.shared.classes;
 import java.util.List;
 
 public class Task {
-    int type;
-    List<String> texts = null;
+    private int id;
+    private int type;
+    private List<String> texts = null;
 
     public Task(){}
 
@@ -22,5 +23,13 @@ public class Task {
 
     public void setTexts(List<String> texts) {
         this.texts = texts;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
