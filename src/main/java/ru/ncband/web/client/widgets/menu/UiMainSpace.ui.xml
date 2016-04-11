@@ -3,14 +3,17 @@
     <ui:style src="style.css"/>
     <g:HTMLPanel>
         <div>
-            <g:HorizontalPanel styleName="{style.header}">
-                <g:Button ui:field="tasks" text="Tasks" styleName="{style.button_left}"/>
-                <g:Button ui:field="settings" text="Settings"/>
-                <g:Button ui:field="exit" text = "Exit" styleName="{style.button_right}"/>
-            </g:HorizontalPanel>
+            <g:MenuBar ui:field="menu" styleName="{style.header}"/>
             <g:HorizontalPanel>
                 <g:VerticalPanel ui:field="left" styleName="{style.left}"/>
-                <g:VerticalPanel ui:field="right" styleName="{style.right}"/>
+                <g:VerticalPanel styleName="{style.right_field}">
+                    <g:VerticalPanel ui:field="calendar" styleName="{style.right}">
+                        <g:Label ui:field="date_title"/>
+                    </g:VerticalPanel>
+                    <g:VerticalPanel ui:field="message" styleName="{style.right}">
+                        <g:Label text="Messages:"/>
+                    </g:VerticalPanel>
+                </g:VerticalPanel>
             </g:HorizontalPanel>
         </div>
     </g:HTMLPanel>

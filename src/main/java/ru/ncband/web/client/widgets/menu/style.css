@@ -11,51 +11,44 @@ body {
     border: 1px none transparent;
     color: #000000;
     font-size: 11px;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -5px;
-    padding: 6px;
-    width: 100%;
+    width: 1000px;
 }
 
 .left{
+    background: #B8B8B8;
     position:relative;
+    margin: 10px 10px 0 0;
     top:0;
     left:0;
-    width: 1600px;
+    width:800px;
+    height: 500px;
 }
 
 .right{
+    background: #B8B8B8;
     position:relative;
-    top:0;
-    left:0;
-    width: 200px;
+    margin: 10px 10px 0 0;
 }
 
-.button_left {
-    border: 1px solid #3399DD;
+.right_field{
+    position:relative;
+    margin: 10px 10px 0 0;
+    top:0;
+    right:0;
+    width: 20%;
+    height: 500px;
+}
+
+.button {
     color: #FFFFFF;
     background: #555555;
     font-size: 11px;
     font-weight: bold;
     margin: 0 5px 0 0;
     padding: 4px 10px 5px;
-    text-shadow: 0 -1px 0 #3399DD;
+    position: relative;
     left: 0;
 }
-
-.button_right {
-    border: 1px solid #3399DD;
-    color: #FFFFFF;
-    background: #555555;
-    font-size: 11px;
-    font-weight: bold;
-    margin: 0 5px 0 0;
-    padding: 4px 10px 5px;
-    text-shadow: 0 -1px 0 #3399DD;
-    right: 0;
-}
-
 
 .background {
     background-color: #999999;
@@ -65,7 +58,4 @@ body {
     margin-left: -8px;
     margin-top: 5px;
     padding: 6px;
-}
-
-.workspace {
 }

@@ -1,8 +1,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:style src="style.css" />
-    <g:HTMLPanel>
-        <div align="center">
+    <ui:style src="../../../../../../css/login.css" />
+    <g:HTMLPanel styleName="{style.backview}">
             <g:VerticalPanel styleName="{style.background}">
                 <g:Label text="login" styleName="{style.blackText}"/>
                 <g:TextBox ui:field="loginBox" styleName="{style.box}"/>
@@ -14,6 +13,5 @@
                 </g:HorizontalPanel>
                 <g:Label ui:field="errorLabel" styleName="{style.redText}"/>
             </g:VerticalPanel>
-        </div>
     </g:HTMLPanel>
 </ui:UiBinder>

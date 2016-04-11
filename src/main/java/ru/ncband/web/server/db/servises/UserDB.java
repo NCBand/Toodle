@@ -18,6 +18,10 @@ public class UserDB {
     public UserDB(){}
 
     public Id get(String login, String password) {
+        if(login == null || password == null || login.equals("") || password.equals("")){
+            return null;
+        }
+
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();

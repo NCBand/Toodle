@@ -37,7 +37,7 @@ public class TaskController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RequestMapping(value = "/labels", method = RequestMethod.POST)
+    @RequestMapping(value = "/check", method = RequestMethod.POST)
     public Answer checkAnswer(@RequestBody Answer answer){
         TaskDB taskDB = new TaskDB();
         return taskDB.check(answer);

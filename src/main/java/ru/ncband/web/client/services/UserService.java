@@ -30,9 +30,14 @@ public interface UserService extends RestService {
     void signOut(MethodCallback<Status> callback);
 
     @POST
-    @Path("/user/settings")
+    @Path("/user/edit")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     void changeUserData(Registration registration_form,
                         MethodCallback<Status> callback);
+
+    @POST
+    @Path("/user/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    void deleteUser(MethodCallback<Status> callback);
 }

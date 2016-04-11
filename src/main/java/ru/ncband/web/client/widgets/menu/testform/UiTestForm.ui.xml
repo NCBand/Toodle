@@ -1,0 +1,17 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style src="style.css" />
+    <g:HTMLPanel>
+        <div align="center">
+            <g:VerticalPanel styleName="{style.background}">
+                <g:Label text="Task"/>
+                <g:Label ui:field="text"/>
+            </g:VerticalPanel>
+            <g:VerticalPanel ui:field="answers"/>
+            <g:HorizontalPanel>
+                <g:Button text="Back" ui:field="back" styleName="{style.loginButton}"/>
+                <g:Button text="Done" ui:field="done" styleName="{style.loginButton}"/>
+            </g:HorizontalPanel>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

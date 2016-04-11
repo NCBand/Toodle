@@ -35,7 +35,12 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/data/*</url-pattern>
+        <url-pattern>/task/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/message/*</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

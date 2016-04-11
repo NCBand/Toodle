@@ -62,7 +62,7 @@ public class UserController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RequestMapping(value = "/settings", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public Status edit(@RequestBody Registration form,
                        HttpServletRequest request){
         UserDB userDB = new UserDB();
@@ -73,7 +73,7 @@ public class UserController {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @RequestMapping(value = "/settings", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Status delete(HttpServletRequest request){
         HttpSession session = request.getSession();
         Id id = (Id)session.getAttribute(Property.sessionName());
