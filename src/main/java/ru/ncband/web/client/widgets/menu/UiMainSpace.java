@@ -17,9 +17,13 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.LoadDataEvent;
 import ru.ncband.web.client.events.LogOutEvent;
+import ru.ncband.web.client.events.OutOfTaskEvent;
 import ru.ncband.web.client.handlers.LoadDataEventHandler;
+import ru.ncband.web.client.handlers.OutOfTaskEventHandler;
 import ru.ncband.web.client.services.MessageService;
 import ru.ncband.web.client.services.TaskService;
+import ru.ncband.web.client.widgets.menu.firstview.UiFisrtView;
+import ru.ncband.web.client.widgets.menu.testform.UiTestForm;
 import ru.ncband.web.shared.Property;
 import ru.ncband.web.shared.classes.Messages;
 import ru.ncband.web.shared.classes.Task;
@@ -51,11 +55,18 @@ public class UiMainSpace extends Composite {
 
     @UiField
     MenuBar menu;
-    private MenuBar task;
+    private MenuBar task = null;
 
     public UiMainSpace(EventBus bus) {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.eventBus = bus;
+
+        UiTestForm form = new UiTestForm(bus);
+        UiFisrtView firstview = new UiFisrtView();
+        form.setVisible(false);
+        firstview.setVisible(true);
+        left.add(form);
+        left.add(firstview);
 
         final DatePicker datePicker = new DatePicker();
         TextCell textCell = new TextCell();
@@ -98,7 +109,9 @@ public class UiMainSpace extends Composite {
                         while(ids.hasNext()){
                             TaskCommand command = new TaskCommand();
                             command.setId(ids.next());
-                            task.addItem(new MenuItem(names.next(),command));
+                            String name = names.next();
+                            command.setName(name);
+                            task.addItem(new MenuItem(name,command));
                         }
                     }
                 });
@@ -110,9 +123,7 @@ public class UiMainSpace extends Composite {
                 MessageService service = GWT.create(MessageService.class);
                 service.getMessages(dateString, new MethodCallback<Messages>() {
                     @Override
-                    public void onFailure(Method method, Throwable throwable) {
-
-                    }
+                    public void onFailure(Method method, Throwable throwable) {}
 
                     @Override
                     public void onSuccess(Method method, Messages res) {
@@ -120,6 +131,21 @@ public class UiMainSpace extends Composite {
                         messages.setRowData(0, res.getMessages());
                     }
                 });
+            }
+        });
+
+        bus.addHandler(OutOfTaskEvent.TYPE, new OutOfTaskEventHandler() {
+            @Override
+            public void onOutOfTask(OutOfTaskEvent event) {
+                for (Widget widget:
+                        left) {
+                    if(widget.getClass().equals(UiFisrtView.class)){
+                        widget.setVisible(true);
+                    }
+                    if(widget.getClass().equals(UiTestForm.class)){
+                        widget.setVisible(false);
+                    }
+                }
             }
         });
 
@@ -153,7 +179,8 @@ public class UiMainSpace extends Composite {
     }
 
     private class TaskCommand implements Command{
-        Integer id = null;
+        private Integer id = null;
+        private String name = null;
 
         TaskCommand(){}
 
@@ -165,6 +192,14 @@ public class UiMainSpace extends Composite {
             this.id = id;
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
         @Override
         public void execute() {
             TaskService taskService = GWT.create(TaskService.class);
@@ -174,7 +209,16 @@ public class UiMainSpace extends Composite {
 
                 @Override
                 public void onSuccess(Method method, Task task) {
-
+                    for (Widget widget:
+                         left) {
+                        if(widget.getClass().equals(UiFisrtView.class)){
+                            widget.setVisible(false);
+                        }
+                        if(widget.getClass().equals(UiTestForm.class)){
+                            widget.setVisible(true);
+                            ((UiTestForm)widget).setTask(task, name);
+                        }
+                    }
                 }
             });
         }
