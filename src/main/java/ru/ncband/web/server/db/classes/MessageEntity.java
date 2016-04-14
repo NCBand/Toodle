@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "message", schema = "toodle")
-public class MessageEntity implements Serializable {
+public class MessageEntity {
     @GeneratedValue
     private int id;
     private String date;

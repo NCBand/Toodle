@@ -11,11 +11,12 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.OutOfTaskEvent;
 import ru.ncband.web.client.services.TaskService;
-import ru.ncband.web.shared.Property;
+import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
 import ru.ncband.web.shared.classes.Answer;
+import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Task;
 
-import java.util.Iterator;
+import java.util.List;
 
 public class UiTestForm extends Composite{
     interface UiBinderLoginUiBinder extends UiBinder<HTMLPanel, UiTestForm> {
@@ -29,10 +30,7 @@ public class UiTestForm extends Composite{
     Label task;
 
     @UiField
-    Label text;
-
-    @UiField
-    VerticalPanel answers;
+    VerticalPanel tasks;
 
     @UiField
     Label error;
@@ -70,27 +68,21 @@ public class UiTestForm extends Composite{
         this.eventbus = bus;
     }
 
-    public void setTask(Task task, String name){
+    public void setTask(Lesson task, String name){
         this.task.setText(name);
-        Iterator<String> list = task.getTexts().iterator();
+        List<Task> list = task.getTasks();
 
-        text.setText(list.next());
-        setAnswers(list, task.getType());
-    }
-
-    private void setAnswers(Iterator<String> iterator, int type){
-        if(type == Property.typeTest()){
-
-        }
-        if(type == Property.typeMultiTest()){
-
+        for (Task example:
+             list) {
+            TestCell cell = new TestCell();
+            cell.setTask(example);
+            tasks.add(cell);
         }
     }
 
-    public void clear(){
+    private void clear(){
         error.setText("");
         task.setText("");
-        text.setText("");
-        answers.clear();
+        tasks.clear();
     }
 }

@@ -5,9 +5,8 @@
         <div align="center">
             <g:VerticalPanel styleName="{style.background}">
                 <g:Label ui:field="task"/>
-                <g:Label ui:field="text"/>
             </g:VerticalPanel>
-            <g:VerticalPanel ui:field="answers"/>
+            <g:VerticalPanel ui:field="tasks"/>
             <g:Label ui:field="error" styleName="{style.redText}"/>
             <g:HorizontalPanel>
                 <g:Button text="Back" ui:field="back" styleName="{style.loginButton}"/>

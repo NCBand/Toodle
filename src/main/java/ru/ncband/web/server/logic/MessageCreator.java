@@ -41,8 +41,8 @@ public class MessageCreator {
     }
 
     public static boolean isValidDate(String date){
-        RegExp regExp = RegExp.compile("((1[012]{1})|(0[1-9]{1}))"+Property.dateSeparator()+
-                                        "((0[1-9]{1})|(1[0-9]{1})|(2[0-9])|(3[01]))"+Property.dateSeparator()+
+        RegExp regExp = RegExp.compile("((0[1-9]{1})|(1[0-9]{1})|(2[0-9])|(3[01]))"+Property.dateSeparator()+
+                                        "((1[012]{1})|(0[1-9]{1}))" +Property.dateSeparator()+
                                         "([12]{1}[0-9]{3})");
         return regExp.test(date);
     }

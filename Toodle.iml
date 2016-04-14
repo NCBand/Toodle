@@ -38,6 +38,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="a.xml" value="aa8f88c1-de0d-4671-9a23-c3ebc088a0e2" />
           <unit-entry name="hibernate.cfg.xml" value="aa8f88c1-de0d-4671-9a23-c3ebc088a0e2" />
           <unit-entry name="ru:ncband:web:server:db:hibernate.cfg.xml" value="3647d2d6-4c0b-4294-8d75-ef9d6ad8f044" />
         </datasource-map>

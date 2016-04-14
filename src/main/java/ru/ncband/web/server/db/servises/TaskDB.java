@@ -3,11 +3,13 @@ package ru.ncband.web.server.db.servises;
 import org.hibernate.*;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.AnswersEntity;
+import ru.ncband.web.server.db.classes.LessonsEntity;
 import ru.ncband.web.server.db.classes.TasksEntity;
 import ru.ncband.web.shared.Property;
 import ru.ncband.web.shared.classes.Answer;
+import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Task;
-import ru.ncband.web.shared.classes.TaskLabel;
+import ru.ncband.web.shared.classes.LessonLabel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,28 +20,28 @@ public class TaskDB {
 
     public TaskDB(){}
 
-    public TaskLabel getLabels(){
+    public LessonLabel getLabels(){
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM TasksEntity");
+            Query query = session.createQuery("FROM LessonsEntity");
 
-            List<TasksEntity> tasks = (List<TasksEntity>) query.list();
+            List<LessonsEntity> tasks = (List<LessonsEntity>) query.list();
             ArrayList<String> names = new ArrayList<String>();
             ArrayList<Integer> ids = new ArrayList<Integer>();
-            TaskLabel taskLabel = new TaskLabel();
+            LessonLabel lessonLabel = new LessonLabel();
 
-            for (TasksEntity task :
+            for (LessonsEntity task :
                     tasks) {
                 names.add(task.getName());
                 ids.add(task.getId());
             }
 
             transaction.commit();
-            taskLabel.setIds(ids);
-            taskLabel.setLabels(names);
+            lessonLabel.setIds(ids);
+            lessonLabel.setLabels(names);
 
-            return taskLabel;
+            return lessonLabel;
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
@@ -48,32 +50,48 @@ public class TaskDB {
         return null;
     }
 
-    public Task getTask(String id){
+    public Lesson getTask(String id){
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
-            TasksEntity tasksEntity = session.get(TasksEntity.class, Integer.parseInt(id));
+            Query query = session.createQuery("FROM TasksEntity where lesson=:param");
+            query.setParameter("param", Integer.parseInt(id));
 
-            Task task = new Task();
-            ArrayList<String> texts = new ArrayList<String>();
-            texts.add(tasksEntity.getQuestion());
-            task.setType(tasksEntity.getType());
-            task.setId(Integer.parseInt(id));
-
-            if(tasksEntity.getType() != Property.typeText()) {
-                Query query = session.createQuery("FROM AnswersEntity where taskId =: param");
-                query.setParameter("param", tasksEntity.getId());
-
-                List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
-                for (AnswersEntity answer:
-                        answers){
-                    texts.add(answer.getAnswer());
-                }
-            }
+            List<TasksEntity> tasks = (List<TasksEntity>) query.list();
             transaction.commit();
 
-            task.setTexts(texts);
-            return task;
+            Lesson lesson = new Lesson();
+            lesson.setId(Integer.parseInt(id));
+            List<Task> client_task = new ArrayList<Task>();
+
+            for (TasksEntity task:
+                 tasks) {
+                Task part = new Task();
+                ArrayList<String> texts = new ArrayList<String>();
+                texts.add(task.getQuestion());
+                part.setType(task.getType());
+                part.setId(task.getId());
+
+                if(task.getType() != Property.typeText()) {
+                    session = sessionFactory.openSession();
+                    transaction = session.beginTransaction();
+                    query = session.createQuery("FROM AnswersEntity where taskId =:param");
+                    query.setParameter("param", task.getId());
+
+                    List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
+                    for (AnswersEntity answer:
+                            answers){
+                        texts.add(answer.getAnswer());
+                    }
+                    transaction.commit();
+                }
+                part.setTexts(texts);
+                client_task.add(part);
+            }
+
+            lesson.setTasks(client_task);
+
+            return lesson;
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {

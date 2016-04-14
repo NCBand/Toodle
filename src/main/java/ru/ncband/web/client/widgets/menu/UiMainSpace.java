@@ -25,9 +25,10 @@ import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.firstview.UiFisrtView;
 import ru.ncband.web.client.widgets.menu.testform.UiTestForm;
 import ru.ncband.web.shared.Property;
+import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Messages;
 import ru.ncband.web.shared.classes.Task;
-import ru.ncband.web.shared.classes.TaskLabel;
+import ru.ncband.web.shared.classes.LessonLabel;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -96,15 +97,15 @@ public class UiMainSpace extends Composite {
             @Override
             public void onLoadData(LoadDataEvent event) {
                 TaskService taskService = GWT.create(TaskService.class);
-                taskService.getLabels(new MethodCallback<TaskLabel>() {
+                taskService.getLabels(new MethodCallback<LessonLabel>() {
                     @Override
                     public void onFailure(Method method, Throwable throwable) {}
 
                     @Override
-                    public void onSuccess(Method method, TaskLabel taskLabel) {
+                    public void onSuccess(Method method, LessonLabel lessonLabel) {
                         task.clearItems();
-                        Iterator<Integer> ids = taskLabel.getIds().iterator();
-                        Iterator<String> names = taskLabel.getLabels().iterator();
+                        Iterator<Integer> ids = lessonLabel.getIds().iterator();
+                        Iterator<String> names = lessonLabel.getLabels().iterator();
 
                         while(ids.hasNext()){
                             TaskCommand command = new TaskCommand();
@@ -149,6 +150,7 @@ public class UiMainSpace extends Composite {
             }
         });
 
+        datePicker.setValue(new Date(), true);
         datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<Date> event) {
@@ -172,7 +174,7 @@ public class UiMainSpace extends Composite {
                     });
                 }
             });
-        datePicker.setValue(new Date(), true);
+
 
         calendar.add(datePicker);
         message.add(messages);
@@ -203,12 +205,12 @@ public class UiMainSpace extends Composite {
         @Override
         public void execute() {
             TaskService taskService = GWT.create(TaskService.class);
-            taskService.getTask(id.toString(), new MethodCallback<Task>() {
+            taskService.getTask(id.toString(), new MethodCallback<Lesson>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {}
 
                 @Override
-                public void onSuccess(Method method, Task task) {
+                public void onSuccess(Method method, Lesson task) {
                     for (Widget widget:
                          left) {
                         if(widget.getClass().equals(UiFisrtView.class)){

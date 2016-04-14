@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "answers", schema = "toodle")
-public class AnswersEntity implements Serializable {
+public class AnswersEntity {
     @GeneratedValue
     private int id;
     private String answer;
@@ -59,12 +59,9 @@ public class AnswersEntity implements Serializable {
 
         AnswersEntity that = (AnswersEntity) o;
 
-        if (id != that.id) return false;
-        if (taskId != that.taskId) return false;
-        if (right != that.right) return false;
-        if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
+        return id == that.id && taskId == that.taskId &&
+                right == that.right && (answer != null ? answer.equals(that.answer) : that.answer == null);
 
-        return true;
     }
 
     @Override

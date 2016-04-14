@@ -17,5 +17,6 @@
         <mapping class="ru.ncband.web.server.db.classes.TasksEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.MessageEntity"/>
         <mapping class="ru.ncband.web.server.db.classes.AnswersEntity"/>
+        <mapping class="ru.ncband.web.server.db.classes.LessonsEntity"/>
     </session-factory>
 </hibernate-configuration>

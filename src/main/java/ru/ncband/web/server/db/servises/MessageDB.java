@@ -30,7 +30,7 @@ public class MessageDB{
             Query query = session.createQuery("FROM MessageEntity where date =:param");
             query.setParameter("param", date);
 
-            List<MessageEntity> messages = query.list();
+            List<MessageEntity> messages = (List<MessageEntity>)query.list();
             Messages send = new Messages();
             send.setMessages(convertEntity(messages));
 

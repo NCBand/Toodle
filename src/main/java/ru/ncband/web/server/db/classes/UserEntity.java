@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user", schema = "toodle")
-public class UserEntity implements Serializable {
+public class UserEntity {
     @GeneratedValue
     private int id;
     private String login;
@@ -114,17 +114,15 @@ public class UserEntity implements Serializable {
 
         UserEntity that = (UserEntity) o;
 
-        if (id != that.id) return false;
-        if (login != null ? !login.equals(that.login) : that.login != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (salt != null ? !salt.equals(that.salt) : that.salt != null) return false;
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-        if (age != null ? !age.equals(that.age) : that.age != null) return false;
-        if (sex != null ? !sex.equals(that.sex) : that.sex != null) return false;
-        if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
+        return id == that.id && (login != null ? login.equals(that.login) : that.login == null &&
+                (password != null ? password.equals(that.password) : that.password == null &&
+                        (salt != null ? salt.equals(that.salt) : that.salt == null &&
+                                (firstname != null ? firstname.equals(that.firstname) : that.firstname == null &&
+                                        (lastname != null ? lastname.equals(that.lastname) : that.lastname == null &&
+                                                (age != null ? age.equals(that.age) : that.age == null &&
+                                                        (sex != null ? sex.equals(that.sex) : that.sex == null &&
+                                                                (mail != null ? mail.equals(that.mail) : that.mail == null))))))));
 
-        return true;
     }
 
     @Override

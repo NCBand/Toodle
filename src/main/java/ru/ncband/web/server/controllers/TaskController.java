@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ncband.web.server.db.servises.TaskDB;
 import ru.ncband.web.shared.classes.Answer;
+import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Task;
-import ru.ncband.web.shared.classes.TaskLabel;
+import ru.ncband.web.shared.classes.LessonLabel;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -20,7 +21,7 @@ public class TaskController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/labels", method = RequestMethod.POST)
-    public TaskLabel getLabels(){
+    public LessonLabel getLabels(){
         TaskDB taskDB = new TaskDB();
         return taskDB.getLabels();
     }
@@ -29,7 +30,7 @@ public class TaskController {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/get_task", method = RequestMethod.POST)
-    public Task getTask(@FormParam("id")String id){
+    public Lesson getTask(@FormParam("id")String id){
         TaskDB taskDB = new TaskDB();
         return taskDB.getTask(id);
     }

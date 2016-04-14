@@ -1,16 +1,15 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "tasks", schema = "toodle")
-public class TasksEntity implements Serializable {
-    @GeneratedValue
+public class TasksEntity {
     private int id;
     private String question;
     private int type;
     private String name;
+    private int lesson;
 
     @Id
     @Column(name = "id")
@@ -52,6 +51,16 @@ public class TasksEntity implements Serializable {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "lesson")
+    public int getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(int lesson) {
+        this.lesson = lesson;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,12 +68,10 @@ public class TasksEntity implements Serializable {
 
         TasksEntity that = (TasksEntity) o;
 
-        if (id != that.id) return false;
-        if (type != that.type) return false;
-        if (question != null ? !question.equals(that.question) : that.question != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return id == that.id && type == that.type &&
+                lesson == that.lesson && (question != null ? question.equals(that.question) : that.question == null &&
+                (name != null ? name.equals(that.name) : that.name == null));
 
-        return true;
     }
 
     @Override
@@ -73,6 +80,7 @@ public class TasksEntity implements Serializable {
         result = 31 * result + (question != null ? question.hashCode() : 0);
         result = 31 * result + type;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + lesson;
         return result;
     }
 }

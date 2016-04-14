@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.AnswersEntity;
+import ru.ncband.web.server.db.classes.LessonsEntity;
 import ru.ncband.web.server.db.classes.TasksEntity;
 import ru.ncband.web.shared.Property;
 
@@ -20,49 +21,72 @@ public class TaskCreator {
         Transaction transaction = session.beginTransaction();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        TasksEntity task = new TasksEntity();
+        LessonsEntity task = new LessonsEntity();
 
-        System.out.println("Task name:");
+        System.out.println("Lesson name:");
+        int id = Generator.getInstance().createNumInt();
+        task.setId(id);
         task.setName(reader.readLine());
 
-        printTypes();
-        System.out.println("Print type:");
-        int type = Integer.parseInt(reader.readLine());
-        int id = Generator.getInstance().createNumInt();
-
-        System.out.println("Print question/text:");
-        task.setId(id);
-        task.setQuestion(reader.readLine());
-        task.setType(type);
         session.save(task);
         transaction.commit();
-
-        if(type != Property.typeText()){
-            String answer;
-
-            do {
-                session = sessionFactory.openSession();
-                transaction = session.beginTransaction();
-                AnswersEntity answersEntity = new AnswersEntity();
-                System.out.print("Answer: ");
-                answersEntity.setAnswer(reader.readLine());
-                System.out.print("It is right (y - 1/n - 0): ");
-                answersEntity.setRight(Integer.parseInt(reader.readLine()));
-                answersEntity.setTaskId(id);
-
-                session.save(answersEntity);
-
-                System.out.print("Add another answer (y/n): ");
-                answer = reader.readLine();
-                transaction.commit();
-            }while(answer.equals("y"));
-        }
-        reader.close();
+        addTask(id);
     }
 
-    private static void printTypes(){
-        System.out.print("Text - "+Property.typeText());
-        System.out.print(", Test - "+Property.typeTest());
-        System.out.println(", MultiTest - "+Property.typeMultiTest());
+    private static void printTypes() {
+        System.out.print("Text - " + Property.typeText());
+        System.out.print(", Test - " + Property.typeTest());
+        System.out.println(", MultiTest - " + Property.typeMultiTest());
+    }
+
+    private static void addTask(int lesson_id) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String answer;
+        do {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            TasksEntity task = new TasksEntity();
+
+            System.out.println("Task name:");
+            task.setName(reader.readLine());
+            task.setLesson(lesson_id);
+
+            printTypes();
+            System.out.println("Print type:");
+            int type = Integer.parseInt(reader.readLine());
+            int id = Generator.getInstance().createNumInt();
+
+            System.out.println("Print question/text:");
+            task.setId(id);
+            task.setQuestion(reader.readLine());
+            task.setType(type);
+            session.save(task);
+            transaction.commit();
+
+            if (type != Property.typeText()) {
+
+
+                do {
+                    session = sessionFactory.openSession();
+                    transaction = session.beginTransaction();
+                    AnswersEntity answersEntity = new AnswersEntity();
+                    System.out.println("Answer:");
+                    answersEntity.setAnswer(reader.readLine());
+                    System.out.println("It is right (y - 1/n - 0):");
+                    answersEntity.setRight(Integer.parseInt(reader.readLine()));
+                    answersEntity.setTaskId(id);
+
+                    session.save(answersEntity);
+
+                    System.out.println("Add another answer (y/n):");
+                    answer = reader.readLine();
+                    transaction.commit();
+                } while (answer.equals("y"));
+            }
+            System.out.println("Add another task module (y/n):");
+            answer = reader.readLine();
+        } while (answer.equals("y"));
+        reader.close();
     }
 }

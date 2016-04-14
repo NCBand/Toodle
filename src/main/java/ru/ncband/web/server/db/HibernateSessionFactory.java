@@ -3,10 +3,7 @@ package ru.ncband.web.server.db;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import ru.ncband.web.server.db.classes.AnswersEntity;
-import ru.ncband.web.server.db.classes.MessageEntity;
-import ru.ncband.web.server.db.classes.TasksEntity;
-import ru.ncband.web.server.db.classes.UserEntity;
+import ru.ncband.web.server.db.classes.*;
 
 public class HibernateSessionFactory {
     private static SessionFactory sessionFactory = buildSessionFactory();
@@ -19,6 +16,7 @@ public class HibernateSessionFactory {
             configuration.addAnnotatedClass(MessageEntity.class);
             configuration.addAnnotatedClass(AnswersEntity.class);
             configuration.addAnnotatedClass(TasksEntity.class);
+            configuration.addAnnotatedClass(LessonsEntity.class);
 
             StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             return configuration.buildSessionFactory(ssrb.build());

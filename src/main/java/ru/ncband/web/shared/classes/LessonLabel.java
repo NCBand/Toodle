@@ -2,11 +2,11 @@ package ru.ncband.web.shared.classes;
 
 import java.util.List;
 
-public class TaskLabel {
+public class LessonLabel {
     private List<Integer> ids = null;
     private List<String> labels = null;
 
-    public TaskLabel() {
+    public LessonLabel() {
     }
 
     public List<String> getLabels() {
