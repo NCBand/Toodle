@@ -7,14 +7,9 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import ru.ncband.web.client.events.OutOfTaskEvent;
-import ru.ncband.web.client.services.TaskService;
+import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
-import ru.ncband.web.shared.classes.Answer;
 import ru.ncband.web.shared.classes.Lesson;
-import ru.ncband.web.shared.classes.Task;
 
 import java.util.List;
 
@@ -37,19 +32,20 @@ public class UiTestForm extends Composite{
 
     @UiHandler("done")
     void doClickDone(ClickEvent event){
-        Answer answer = new Answer();
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.check(answer, new MethodCallback<Answer>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {
-                error.setText("Server error");
-            }
+        boolean res = true;
 
-            @Override
-            public void onSuccess(Method method, Answer answer) {
-
+        for (Widget widget:
+             tasks) {
+            if(widget.getClass().equals(TestCell.class)){
+                res = res && ((TestCell)widget).check();
             }
-        });
+        }
+
+        if(res){
+            error.setText("done");
+        }else {
+            error.setText("wrong");
+        }
     }
 
     @UiHandler("back")
@@ -59,7 +55,7 @@ public class UiTestForm extends Composite{
     }
 
     private void exit(){
-        OutOfTaskEvent event = new OutOfTaskEvent();
+        OutEvent event = new OutEvent();
         eventbus.fireEvent(event);
     }
 
@@ -69,11 +65,12 @@ public class UiTestForm extends Composite{
     }
 
     public void setTask(Lesson task, String name){
+        tasks.clear();
         this.task.setText(name);
-        List<Task> list = task.getTasks();
+        List<String> ids = task.getTasks();
 
-        for (Task example:
-             list) {
+        for (String example:
+             ids) {
             TestCell cell = new TestCell();
             cell.setTask(example);
             tasks.add(cell);

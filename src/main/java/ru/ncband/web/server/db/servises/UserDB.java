@@ -6,8 +6,8 @@ import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.UserEntity;
 import ru.ncband.web.server.logic.Generator;
 import ru.ncband.web.server.logic.Salt;
-import ru.ncband.web.shared.Property;
-import ru.ncband.web.shared.classes.Registration;
+import ru.ncband.web.shared.classes.UserForm;
+import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.Status;
 
 import java.util.List;
@@ -56,36 +56,36 @@ public class UserDB {
     }
 
 
-    public Status set(Registration registration) {
+    public Status set(UserForm userForm) {
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
             UserEntity person = new UserEntity();
 
-            person.setFirstname(registration.getFirstname());
-            person.setLastname(registration.getLastname());
-            person.setAge(Integer.getInteger(registration.getAge()));
-            person.setMail(registration.getMail());
-            person.setSex(registration.getSex().substring(0,1)); //// TODO: 05.04.2016
+            person.setFirstname(userForm.getFirstname());
+            person.setLastname(userForm.getLastname());
+            person.setAge(Integer.getInteger(userForm.getAge()));
+            person.setMail(userForm.getMail());
+            person.setSex(userForm.getSex()); //// TODO: 05.04.2016
 
             Generator generator = Generator.getInstance();
             int salt = generator.createNumInt();
-            String salting = Salt.salting(Integer.toString(salt), registration.getPassword());
+            String salting = Salt.salting(Integer.toString(salt), userForm.getPassword());
 
-            person.setLogin(registration.getLogin());
+            person.setLogin(userForm.getLogin());
             person.setPassword(salting);
             person.setSalt(salt);
 
             session.save(person);
             transaction.commit();
 
-            return new Status(Property.done());
+            return new Status(BasicProperty.done());
         }catch(NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return new Status(Property.fault());
+        return new Status(BasicProperty.fault());
     }
 
     public Status delete(String id){
@@ -98,43 +98,43 @@ public class UserDB {
             int res = query.executeUpdate();
             transaction.commit();
             if(res == 0){
-                return new Status(Property.done());
+                return new Status(BasicProperty.done());
             }
-            return new Status(Property.fault());
+            return new Status(BasicProperty.fault());
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return new Status(Property.fault());
+        return new Status(BasicProperty.fault());
     }
 
-    public Status update(Registration registration, String id){
+    public Status update(UserForm userForm, String id){
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
             UserEntity user = session.get(UserEntity.class, Integer.parseInt(id));
 
-            if(registration.getAge() != null){
-                user.setAge(Integer.parseInt(registration.getAge()));
+            if(userForm.getAge() != null){
+                user.setAge(Integer.parseInt(userForm.getAge()));
             }
-            if(registration.getMail() != null){
-                user.setMail(registration.getMail());
+            if(userForm.getMail() != null){
+                user.setMail(userForm.getMail());
             }
-            if(registration.getLastname() != null){
-                user.setLastname(registration.getLastname());
+            if(userForm.getLastname() != null){
+                user.setLastname(userForm.getLastname());
             }
-            if(registration.getFirstname() != null){
-                user.setFirstname(registration.getFirstname());
+            if(userForm.getFirstname() != null){
+                user.setFirstname(userForm.getFirstname());
             }
-            if(registration.getLogin() != null){
-                user.setLogin(registration.getLogin());
+            if(userForm.getLogin() != null){
+                user.setLogin(userForm.getLogin());
             }
-            if(registration.getSex() != null){
-                user.setSex(registration.getSex().substring(0,1));
+            if(userForm.getSex() != null){
+                user.setSex(userForm.getSex().substring(0,1));
             }
-            if(registration.getPassword() != null){
-                String salting = Salt.salting(user.getSalt().toString(), registration.getPassword());
+            if(userForm.getPassword() != null){
+                String salting = Salt.salting(user.getSalt().toString(), userForm.getPassword());
                 user.setPassword(salting);
             }
 
@@ -146,6 +146,6 @@ public class UserDB {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return new Status(Property.fault());
+        return new Status(BasicProperty.fault());
     }
 }

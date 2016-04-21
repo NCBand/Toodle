@@ -4,7 +4,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.logic.Salt;
-import ru.ncband.web.shared.Property;
+import ru.ncband.web.shared.properties.RequestProperty;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +13,9 @@ import javax.servlet.http.HttpSession;
 public class UserFilter implements HandlerInterceptor {
 
     private boolean isUserRequest(String uri){
-        return  uri.contains("settings")||
-                uri.contains("task") ||
-                uri.contains("stat") ||
-                uri.contains("sign_out")||
-                uri.contains("message");
+        return !(uri.contains(RequestProperty.getRegistration()) ||
+                uri.contains(RequestProperty.getSign_in())) && (uri.contains(RequestProperty.getTask())||
+                uri.contains(RequestProperty.getMessage()));
     }
 
     @Override
@@ -27,7 +25,7 @@ public class UserFilter implements HandlerInterceptor {
         String uri = request.getRequestURI();
         if(isUserRequest(uri)) {
             HttpSession session = request.getSession();
-            Id id = (Id) session.getAttribute(Property.sessionName());
+            Id id = (Id) session.getAttribute(RequestProperty.sessionName());
             return id != null && id.getHash().equals(Salt.sha3(id.getId()));
         }
 

@@ -14,7 +14,7 @@ import ru.ncband.web.client.services.UserService;
 import ru.ncband.web.client.widgets.menu.UiMainSpace;
 import ru.ncband.web.client.widgets.login.UiBinderLogin;
 import ru.ncband.web.client.widgets.registration.UiBinderRegistration;
-import ru.ncband.web.shared.Property;
+import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.Status;
 
 public class Toodle implements EntryPoint {
@@ -53,7 +53,7 @@ public class Toodle implements EntryPoint {
                     public void onSuccess(Method method, Status id) {
                         RootPanel rootPanel = RootPanel.get();
 
-                        if (id.getMsg().equals(Property.fault())){
+                        if (id.getMsg().equals(BasicProperty.fault())){
                             for (Widget widget : rootPanel) {
                                 if(widget.getClass().equals(UiBinderLogin.class)) {
                                     UiBinderLogin login = (UiBinderLogin) widget;
@@ -139,7 +139,7 @@ public class Toodle implements EntryPoint {
                             @Override
                             public void onSuccess(Method method, Status s){
                                 RootPanel rootPanel = RootPanel.get();
-                                if(s.getMsg().equals(Property.fault())){
+                                if(s.getMsg().equals(BasicProperty.fault())){
                                     for (Widget widget : rootPanel) {
                                         if (widget.getClass().equals(UiBinderRegistration.class)) {
                                             ((UiBinderRegistration)widget).setMainError("Error");
@@ -151,6 +151,8 @@ public class Toodle implements EntryPoint {
                                             widget.setVisible(false);
                                         } else {
                                             widget.setVisible(true);
+                                            UiBinderRegistration registration = ((UiBinderRegistration) widget);
+                                            registration.clear();
                                         }
                                     }
                                 }

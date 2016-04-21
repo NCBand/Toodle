@@ -5,14 +5,11 @@ import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.AnswersEntity;
 import ru.ncband.web.server.db.classes.LessonsEntity;
 import ru.ncband.web.server.db.classes.TasksEntity;
-import ru.ncband.web.shared.Property;
-import ru.ncband.web.shared.classes.Answer;
-import ru.ncband.web.shared.classes.Lesson;
-import ru.ncband.web.shared.classes.Task;
-import ru.ncband.web.shared.classes.LessonLabel;
+import ru.ncband.web.shared.properties.LessonProperty;
+import ru.ncband.web.shared.properties.BasicProperty;
+import ru.ncband.web.shared.classes.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TaskDB {
@@ -28,13 +25,13 @@ public class TaskDB {
 
             List<LessonsEntity> tasks = (List<LessonsEntity>) query.list();
             ArrayList<String> names = new ArrayList<String>();
-            ArrayList<Integer> ids = new ArrayList<Integer>();
+            ArrayList<String> ids = new ArrayList<String>();
             LessonLabel lessonLabel = new LessonLabel();
 
             for (LessonsEntity task :
                     tasks) {
                 names.add(task.getName());
-                ids.add(task.getId());
+                ids.add(Integer.toString(task.getId()));
             }
 
             transaction.commit();
@@ -50,7 +47,49 @@ public class TaskDB {
         return null;
     }
 
-    public Lesson getTask(String id){
+    public Task getTask(String id){
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Transaction transaction = session.beginTransaction();
+            TasksEntity taskEntity = session.get(TasksEntity.class, Integer.parseInt(id));
+            transaction.commit();
+
+            Task task = new Task();
+            task.setType(Integer.toString(taskEntity.getType()));
+            task.setId(Integer.toString(taskEntity.getId()));
+
+            List<String> strings = new ArrayList<String>();
+            strings.add(taskEntity.getQuestion());
+
+            if(!(Integer.toString(taskEntity.getType())).equals(LessonProperty.typeText())) {
+                session = sessionFactory.openSession();
+                transaction = session.beginTransaction();
+                Query query = session.createQuery("FROM AnswersEntity where task=:param");
+                query.setParameter("param", taskEntity.getId());
+                List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
+                transaction.commit();
+
+                List<String> answer_ids = new ArrayList<String>();
+
+                for (AnswersEntity tmp:
+                     answers) {
+                    answer_ids.add(Integer.toString(tmp.getId()));
+                    strings.add(tmp.getAnsw());
+                }
+                task.setAnswer_ids(answer_ids);
+            }
+
+            task.setTexts(strings);
+            return task;
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public Lesson getLesson(String id){
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
@@ -61,35 +100,13 @@ public class TaskDB {
             transaction.commit();
 
             Lesson lesson = new Lesson();
-            lesson.setId(Integer.parseInt(id));
-            List<Task> client_task = new ArrayList<Task>();
-
+            lesson.setId(id);
+            List<String> client_tasks = new ArrayList<String>();
             for (TasksEntity task:
                  tasks) {
-                Task part = new Task();
-                ArrayList<String> texts = new ArrayList<String>();
-                texts.add(task.getQuestion());
-                part.setType(task.getType());
-                part.setId(task.getId());
-
-                if(task.getType() != Property.typeText()) {
-                    session = sessionFactory.openSession();
-                    transaction = session.beginTransaction();
-                    query = session.createQuery("FROM AnswersEntity where taskId =:param");
-                    query.setParameter("param", task.getId());
-
-                    List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
-                    for (AnswersEntity answer:
-                            answers){
-                        texts.add(answer.getAnswer());
-                    }
-                    transaction.commit();
-                }
-                part.setTexts(texts);
-                client_task.add(part);
+                client_tasks.add(Integer.toString(task.getId()));
             }
-
-            lesson.setTasks(client_task);
+            lesson.setTasks(client_tasks);
 
             return lesson;
         } catch (NullPointerException e){
@@ -99,27 +116,26 @@ public class TaskDB {
         }
         return null;
     }
-
-    public Answer check( Answer answer){
+    
+    public Status check( Answer answer){
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM AnswersEntity where taskId =: param");
+            Query query = session.createQuery("FROM AnswersEntity where task =: param");
             query.setParameter("param", answer.getId());
 
-            Iterator<AnswersEntity> ans_int = ((List<AnswersEntity>) query.list()).iterator();
-            ArrayList<Integer> res = new ArrayList<Integer>();
+            ArrayList<AnswersEntity> answers = (ArrayList<AnswersEntity>) query.list();
 
-            for (Integer integer : answer.getAnswers()) {
-                int ans = ans_int.next().getRight();
-                int var = integer;
-
-                res.add(new Integer(((ans + var) % 2 + 1) % 2));
-            }
+            Status status = new Status();
             transaction.commit();
 
-            answer.setAnswers(res);
-            return answer;
+            if(answers.get(answer.getAnswer()).getRght() == 1){
+                status.setMsg(BasicProperty.done());
+            }else{
+                status.setMsg(BasicProperty.fault());
+            }
+
+            return status;
         } catch (NullPointerException e){
             e.printStackTrace();
         }

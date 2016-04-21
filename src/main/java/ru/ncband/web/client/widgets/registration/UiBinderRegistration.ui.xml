@@ -26,10 +26,10 @@
                 <g:TextBox ui:field="ageBox" styleName="{style.box}"/>
                     <g:Label text="Sex: " styleName="{style.blackText}"/>
                     <g:ListBox ui:field="sexBox" styleName="{style.listBoxStyle}">
-                        <g:item value='man'>
+                        <g:item value='m'>
                             man
                         </g:item>
-                        <g:item value='woman'>
+                        <g:item value='f'>
                             woman
                         </g:item>
                     </g:ListBox>

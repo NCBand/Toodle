@@ -7,7 +7,7 @@ import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.AnswersEntity;
 import ru.ncband.web.server.db.classes.LessonsEntity;
 import ru.ncband.web.server.db.classes.TasksEntity;
-import ru.ncband.web.shared.Property;
+import ru.ncband.web.shared.properties.LessonProperty;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,9 +34,9 @@ public class TaskCreator {
     }
 
     private static void printTypes() {
-        System.out.print("Text - " + Property.typeText());
-        System.out.print(", Test - " + Property.typeTest());
-        System.out.println(", MultiTest - " + Property.typeMultiTest());
+        System.out.print("Text - " + LessonProperty.typeText());
+        System.out.print(", Test - " + LessonProperty.typeTest());
+        System.out.println(", MultiTest - " + LessonProperty.typeMultiTest());
     }
 
     private static void addTask(int lesson_id) throws IOException {
@@ -54,28 +54,27 @@ public class TaskCreator {
 
             printTypes();
             System.out.println("Print type:");
-            int type = Integer.parseInt(reader.readLine());
+            String type = reader.readLine();
             int id = Generator.getInstance().createNumInt();
 
             System.out.println("Print question/text:");
             task.setId(id);
             task.setQuestion(reader.readLine());
-            task.setType(type);
+            task.setType(Integer.parseInt(type));
             session.save(task);
             transaction.commit();
 
-            if (type != Property.typeText()) {
-
+            if (type.equals(LessonProperty.typeText())) {
 
                 do {
                     session = sessionFactory.openSession();
                     transaction = session.beginTransaction();
                     AnswersEntity answersEntity = new AnswersEntity();
                     System.out.println("Answer:");
-                    answersEntity.setAnswer(reader.readLine());
+                    answersEntity.setAnsw(reader.readLine());
                     System.out.println("It is right (y - 1/n - 0):");
-                    answersEntity.setRight(Integer.parseInt(reader.readLine()));
-                    answersEntity.setTaskId(id);
+                    answersEntity.setRght(Integer.parseInt(reader.readLine()));
+                    answersEntity.setId(id);
 
                     session.save(answersEntity);
 
@@ -84,7 +83,7 @@ public class TaskCreator {
                     transaction.commit();
                 } while (answer.equals("y"));
             }
-            System.out.println("Add another task module (y/n):");
+            System.out.println("Add another lesson module (y/n):");
             answer = reader.readLine();
         } while (answer.equals("y"));
         reader.close();

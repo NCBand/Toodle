@@ -3,9 +3,10 @@ package ru.ncband.web.server.controllers;
 import org.springframework.web.bind.annotation.*;
 import ru.ncband.web.server.classes.Id;
 import ru.ncband.web.server.db.servises.UserDB;
-import ru.ncband.web.shared.Property;
-import ru.ncband.web.shared.classes.Registration;
+import ru.ncband.web.shared.classes.UserForm;
+import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.Status;
+import ru.ncband.web.shared.properties.RequestProperty;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,14 +31,14 @@ public class UserController {
         Id id = userDB.get(login, password);
 
         if(id == null){
-            status.setMsg(Property.fault());
+            status.setMsg(BasicProperty.fault());
             return status;
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute(Property.sessionName(), id);
+        session.setAttribute(RequestProperty.sessionName(), id);
 
-        status.setMsg(Property.done());
+        status.setMsg(BasicProperty.done());
         return status;
     }
 
@@ -45,7 +46,7 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public Status setUser(@RequestBody Registration form) throws IOException {
+    public Status setUser(@RequestBody UserForm form) throws IOException {
         UserDB userDB = new UserDB();
         return userDB.set(form);
     }
@@ -55,19 +56,19 @@ public class UserController {
     @RequestMapping(value = "/sign_out", method = RequestMethod.POST)
     public Status sign_out(HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.removeAttribute(Property.sessionName());
-        return new Status(Property.done());
+        session.removeAttribute(RequestProperty.sessionName());
+        return new Status(BasicProperty.done());
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public Status edit(@RequestBody Registration form,
+    public Status edit(@RequestBody UserForm form,
                        HttpServletRequest request){
         UserDB userDB = new UserDB();
         HttpSession session = request.getSession();
-        Id id = (Id)session.getAttribute(Property.sessionName());
+        Id id = (Id)session.getAttribute(RequestProperty.sessionName());
         return userDB.update(form,id.getId());
     }
 
@@ -76,11 +77,11 @@ public class UserController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Status delete(HttpServletRequest request){
         HttpSession session = request.getSession();
-        Id id = (Id)session.getAttribute(Property.sessionName());
+        Id id = (Id)session.getAttribute(RequestProperty.sessionName());
         UserDB userDB = new UserDB();
         Status status = userDB.delete(id.getId());
-        if(status.getMsg().equals(Property.fault())){
-            session.removeAttribute(Property.sessionName());
+        if(status.getMsg().equals(BasicProperty.fault())){
+            session.removeAttribute(RequestProperty.sessionName());
         }
         return status;
     }

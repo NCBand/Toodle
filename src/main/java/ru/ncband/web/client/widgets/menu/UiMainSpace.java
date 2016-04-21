@@ -17,18 +17,18 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.LoadDataEvent;
 import ru.ncband.web.client.events.LogOutEvent;
-import ru.ncband.web.client.events.OutOfTaskEvent;
+import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.handlers.LoadDataEventHandler;
-import ru.ncband.web.client.handlers.OutOfTaskEventHandler;
+import ru.ncband.web.client.handlers.OutEventHandler;
 import ru.ncband.web.client.services.MessageService;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.firstview.UiFisrtView;
+import ru.ncband.web.client.widgets.menu.message.NewMessageMaker;
+import ru.ncband.web.client.widgets.menu.setting.UiBinderSetting;
+import ru.ncband.web.client.widgets.menu.lesson.NewLessonMaker;
 import ru.ncband.web.client.widgets.menu.testform.UiTestForm;
-import ru.ncband.web.shared.Property;
-import ru.ncband.web.shared.classes.Lesson;
-import ru.ncband.web.shared.classes.Messages;
-import ru.ncband.web.shared.classes.Task;
-import ru.ncband.web.shared.classes.LessonLabel;
+import ru.ncband.web.shared.properties.BasicProperty;
+import ru.ncband.web.shared.classes.*;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -64,10 +64,21 @@ public class UiMainSpace extends Composite {
 
         UiTestForm form = new UiTestForm(bus);
         UiFisrtView firstview = new UiFisrtView();
+        UiBinderSetting setting = new UiBinderSetting(bus);
+        NewMessageMaker messageMaker = new NewMessageMaker(bus);
+        NewLessonMaker taskMaker = new NewLessonMaker(bus);
+
         form.setVisible(false);
+        setting.setVisible(false);
         firstview.setVisible(true);
+        messageMaker.setVisible(false);
+        taskMaker.setVisible(false);
+
+        left.add(setting);
         left.add(form);
         left.add(firstview);
+        left.add(taskMaker);
+        left.add(messageMaker);
 
         final DatePicker datePicker = new DatePicker();
         TextCell textCell = new TextCell();
@@ -78,11 +89,44 @@ public class UiMainSpace extends Composite {
         task = new MenuBar();
         task.setAutoOpen(true);
         task.setAnimationEnabled(true);
-        menu.addItem(new MenuItem("Task",task));
+        menu.addItem(new MenuItem("Your tasks",task));
+        menu.addItem(new MenuItem("Add message", new Command() {
+            @Override
+            public void execute() {
+                for (Widget widget:
+                     left) {
+                    if(widget.getClass().equals(NewMessageMaker.class)){
+                        widget.setVisible(true);
+                    }else {
+                        widget.setVisible(false);
+                    }
+                }
+            }
+        }));
+        menu.addItem(new MenuItem("Add lesson", new Command() {
+            @Override
+            public void execute() {
+                for (Widget widget:
+                left){
+                    if(widget.getClass().equals(NewLessonMaker.class)){
+                        widget.setVisible(true);
+                    }else {
+                        widget.setVisible(false);
+                    }
+                }
+            }
+        }));
         menu.addItem(new MenuItem("Settings",new Command(){
             @Override
             public void execute() {
-
+                for (Widget widget:
+                        left){
+                    if(widget.getClass().equals(UiBinderSetting.class)){
+                        widget.setVisible(true);
+                    }else {
+                        widget.setVisible(false);
+                    }
+                }
             }
         }));
         menu.addItem(new MenuItem("Exit", new Command(){
@@ -104,7 +148,7 @@ public class UiMainSpace extends Composite {
                     @Override
                     public void onSuccess(Method method, LessonLabel lessonLabel) {
                         task.clearItems();
-                        Iterator<Integer> ids = lessonLabel.getIds().iterator();
+                        Iterator<String> ids = lessonLabel.getIds().iterator();
                         Iterator<String> names = lessonLabel.getLabels().iterator();
 
                         while(ids.hasNext()){
@@ -117,8 +161,8 @@ public class UiMainSpace extends Composite {
                     }
                 });
 
-                String dateString = DateTimeFormat.getFormat("dd"+ Property.dateSeparator()+
-                        "MM"+ Property.dateSeparator() +
+                String dateString = DateTimeFormat.getFormat("dd"+ BasicProperty.dateSeparator()+
+                        "MM"+ BasicProperty.dateSeparator() +
                         "yyyy").format(datePicker.getValue());
 
                 MessageService service = GWT.create(MessageService.class);
@@ -135,15 +179,14 @@ public class UiMainSpace extends Composite {
             }
         });
 
-        bus.addHandler(OutOfTaskEvent.TYPE, new OutOfTaskEventHandler() {
+        bus.addHandler(OutEvent.TYPE, new OutEventHandler() {
             @Override
-            public void onOutOfTask(OutOfTaskEvent event) {
+            public void onOutOfTask(OutEvent event) {
                 for (Widget widget:
                         left) {
                     if(widget.getClass().equals(UiFisrtView.class)){
                         widget.setVisible(true);
-                    }
-                    if(widget.getClass().equals(UiTestForm.class)){
+                    }else{
                         widget.setVisible(false);
                     }
                 }
@@ -154,8 +197,8 @@ public class UiMainSpace extends Composite {
         datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<Date> event) {
-                    String dateString = DateTimeFormat.getFormat("dd"+ Property.dateSeparator()+
-                                                                "MM"+ Property.dateSeparator() +
+                    String dateString = DateTimeFormat.getFormat("dd"+ BasicProperty.dateSeparator()+
+                                                                "MM"+ BasicProperty.dateSeparator() +
                                                                 "yyyy").format(event.getValue());
                     date_title.setText(dateString);
 
@@ -181,16 +224,16 @@ public class UiMainSpace extends Composite {
     }
 
     private class TaskCommand implements Command{
-        private Integer id = null;
+        private String id = null;
         private String name = null;
 
         TaskCommand(){}
 
-        public Integer getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -205,20 +248,19 @@ public class UiMainSpace extends Composite {
         @Override
         public void execute() {
             TaskService taskService = GWT.create(TaskService.class);
-            taskService.getTask(id.toString(), new MethodCallback<Lesson>() {
+            taskService.getLesson(id, new MethodCallback<Lesson>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {}
 
                 @Override
-                public void onSuccess(Method method, Lesson task) {
+                public void onSuccess(Method method, Lesson lesson) {
                     for (Widget widget:
                          left) {
-                        if(widget.getClass().equals(UiFisrtView.class)){
-                            widget.setVisible(false);
-                        }
                         if(widget.getClass().equals(UiTestForm.class)){
                             widget.setVisible(true);
-                            ((UiTestForm)widget).setTask(task, name);
+                            ((UiTestForm)widget).setTask(lesson, name);
+                        }else {
+                            widget.setVisible(false);
                         }
                     }
                 }

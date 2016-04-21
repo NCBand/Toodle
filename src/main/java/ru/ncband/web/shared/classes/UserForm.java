@@ -1,6 +1,6 @@
 package ru.ncband.web.shared.classes;
 
-public class Registration {
+public class UserForm {
     private String login = null;
     private String password = null;
     private String firstname = null;
@@ -9,7 +9,7 @@ public class Registration {
     private String sex = null;
     private String mail = null;
 
-    public Registration(){}
+    public UserForm(){}
 
     public String getLogin() {
         return login;

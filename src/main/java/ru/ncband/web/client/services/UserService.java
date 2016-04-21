@@ -2,7 +2,7 @@ package ru.ncband.web.client.services;
 
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
-import ru.ncband.web.shared.classes.Registration;
+import ru.ncband.web.shared.classes.UserForm;
 import ru.ncband.web.shared.classes.Status;
 
 import javax.ws.rs.*;
@@ -21,7 +21,7 @@ public interface UserService extends RestService {
     @Path("/user/registration")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    void doRegistration(Registration registration_form,
+    void doRegistration(UserForm userForm_form,
                         MethodCallback<Status> callback);
 
     @POST
@@ -33,7 +33,7 @@ public interface UserService extends RestService {
     @Path("/user/edit")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    void changeUserData(Registration registration_form,
+    void changeUserData(UserForm userForm_form,
                         MethodCallback<Status> callback);
 
     @POST

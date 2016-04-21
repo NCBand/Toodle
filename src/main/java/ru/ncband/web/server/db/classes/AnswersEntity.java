@@ -1,16 +1,16 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "answers", schema = "toodle")
 public class AnswersEntity {
     @GeneratedValue
     private int id;
-    private String answer;
-    private int taskId;
-    private int right;
+    private String answ;
+    private int task;
+    private int rght;
+    private byte[] answImg;
 
     @Id
     @Column(name = "id")
@@ -24,52 +24,41 @@ public class AnswersEntity {
 
     @Basic
     @Column(name = "answ")
-    public String getAnswer() {
-        return answer;
+    public String getAnsw() {
+        return answ;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnsw(String answ) {
+        this.answ = answ;
     }
 
     @Basic
     @Column(name = "task")
-    public int getTaskId() {
-        return taskId;
+    public int getTask() {
+        return task;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setTask(int task) {
+        this.task = task;
     }
 
     @Basic
     @Column(name = "rght")
-    public int getRight() {
-        return right;
+    public int getRght() {
+        return rght;
     }
 
-    public void setRight(int right) {
-        this.right = right;
+    public void setRght(int rght) {
+        this.rght = rght;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AnswersEntity that = (AnswersEntity) o;
-
-        return id == that.id && taskId == that.taskId &&
-                right == that.right && (answer != null ? answer.equals(that.answer) : that.answer == null);
-
+    @Basic
+    @Column(name = "answ_img")
+    public byte[] getAnswImg() {
+        return answImg;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (answer != null ? answer.hashCode() : 0);
-        result = 31 * result + taskId;
-        result = 31 * result + right;
-        return result;
+    public void setAnswImg(byte[] answImg) {
+        this.answImg = answImg;
     }
 }

@@ -1,7 +1,6 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "user", schema = "toodle")

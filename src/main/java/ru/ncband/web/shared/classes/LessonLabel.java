@@ -3,7 +3,7 @@ package ru.ncband.web.shared.classes;
 import java.util.List;
 
 public class LessonLabel {
-    private List<Integer> ids = null;
+    private List<String> ids = null;
     private List<String> labels = null;
 
     public LessonLabel() {
@@ -17,11 +17,11 @@ public class LessonLabel {
         this.labels = labels;
     }
 
-    public List<Integer> getIds() {
+    public List<String> getIds() {
         return ids;
     }
 
-    public void setIds(List<Integer> ids) {
+    public void setIds(List<String> ids) {
         this.ids = ids;
     }
 }

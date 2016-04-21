@@ -10,7 +10,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.LogOutEvent;
 import ru.ncband.web.client.events.RegistrationEvent;
-import ru.ncband.web.shared.classes.Registration;
+import ru.ncband.web.shared.classes.UserForm;
 import ru.ncband.web.shared.RegularExpressions;
 
 public class UiBinderRegistration extends Composite {
@@ -25,16 +25,22 @@ public class UiBinderRegistration extends Composite {
 
     @UiField
     TextBox firstNameBox;
+    private boolean firstname = false;
     @UiField
     TextBox secondNameBox;
+    private boolean secondname = false;
     @UiField
     TextBox loginBox;
+    private boolean login = false;
     @UiField
     TextBox email;
+    private boolean mail = false;
     @UiField
     TextBox ageBox;
+    private boolean age = false;
     @UiField
     PasswordTextBox passwordBox;
+    private boolean password = false;
     @UiField
     PasswordTextBox passwordRepeatBox;
     @UiField
@@ -56,19 +62,20 @@ public class UiBinderRegistration extends Composite {
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
-        if(passwordBox.getValue().equals(passwordRepeatBox.getValue())) {
+        if(passwordBox.getValue().equals(passwordRepeatBox.getValue()) && password && login
+                && firstname && secondname && age && mail) {
             RegistrationEvent registrationEvent = new RegistrationEvent();
-            Registration registration = new Registration();
+            UserForm userForm = new UserForm();
 
-            registration.setLogin(loginBox.getValue());
-            registration.setPassword(passwordBox.getValue());
-            registration.setAge(ageBox.getValue());
-            registration.setSex(sexBox.getSelectedValue());
-            registration.setFirstname(firstNameBox.getValue());
-            registration.setLastname(secondNameBox.getValue());
-            registration.setMail(email.getValue());
+            userForm.setLogin(loginBox.getValue());
+            userForm.setPassword(passwordBox.getValue());
+            userForm.setAge(ageBox.getValue());
+            userForm.setSex(sexBox.getSelectedValue());
+            userForm.setFirstname(firstNameBox.getValue());
+            userForm.setLastname(secondNameBox.getValue());
+            userForm.setMail(email.getValue());
 
-            registrationEvent.setForm(registration);
+            registrationEvent.setForm(userForm);
             eventBus.fireEvent(registrationEvent);
         }else {
             mainError.setText("Not valid form");
@@ -78,6 +85,7 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("backButton")
     void doBack(ClickEvent event){
         LogOutEvent logOutEvent = new LogOutEvent();
+        clear();
         eventBus.fireEvent(logOutEvent);
     }
 
@@ -85,8 +93,10 @@ public class UiBinderRegistration extends Composite {
     void checkFirstNameBox(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
             statusFirstName.setText("is Ok");
+            firstname = true;
         } else {
             statusFirstName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+            firstname = false;
         }
     }
 
@@ -94,8 +104,10 @@ public class UiBinderRegistration extends Composite {
     void checkSecondNameBox(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
             statusSecondName.setText("is Ok");
+            secondname = true;
         } else {
             statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+            secondname = false;
         }
     }
 
@@ -103,8 +115,10 @@ public class UiBinderRegistration extends Composite {
     void checkLogin(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.LOGIN, event.getValue())) {
             errorLogin.setText("is Ok");
+            login = true;
         } else {
             errorLogin.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
+            login = false;
         }
     }
 
@@ -112,8 +126,10 @@ public class UiBinderRegistration extends Composite {
     void checkAge(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
             errorAge.setText("is Ok");
+            age = true;
         } else {
             errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
+            age = false;
         }
     }
 
@@ -122,8 +138,10 @@ public class UiBinderRegistration extends Composite {
         firstPassword = event.getValue();
         if (RegularExpressions.test(RegularExpressions.PASSWORD, firstPassword)) {
             errorPassword.setText("is Ok");
+            password = true;
         } else {
             errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
+            password = false;
         }
     }
 
@@ -146,13 +164,20 @@ public class UiBinderRegistration extends Composite {
         mainError.setText(msg);
     }
 
-    private void clear(){
+    public void clear(){
+        firstNameBox.setValue("");
+        secondNameBox.setValue("");
+        loginBox.setValue("");
+        passwordBox.setValue("");
+        passwordRepeatBox.setValue("");
+        email.setValue("");
+        ageBox.setValue("");
 
-    }
-
-
-
-    public boolean isValidForm(){
-        return false;
+        firstname = false;
+        secondname = false;
+        login = false;
+        password = false;
+        mail = false;
+        age = false;
     }
 }

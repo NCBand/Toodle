@@ -1,27 +1,24 @@
 package ru.ncband.web.shared.classes;
 
-
-import java.util.List;
-
 public class Answer {
-    private int id;
-    private List<Integer> answers = null;
+    private String id;
+    private int answer;
 
     public Answer() {}
 
-    public List<Integer> getAnswers() {
-        return answers;
+    public int getAnswer() {
+        return answer;
     }
 
-    public void setAnswers(List<Integer> answers) {
-        this.answers = answers;
+    public void setAnswer(int answer) {
+        this.answer = answer;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

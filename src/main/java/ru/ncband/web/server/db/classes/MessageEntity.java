@@ -1,9 +1,6 @@
 package ru.ncband.web.server.db.classes;
 
-import com.google.gwt.i18n.client.LocalizableResource;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "message", schema = "toodle")

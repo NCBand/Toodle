@@ -1,4 +1,4 @@
-package ru.ncband.web.client.widgets.setting;
+package ru.ncband.web.client.widgets.menu.setting;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -10,7 +10,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import ru.ncband.web.client.events.LogOutEvent;
 import ru.ncband.web.shared.RegularExpressions;
-import ru.ncband.web.shared.classes.Registration;
+import ru.ncband.web.shared.classes.UserForm;
 
 public class UiBinderSetting extends Composite {
     interface UiBinderSettingUiBinder extends UiBinder<HTMLPanel, UiBinderSetting> {
@@ -58,7 +58,7 @@ public class UiBinderSetting extends Composite {
 
     @UiHandler("saveButton")
     void doClickSubmit(ClickEvent event) {
-            Registration setting = new Registration();
+            UserForm setting = new UserForm();
 //          нужно заполнить все поля в setting данными из сессии
         if (changeFirstName){
         setting.setFirstname(firstNameBox.getValue());}

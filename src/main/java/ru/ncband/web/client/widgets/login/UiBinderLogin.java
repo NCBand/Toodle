@@ -29,6 +29,7 @@ public class UiBinderLogin extends Composite{
         SignInEvent signInEvent = GWT.create(SignInEvent.class);
         signInEvent.setLogin(loginBox.getValue());
         signInEvent.setPassword(passwordBox.getValue());
+        clear();
         eventBus.fireEvent(signInEvent);
     }
 
@@ -52,5 +53,6 @@ public class UiBinderLogin extends Composite{
     public void clear(){
         loginBox.setValue("");
         passwordBox.setValue("");
+        errorLabel.setText("");
     }
 }
