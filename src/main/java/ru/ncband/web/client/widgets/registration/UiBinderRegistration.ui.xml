@@ -3,9 +3,6 @@
     <ui:style src="../../../../../../css/registration.css"/>
     <g:HTMLPanel styleName="{style.backview}">
         <div>
-            <g:VerticalPanel>
-                <g:Label text="Registration" styleName="{style.headerText}"/>
-            </g:VerticalPanel>
             <g:VerticalPanel styleName="{style.background}">
                 <g:HorizontalPanel>
                     <g:Label text="First name:" styleName="{style.blackText}"/>

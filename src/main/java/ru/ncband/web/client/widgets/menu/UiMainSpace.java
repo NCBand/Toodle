@@ -164,6 +164,7 @@ public class UiMainSpace extends Composite {
                 String dateString = DateTimeFormat.getFormat("dd"+ BasicProperty.dateSeparator()+
                         "MM"+ BasicProperty.dateSeparator() +
                         "yyyy").format(datePicker.getValue());
+                date_title.setText(dateString);
 
                 MessageService service = GWT.create(MessageService.class);
                 service.getMessages(dateString, new MethodCallback<Messages>() {

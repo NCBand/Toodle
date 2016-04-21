@@ -7,10 +7,17 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.OutEvent;
+import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
+import ru.ncband.web.shared.classes.Answer;
 import ru.ncband.web.shared.classes.Lesson;
+import ru.ncband.web.shared.classes.Status;
+import ru.ncband.web.shared.properties.BasicProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UiTestForm extends Composite{
@@ -32,20 +39,28 @@ public class UiTestForm extends Composite{
 
     @UiHandler("done")
     void doClickDone(ClickEvent event){
-        boolean res = true;
-
+        Answer answer = new Answer();
+        List<String> list = new ArrayList<String>();
         for (Widget widget:
              tasks) {
             if(widget.getClass().equals(TestCell.class)){
-                res = res && ((TestCell)widget).check();
+                ((TestCell)widget).check(list);
             }
         }
+        answer.setAnswer(list);
 
-        if(res){
-            error.setText("done");
-        }else {
-            error.setText("wrong");
-        }
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.check(answer, new MethodCallback<Status>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {
+                error.setText("Server error");
+            }
+
+            @Override
+            public void onSuccess(Method method, Status answer) {
+                error.setText(answer.getMsg());
+            }
+        });
     }
 
     @UiHandler("back")

@@ -1,24 +1,17 @@
 package ru.ncband.web.shared.classes;
 
+import java.util.List;
+
 public class Answer {
-    private String id;
-    private int answer;
+    private List<String> answer; //// TODO: 21.04.2016  
 
     public Answer() {}
 
-    public int getAnswer() {
+    public List<String> getAnswer() {
         return answer;
     }
 
-    public void setAnswer(int answer) {
+    public void setAnswer(List<String> answer) {
         this.answer = answer;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

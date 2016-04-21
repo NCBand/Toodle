@@ -17,4 +17,6 @@ public class NewLessonMaker extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.eventBus = bus;
     }
+
+
 }

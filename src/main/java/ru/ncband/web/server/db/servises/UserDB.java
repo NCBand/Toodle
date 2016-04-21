@@ -93,7 +93,7 @@ public class UserDB {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
             Query query = session.createQuery("delete UserEntity where id =:param");
-            query.setParameter("param",id);
+            query.setParameter("param",Integer.parseInt(id));
 
             int res = query.executeUpdate();
             transaction.commit();
@@ -131,7 +131,7 @@ public class UserDB {
                 user.setLogin(userForm.getLogin());
             }
             if(userForm.getSex() != null){
-                user.setSex(userForm.getSex().substring(0,1));
+                user.setSex(userForm.getSex());
             }
             if(userForm.getPassword() != null){
                 String salting = Salt.salting(user.getSalt().toString(), userForm.getPassword());

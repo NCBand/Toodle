@@ -10,6 +10,7 @@ import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TaskDB {
@@ -121,20 +122,30 @@ public class TaskDB {
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM AnswersEntity where task =: param");
-            query.setParameter("param", answer.getId());
+            Query query = session.createQuery("FROM AnswersEntity");
 
             ArrayList<AnswersEntity> answers = (ArrayList<AnswersEntity>) query.list();
 
             Status status = new Status();
             transaction.commit();
 
-            if(answers.get(answer.getAnswer()).getRght() == 1){
+            int right = 0;
+            List<String> varient = answer.getAnswer();
+            for (String tmp:
+                 varient) {
+                for (AnswersEntity base:
+                     answers) {
+                    if(tmp.equals(Integer.toString(base.getId())) && base.getRght() == 1){ //// TODO: 21.04.2016  
+                       right++; 
+                    }
+                }
+            }
+
+            if(right == varient.size()){
                 status.setMsg(BasicProperty.done());
             }else{
                 status.setMsg(BasicProperty.fault());
             }
-
             return status;
         } catch (NullPointerException e){
             e.printStackTrace();

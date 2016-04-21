@@ -34,7 +34,7 @@ public class UiBinderRegistration extends Composite {
     private boolean login = false;
     @UiField
     TextBox email;
-    private boolean mail = false;
+    private boolean mail = true;
     @UiField
     TextBox ageBox;
     private boolean age = false;

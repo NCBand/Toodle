@@ -33,7 +33,7 @@ public interface UserService extends RestService {
     @Path("/user/edit")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    void changeUserData(UserForm userForm_form,
+    void changeUserData(UserForm userForm,
                         MethodCallback<Status> callback);
 
     @POST

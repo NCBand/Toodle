@@ -79,11 +79,7 @@ public class UserController {
         HttpSession session = request.getSession();
         Id id = (Id)session.getAttribute(RequestProperty.sessionName());
         UserDB userDB = new UserDB();
-        Status status = userDB.delete(id.getId());
-        if(status.getMsg().equals(BasicProperty.fault())){
-            session.removeAttribute(RequestProperty.sessionName());
-        }
-        return status;
+        return userDB.delete(id.getId());
     }
 }
 
