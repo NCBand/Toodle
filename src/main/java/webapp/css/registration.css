@@ -1,21 +1,29 @@
+html{
+    background: url(../image/Toodle.png) no-repeat top;
+}
+
 body {
-     background-color: white;
-     color: black;
-     font-family: Arial, sans-serif;
-     font-size: small;
-     margin: 8px;
- }
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: small;
+    margin: 8px;
+}
 
 .blackText {
-    font-family: Arial, Sans-serif;
-    color: #000000;
+    color: white;
     font-size: 11px;
     text-align: left;
 }
 
 .redText {
-    font-family: Arial, Sans-serif;
     color: darkred;
+    font-size: 11px;
+    text-align: left;
+}
+
+.greenText {
+    color: green;
     font-size: 11px;
     text-align: left;
 }
@@ -45,11 +53,11 @@ body {
     border: 1px none transparent;
     color: #000000;
     font-size: 11px;
-    margin-left: 41%;
-    margin-top: 30%;
+    margin-left: 45%;
+    margin-top: 25%;
     padding: 6px;
 }
 
-.backview {
-    background-image: url(/image/Toodle.png);
+.listBoxStyle{
+    font-size: 11px;
 }

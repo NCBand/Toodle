@@ -1,10 +1,10 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:style src="../../../../../../css/mainspace.css"/>
+    <ui:style src="../../../../../../webapp/css/mainspace.css"/>
     <g:HTMLPanel>
         <div>
             <g:MenuBar ui:field="menu" styleName="{style.header}"/>
-            <g:HorizontalPanel>
+            <g:HorizontalPanel styleName="{style.field}">
                 <g:VerticalPanel ui:field="left" styleName="{style.left}"/>
                 <g:VerticalPanel styleName="{style.right_field}">
                     <g:VerticalPanel ui:field="calendar" styleName="{style.right}">

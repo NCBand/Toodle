@@ -22,6 +22,6 @@ public interface MessageService extends RestService {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     void setMessage(@FormParam("date") String date,
-                    @FormParam("text") String message,
+                    @FormParam("message") String message,
                     MethodCallback<Status> messageMethodCallback);
 }

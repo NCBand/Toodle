@@ -6,48 +6,43 @@ body {
     margin: 8px;
 }
 
-.header{
-    background-color: #999999;
-    border: 1px none transparent;
+.blackText {
     color: #000000;
     font-size: 11px;
-    width: 1000px;
+    text-align: left;
 }
 
-.left{
-    background: #B8B8B8;
-    position:relative;
-    margin: 10px 10px 0 0;
-    top:0;
-    left:0;
-    width:800px;
-    height: 500px;
+.redText {
+    color: darkred;
+    font-size: 11px;
+    text-align: left;
 }
 
-.right{
-    background: #B8B8B8;
-    position:relative;
-    margin: 10px 10px 0 0;
+
+.greenText {
+    color: green;
+    font-size: 11px;
+    text-align: left;
 }
 
-.right_field{
-    position:relative;
-    margin: 10px 10px 0 0;
-    top:0;
-    right:0;
-    width: 20%;
-    height: 500px;
-}
-
-.button {
+.loginButton {
+    border: 1px solid #3399DD;
     color: #FFFFFF;
     background: #555555;
     font-size: 11px;
     font-weight: bold;
     margin: 0 5px 0 0;
     padding: 4px 10px 5px;
-    position: relative;
-    left: 0;
+    text-shadow: 0 -1px 0 #3399DD;
+}
+
+.box {
+    border: 1px solid #AACCEE;
+    display: block;
+    font-size: 12px;
+    margin: 0 0 5px;
+    padding: 3px;
+    width: 203px;
 }
 
 .background {

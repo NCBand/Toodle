@@ -86,6 +86,7 @@
       </element>
       <element id="javaee-facet-resources" facet="Toodle/web/Web" />
       <element id="gwt-compiler-output" facet="Toodle/gwt/GWT" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/webapp" />
     </root>
   </artifact>
 </component>
