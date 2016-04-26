@@ -1,10 +1,8 @@
 package ru.ncband.web.shared.classes;
 
-import java.util.List;
-
 public class Lesson {
     private String id = null;
-    private List<String> tasks = null;
+    private String name = null;
 
     public Lesson() {}
 
@@ -16,11 +14,11 @@ public class Lesson {
         this.id = id;
     }
 
-    public List<String> getTasks() {
-        return tasks;
+    public String getName() {
+        return name;
     }
 
-    public void setTasks(List<String> tasks) {
-        this.tasks = tasks;
+    public void setName(String name) {
+        this.name = name;
     }
 }

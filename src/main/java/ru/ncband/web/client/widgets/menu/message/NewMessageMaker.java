@@ -54,12 +54,14 @@ public class NewMessageMaker extends Composite {
             @Override
             public void onFailure(Method method, Throwable throwable) {
                 error.setText("Server error");
+                error.getElement().getStyle().setColor("red");
                 done = false;
             }
 
             @Override
             public void onSuccess(Method method, Status status) {
                 error.setText(status.getMsg());
+                error.getElement().getStyle().setColor("green");
                 done = status.getMsg().equals(BasicProperty.done());
             }
         });
@@ -68,6 +70,8 @@ public class NewMessageMaker extends Composite {
             clear();
             OutEvent outEvent = new OutEvent();
             eventBus.fireEvent(outEvent);
+        }else{
+            error.getElement().getStyle().setColor("red");
         }
     }
 

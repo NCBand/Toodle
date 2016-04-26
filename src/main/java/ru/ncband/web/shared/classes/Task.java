@@ -1,22 +1,13 @@
 package ru.ncband.web.shared.classes;
 
-import java.util.List;
 
 public class Task {
     private String id;
     private String type;
-    private List<String> answer_ids = null;
-    private List<String> texts = null;
+    private String question;
+    private byte[] image = null;
 
     public Task(){}
-
-    public List<String> getTexts() {
-        return texts;
-    }
-
-    public void setTexts(List<String> texts) {
-        this.texts = texts;
-    }
 
     public String getId() {
         return id;
@@ -34,11 +25,19 @@ public class Task {
         this.type = type;
     }
 
-    public List<String> getAnswer_ids() {
-        return answer_ids;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setAnswer_ids(List<String> answer_ids) {
-        this.answer_ids = answer_ids;
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

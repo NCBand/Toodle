@@ -38,7 +38,7 @@ public class TestCell extends Composite {
     }
 
     public void setTask(String task){
-        TaskService taskService = GWT.create(TaskService.class);
+        /*TaskService taskService = GWT.create(TaskService.class);
         taskService.getTask(task, new MethodCallback<Task>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {}
@@ -65,7 +65,7 @@ public class TestCell extends Composite {
                     }
                 }
             }
-        });
+        });*/
     }
 
     public void check(List<String> answers){

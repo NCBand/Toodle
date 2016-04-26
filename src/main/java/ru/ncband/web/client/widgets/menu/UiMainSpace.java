@@ -58,7 +58,7 @@ public class UiMainSpace extends Composite {
     MenuBar menu;
     private MenuBar task = null;
 
-    public UiMainSpace(EventBus bus) {
+    public UiMainSpace(final EventBus bus) {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.eventBus = bus;
 
@@ -66,18 +66,15 @@ public class UiMainSpace extends Composite {
         UiFisrtView firstview = new UiFisrtView();
         UiBinderSetting setting = new UiBinderSetting(bus);
         NewMessageMaker messageMaker = new NewMessageMaker(bus);
-        NewLessonMaker taskMaker = new NewLessonMaker(bus);
 
         form.setVisible(false);
         setting.setVisible(false);
         firstview.setVisible(true);
         messageMaker.setVisible(false);
-        taskMaker.setVisible(false);
 
         left.add(setting);
         left.add(form);
         left.add(firstview);
-        left.add(taskMaker);
         left.add(messageMaker);
 
         final DatePicker datePicker = new DatePicker();
@@ -107,13 +104,11 @@ public class UiMainSpace extends Composite {
             @Override
             public void execute() {
                 for (Widget widget:
-                left){
-                    if(widget.getClass().equals(NewLessonMaker.class)){
-                        widget.setVisible(true);
-                    }else {
-                        widget.setVisible(false);
-                    }
+                    left){
+                    widget.setVisible(false);
                 }
+                NewLessonMaker newLessonMaker = new NewLessonMaker(bus);
+                left.add(newLessonMaker);
             }
         }));
         menu.addItem(new MenuItem("Settings",new Command(){
@@ -190,6 +185,9 @@ public class UiMainSpace extends Composite {
                     }else{
                         widget.setVisible(false);
                     }
+                    if(widget.getClass().equals(NewLessonMaker.class)){
+                        widget.removeFromParent();
+                    }
                 }
             }
         });
@@ -248,24 +246,16 @@ public class UiMainSpace extends Composite {
 
         @Override
         public void execute() {
-            TaskService taskService = GWT.create(TaskService.class);
-            taskService.getLesson(id, new MethodCallback<Lesson>() {
-                @Override
-                public void onFailure(Method method, Throwable throwable) {}
-
-                @Override
-                public void onSuccess(Method method, Lesson lesson) {
                     for (Widget widget:
                          left) {
                         if(widget.getClass().equals(UiTestForm.class)){
                             widget.setVisible(true);
-                            ((UiTestForm)widget).setTask(lesson, name);
+                            ((UiTestForm)widget).setTask(id, name);
                         }else {
                             widget.setVisible(false);
                         }
                     }
                 }
-            });
+            }
         }
-    }
-}
+

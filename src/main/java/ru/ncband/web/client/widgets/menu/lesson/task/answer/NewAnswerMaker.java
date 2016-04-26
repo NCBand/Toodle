@@ -26,7 +26,7 @@ public class NewAnswerMaker extends Composite {
     @UiHandler("delete")
     void deleteAnswer(ClickEvent event){
         DeleteEvent deleteEvent = new DeleteEvent();
-        deleteEvent.setId(id);
+        deleteEvent.setId(Integer.toString(id));
         eventBus.fireEvent(deleteEvent);
     }
 

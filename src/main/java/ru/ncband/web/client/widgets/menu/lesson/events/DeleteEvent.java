@@ -6,13 +6,13 @@ import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 public class DeleteEvent extends GwtEvent<DeleteEventHandler> {
     public static Type<DeleteEventHandler> TYPE = new Type<DeleteEventHandler>();
 
-    private int id;
+    private String id = null;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

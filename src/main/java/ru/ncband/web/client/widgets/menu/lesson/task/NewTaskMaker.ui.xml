@@ -1,16 +1,22 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style src="../../../../../../../../webapp/css/lessonmaker.css"/>
     <g:HTMLPanel>
-        <g:VerticalPanel>
-            <g:TextArea ui:field="question" text="Set text"/>
-            <g:FileUpload ui:field="question_image"/>
-            <g:HorizontalPanel>
-                <g:RadioButton name="type" ui:field="text" text="Text"/>
-                <g:RadioButton name="type" ui:field="test" text="Test"/>
-                <g:RadioButton name="type" ui:field="multi" text="Multitest"/>
-            </g:HorizontalPanel>
+        <g:VerticalPanel styleName="{style.task}">
+            <g:HorizontalPanel><g:VerticalPanel>
+                <g:TextArea ui:field="question"/>
+                <g:FormPanel ui:field="question_image">
+                    <g:FileUpload ui:field="upload"/>
+                </g:FormPanel>
+                <g:HorizontalPanel>
+                    <g:RadioButton name="type" ui:field="text" text="Text"/>
+                    <g:RadioButton name="type" ui:field="test" text="Test"/>
+                    <g:RadioButton name="type" ui:field="multi" text="Multitest"/>
+                </g:HorizontalPanel>
+            </g:VerticalPanel>
             <g:VerticalPanel ui:field="answers"/>
-            <g:HorizontalPanel>
+            </g:HorizontalPanel>
+            <g:HorizontalPanel styleName="{style.center}">
                 <g:Button ui:field="delete" text="Delete task"/>
                 <g:Button ui:field="add" text="Add Answer"/>
             </g:HorizontalPanel>

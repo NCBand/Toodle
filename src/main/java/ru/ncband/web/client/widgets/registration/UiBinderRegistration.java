@@ -59,6 +59,8 @@ public class UiBinderRegistration extends Composite {
     ListBox sexBox;
     @UiField
     Label mainError;
+    @UiField
+    Label statusEmail;
 
     @UiHandler("loginButton")
     void doClickSubmit(ClickEvent event) {
@@ -92,9 +94,11 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("firstNameBox")
     void checkFirstNameBox(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
-            statusFirstName.setText("is Ok");
+            statusFirstName.setText("OK");
+            statusFirstName.getElement().getStyle().setColor("green");
             firstname = true;
         } else {
+            statusFirstName.getElement().getStyle().setColor("red");
             statusFirstName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
             firstname = false;
         }
@@ -103,9 +107,11 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("secondNameBox")
     void checkSecondNameBox(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
-            statusSecondName.setText("is Ok");
+            statusSecondName.getElement().getStyle().setColor("green");
+            statusSecondName.setText("OK");
             secondname = true;
         } else {
+            statusSecondName.getElement().getStyle().setColor("red");
             statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
             secondname = false;
         }
@@ -114,9 +120,11 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("loginBox")
     void checkLogin(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.LOGIN, event.getValue())) {
-            errorLogin.setText("is Ok");
+            errorLogin.getElement().getStyle().setColor("green");
+            errorLogin.setText("OK");
             login = true;
         } else {
+            errorLogin.getElement().getStyle().setColor("red");
             errorLogin.setText(RegularExpressions.REQUIREMENT_FOR_LOGIN);
             login = false;
         }
@@ -125,11 +133,27 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("ageBox")
     void checkAge(ValueChangeEvent<String> event) {
         if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
-            errorAge.setText("is Ok");
+            errorAge.getElement().getStyle().setColor("green");
+            errorAge.setText("OK");
             age = true;
         } else {
+            errorAge.getElement().getStyle().setColor("red");
             errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
             age = false;
+        }
+    }
+
+
+    @UiHandler("email")
+    void checkMail(ValueChangeEvent<String> event){
+        if (RegularExpressions.test(RegularExpressions.EMAIL, event.getValue())) {
+            statusEmail.getElement().getStyle().setColor("green");
+            statusEmail.setText("OK");
+            mail = true;
+        } else {
+            statusEmail.getElement().getStyle().setColor("red");
+            statusEmail.setText(RegularExpressions.REQUIREMENT_FOR_EMAIL);
+            mail = false;
         }
     }
 
@@ -137,9 +161,11 @@ public class UiBinderRegistration extends Composite {
     void checkPassword(ValueChangeEvent<String> event) {
         firstPassword = event.getValue();
         if (RegularExpressions.test(RegularExpressions.PASSWORD, firstPassword)) {
-            errorPassword.setText("is Ok");
+            errorPassword.getElement().getStyle().setColor("green");
+            errorPassword.setText("OK");
             password = true;
         } else {
+            errorPassword.getElement().getStyle().setColor("red");
             errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
             password = false;
         }
@@ -148,9 +174,11 @@ public class UiBinderRegistration extends Composite {
     @UiHandler("passwordRepeatBox")
     void checkRepeatPassword(ValueChangeEvent<String> event) {
         if (!event.getValue().equals(firstPassword)) {
+            errorRepeatPassword.getElement().getStyle().setColor("red");
             errorRepeatPassword.setText("doesn't match");
         } else {
-            errorRepeatPassword.setText("is Ok!");
+            errorRepeatPassword.getElement().getStyle().setColor("green");
+            errorRepeatPassword.setText("OK");
         }
     }
 
@@ -158,6 +186,9 @@ public class UiBinderRegistration extends Composite {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
         this.eventBus = bus;
+
+        sexBox.addItem("m");
+        sexBox.addItem("f");
     }
 
     public void setMainError(String msg){

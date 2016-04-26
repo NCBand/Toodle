@@ -8,7 +8,7 @@
                 <g:VerticalPanel ui:field="left" styleName="{style.left}"/>
                 <g:VerticalPanel styleName="{style.right_field}">
                     <g:VerticalPanel ui:field="calendar" styleName="{style.right}">
-                        <g:Label ui:field="date_title"/>
+                        <g:Label ui:field="date_title" styleName="{style.center}"/>
                     </g:VerticalPanel>
                     <g:VerticalPanel ui:field="message" styleName="{style.right}">
                         <g:Label text="Messages:"/>

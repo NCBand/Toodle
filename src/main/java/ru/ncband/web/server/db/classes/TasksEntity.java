@@ -8,7 +8,6 @@ public class TasksEntity {
     private int id;
     private String question;
     private int type;
-    private String name;
     private int lesson;
 
     @Id
@@ -42,16 +41,6 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Basic
     @Column(name = "lesson")
     public int getLesson() {
         return lesson;
@@ -69,8 +58,7 @@ public class TasksEntity {
         TasksEntity that = (TasksEntity) o;
 
         return id == that.id && type == that.type &&
-                lesson == that.lesson && (question != null ? question.equals(that.question) : that.question == null &&
-                (name != null ? name.equals(that.name) : that.name == null));
+                lesson == that.lesson && (question != null ? question.equals(that.question) : that.question == null);
 
     }
 
@@ -79,7 +67,6 @@ public class TasksEntity {
         int result = id;
         result = 31 * result + (question != null ? question.hashCode() : 0);
         result = 31 * result + type;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + lesson;
         return result;
     }

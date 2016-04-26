@@ -20,4 +20,8 @@ public class RequestProperty {
     public static String sessionName(){
         return "userId";
     }
+
+    public static String id(){
+        return "id";
+    }
 }

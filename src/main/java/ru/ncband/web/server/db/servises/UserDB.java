@@ -64,9 +64,11 @@ public class UserDB {
 
             person.setFirstname(userForm.getFirstname());
             person.setLastname(userForm.getLastname());
-            person.setAge(Integer.getInteger(userForm.getAge()));
+
+            Integer age = new Integer(userForm.getAge());
+            person.setAge(age);
             person.setMail(userForm.getMail());
-            person.setSex(userForm.getSex()); //// TODO: 05.04.2016
+            person.setSex(userForm.getSex());
 
             Generator generator = Generator.getInstance();
             int salt = generator.createNumInt();
@@ -97,7 +99,7 @@ public class UserDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            if(res == 0){
+            if(res != 0){
                 return new Status(BasicProperty.done());
             }
             return new Status(BasicProperty.fault());
@@ -140,7 +142,7 @@ public class UserDB {
 
             session.update(user);
             transaction.commit();
-
+            return new Status(BasicProperty.done());
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {

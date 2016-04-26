@@ -1,0 +1,11 @@
+.center{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.task .center{
+    background-color: burlywood;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

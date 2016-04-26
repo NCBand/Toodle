@@ -31,8 +31,6 @@ public class UiBinderSetting extends Composite {
     private boolean changeEmail = false;
     private boolean changeAge = false;
 
-    private boolean dlt = false;
-
     @UiField
     TextBox firstNameBox;
     @UiField
@@ -112,24 +110,21 @@ public class UiBinderSetting extends Composite {
             @Override
             public void onFailure(Method method, Throwable throwable) {
                 mainError.setText("Server Error");
-                dlt = false;
             }
 
             @Override
             public void onSuccess(Method method, Status status) {
                 if(status.getMsg().equals(BasicProperty.done())){
-                    dlt = true;
+                    LogOutEvent logOutEvent = new LogOutEvent();
+                    eventBus.fireEvent(logOutEvent);
                 }else {
                     mainError.setText("Server Error");
-                    dlt = false;
                 }
             }
         });
 
-        if (dlt) {
-            LogOutEvent logOutEvent = new LogOutEvent();
-            eventBus.fireEvent(logOutEvent);
-        }
+
+
     }
 
     @UiHandler("backButton")

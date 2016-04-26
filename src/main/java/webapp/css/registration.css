@@ -22,12 +22,6 @@ body {
     text-align: left;
 }
 
-.greenText {
-    color: green;
-    font-size: 11px;
-    text-align: left;
-}
-
 .loginButton {
     border: 1px solid #3399DD;
     color: #FFFFFF;
@@ -56,6 +50,11 @@ body {
     margin-left: 45%;
     margin-top: 25%;
     padding: 6px;
+}
+
+.center{
+    position: relative;
+    margin: 10px auto;
 }
 
 .listBoxStyle{

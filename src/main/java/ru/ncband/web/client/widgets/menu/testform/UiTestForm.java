@@ -39,7 +39,7 @@ public class UiTestForm extends Composite{
 
     @UiHandler("done")
     void doClickDone(ClickEvent event){
-        Answer answer = new Answer();
+        /*Answer answer = new Answer();
         List<String> list = new ArrayList<String>();
         for (Widget widget:
              tasks) {
@@ -60,7 +60,7 @@ public class UiTestForm extends Composite{
             public void onSuccess(Method method, Status answer) {
                 error.setText(answer.getMsg());
             }
-        });
+        });*/
     }
 
     @UiHandler("back")
@@ -79,17 +79,19 @@ public class UiTestForm extends Composite{
         this.eventbus = bus;
     }
 
-    public void setTask(Lesson task, String name){
+    public void setTask(String id, String name){
         tasks.clear();
         this.task.setText(name);
-        List<String> ids = task.getTasks();
+
+        /*TaskService taskService = GWT.create(TaskService.class);
+        taskService.getIds();
 
         for (String example:
              ids) {
             TestCell cell = new TestCell();
             cell.setTask(example);
             tasks.add(cell);
-        }
+        }*/
     }
 
     private void clear(){

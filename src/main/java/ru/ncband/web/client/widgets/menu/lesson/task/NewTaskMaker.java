@@ -8,9 +8,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.lesson.events.DeleteEvent;
 import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 import ru.ncband.web.client.widgets.menu.lesson.task.answer.NewAnswerMaker;
+import ru.ncband.web.shared.classes.Status;
+import ru.ncband.web.shared.classes.Task;
 import ru.ncband.web.shared.properties.LessonProperty;
 
 public class NewTaskMaker extends Composite {
@@ -20,47 +25,55 @@ public class NewTaskMaker extends Composite {
     private static NewTaskMakerUI ourUiBinder = GWT.create(NewTaskMakerUI.class);
     private EventBus eventBus;
     private EventBus answerBus;
-    private int id = 0;
     private String type;
+    private String id;
 
     @UiField
     TextArea question;
 
     @UiField
-    FileUpload question_image;
+    FileUpload upload;
+
+    @UiField
+    FormPanel question_image;
 
     @UiField
     VerticalPanel answers;
-    private int count = 0;
 
     @UiField
     Button add;
 
-    @UiHandler("text")
-    void setText(ClickEvent event){
-        answers.setVisible(false);
-        add.setVisible(false);
-        type = LessonProperty.typeText();
-    }
+    @UiField
+    RadioButton text;
+    @UiField
+    RadioButton test;
+    @UiField
+    RadioButton multi;
 
     @UiHandler("test")
     void setTest(ClickEvent event){
-        answers.setVisible(true);
         add.setVisible(true);
         type = LessonProperty.typeTest();
+        answers.setVisible(true);
+    }
+
+    @UiHandler("text")
+    void setText(ClickEvent clickEvent){
+        add.setVisible(false);
+        type = LessonProperty.typeTest();
+        answers.setVisible(false);
     }
 
     @UiHandler("multi")
     void setMulti(ClickEvent event){
-        answers.setVisible(true);
         add.setVisible(true);
         type = LessonProperty.typeMultiTest();
+        answers.setVisible(true);
     }
 
     @UiHandler("add")
     void addAnswer(ClickEvent event){
-        NewAnswerMaker newAnswerMaker = new NewAnswerMaker(answerBus, count);
-        count++;
+        NewAnswerMaker newAnswerMaker = new NewAnswerMaker(answerBus, 0);
         answers.add(newAnswerMaker);
     }
 
@@ -71,28 +84,59 @@ public class NewTaskMaker extends Composite {
         eventBus.fireEvent(deleteEvent);
     }
 
-    public NewTaskMaker(EventBus bus, int id) {
+    @UiHandler("upload")
+    void saveImage(ClickEvent clickEvent){
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.saveId(id, new MethodCallback<Status>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {}
+
+            @Override
+            public void onSuccess(Method method, Status status) {
+                question_image.submit();
+            }
+        });
+    }
+
+    public NewTaskMaker(EventBus bus, String lesson_id) {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.eventBus = bus;
-        this.id = id;
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.newTask(lesson_id, new MethodCallback<String>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {}
+
+            @Override
+            public void onSuccess(Method method, String s) {
+                id = s;
+
+                text.setName(s);
+                test.setName(s);
+                test.setName(s);
+            }
+        });
 
         answerBus = new SimpleEventBus();
         answerBus.addHandler(DeleteEvent.TYPE, new DeleteEventHandler() {
             @Override
             public void onDeleteAnswer(DeleteEvent event) {
-                for (Widget widget:
+                /*for (Widget widget:
                      answers) {
-                    if(((NewAnswerMaker)widget).getId() == event.getId()){
+                    if(((NewAnswerMaker)widget).getId()){
                         ((NewAnswerMaker)widget).clean();
                         answers.remove(widget);
                         break;
                     }
-                }
+                }*/
             }
         });
+
+        question_image.setEncoding(FormPanel.ENCODING_MULTIPART);
+        question_image.setMethod(FormPanel.METHOD_POST);
+        question_image.setAction(GWT.getModuleBaseURL()+"/lesson/upload_task");
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
 
@@ -105,12 +149,25 @@ public class NewTaskMaker extends Composite {
             widget.removeFromParent();
         }
 
+        id = null;
         answers.clear();
         answerBus = null;
         eventBus = null;
     }
 
     public void save(){
+        Task task = new Task();
+        task.setId(id);
+        task.setQuestion(question.getText());
+        task.setType(type);
 
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.saveTask(task, new MethodCallback<Status>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {}
+
+            @Override
+            public void onSuccess(Method method, Status status) {}
+        });
     }
 }

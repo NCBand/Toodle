@@ -1,18 +1,17 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style src="../../../../../../../webapp/css/messagemaker.css"/>
     <g:HTMLPanel>
-        <g:VerticalPanel>
-            <g:HorizontalPanel>
-                <g:VerticalPanel ui:field="date_field">
-                    <g:Label text="Select date for message:"/>
-                </g:VerticalPanel>
+        <g:VerticalPanel styleName="{style.center}">
+            <g:HorizontalPanel >
+                <g:VerticalPanel ui:field="date_field"/>
                 <g:VerticalPanel>
                     <g:Label text="Print your message"/>
                     <g:TextArea ui:field="message"/>
                 </g:VerticalPanel>
             </g:HorizontalPanel>
-            <g:Label ui:field="error"/>
-            <g:HorizontalPanel>
+            <g:Label ui:field="error" styleName="{style.center}"/>
+            <g:HorizontalPanel styleName="{style.center}">
                 <g:Button ui:field="back" text="Back"/>
                 <g:Button ui:field="create" text="Create"/>
             </g:HorizontalPanel>
