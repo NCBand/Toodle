@@ -18,7 +18,10 @@
                     <g:Label ui:field="statusSecondName" styleName="{style.blackText}"/>
                 </g:HorizontalPanel>
                 <g:TextBox ui:field="secondNameBox" styleName="{style.box}"/>
-                <g:Label text="Change e-mail:" styleName="{style.blackText}"/>
+                <g:HorizontalPanel>
+                    <g:Label text="Change e-mail:" styleName="{style.blackText}"/>
+                    <g:Label ui:field="errorMail" styleName="{style.blackText}"/>
+                </g:HorizontalPanel>
                 <g:TextBox ui:field="email" styleName="{style.box}"/>
                 <g:HorizontalPanel>
                     <g:Label text="Change age: " styleName="{style.blackText}"/>

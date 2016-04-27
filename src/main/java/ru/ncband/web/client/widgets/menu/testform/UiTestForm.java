@@ -12,13 +12,10 @@ import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
-import ru.ncband.web.shared.classes.Answer;
-import ru.ncband.web.shared.classes.Lesson;
+import ru.ncband.web.shared.classes.Answers;
 import ru.ncband.web.shared.classes.Status;
 import ru.ncband.web.shared.properties.BasicProperty;
-
-import java.util.ArrayList;
-import java.util.List;
+import ru.ncband.web.shared.properties.LessonProperty;
 
 public class UiTestForm extends Composite{
     interface UiBinderLoginUiBinder extends UiBinder<HTMLPanel, UiTestForm> {
@@ -39,28 +36,32 @@ public class UiTestForm extends Composite{
 
     @UiHandler("done")
     void doClickDone(ClickEvent event){
-        /*Answer answer = new Answer();
-        List<String> list = new ArrayList<String>();
+        Answers answers = new Answers();
         for (Widget widget:
              tasks) {
             if(widget.getClass().equals(TestCell.class)){
-                ((TestCell)widget).check(list);
+                ((TestCell)widget).check(answers);
             }
         }
-        answer.setAnswer(list);
 
         TaskService taskService = GWT.create(TaskService.class);
-        taskService.check(answer, new MethodCallback<Status>() {
+        taskService.check(answers, new MethodCallback<Status>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
                 error.setText("Server error");
+                error.getElement().getStyle().setColor("red");
             }
 
             @Override
             public void onSuccess(Method method, Status answer) {
                 error.setText(answer.getMsg());
+                if(answer.getMsg().equals(BasicProperty.done())){
+                    error.getElement().getStyle().setColor("green");
+                }else {
+                    error.getElement().getStyle().setColor("red");
+                }
             }
-        });*/
+        });
     }
 
     @UiHandler("back")
@@ -80,23 +81,21 @@ public class UiTestForm extends Composite{
     }
 
     public void setTask(String id, String name){
-        tasks.clear();
         this.task.setText(name);
 
-        /*TaskService taskService = GWT.create(TaskService.class);
-        taskService.getIds();
-
-        for (String example:
-             ids) {
-            TestCell cell = new TestCell();
-            cell.setTask(example);
-            tasks.add(cell);
-        }*/
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.getIds(id, LessonProperty.task());
     }
 
     private void clear(){
         error.setText("");
         task.setText("");
+
+        for (Widget widget:
+             tasks) {
+            ((TestCell)widget).clear();
+        }
+
         tasks.clear();
     }
 }

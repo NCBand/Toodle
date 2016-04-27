@@ -1,6 +1,7 @@
 package ru.ncband.web.client.widgets.menu.lesson.task;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -73,7 +74,7 @@ public class NewTaskMaker extends Composite {
 
     @UiHandler("add")
     void addAnswer(ClickEvent event){
-        NewAnswerMaker newAnswerMaker = new NewAnswerMaker(answerBus, 0);
+        NewAnswerMaker newAnswerMaker = new NewAnswerMaker(answerBus, id, type);
         answers.add(newAnswerMaker);
     }
 
@@ -85,17 +86,8 @@ public class NewTaskMaker extends Composite {
     }
 
     @UiHandler("upload")
-    void saveImage(ClickEvent clickEvent){
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.saveId(id, new MethodCallback<Status>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {}
-
-            @Override
-            public void onSuccess(Method method, Status status) {
-                question_image.submit();
-            }
-        });
+    void saveImage(ChangeEvent event){
+        question_image.submit();
     }
 
     public NewTaskMaker(EventBus bus, String lesson_id) {
@@ -113,6 +105,7 @@ public class NewTaskMaker extends Composite {
                 text.setName(s);
                 test.setName(s);
                 test.setName(s);
+                upload.setName(id);
             }
         });
 
@@ -120,20 +113,20 @@ public class NewTaskMaker extends Composite {
         answerBus.addHandler(DeleteEvent.TYPE, new DeleteEventHandler() {
             @Override
             public void onDeleteAnswer(DeleteEvent event) {
-                /*for (Widget widget:
+                for (Widget widget:
                      answers) {
-                    if(((NewAnswerMaker)widget).getId()){
+                    if(((NewAnswerMaker)widget).getId().equals(event.getId())){
                         ((NewAnswerMaker)widget).clean();
                         answers.remove(widget);
                         break;
                     }
-                }*/
+                }
             }
         });
 
         question_image.setEncoding(FormPanel.ENCODING_MULTIPART);
         question_image.setMethod(FormPanel.METHOD_POST);
-        question_image.setAction(GWT.getModuleBaseURL()+"/lesson/upload_task");
+        question_image.setAction(GWT.getHostPageBaseURL()+"lesson/upload_task");
     }
 
     public String getId(){
@@ -153,6 +146,15 @@ public class NewTaskMaker extends Composite {
         answers.clear();
         answerBus = null;
         eventBus = null;
+
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.deleteTask(id, new MethodCallback<Status>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {}
+
+            @Override
+            public void onSuccess(Method method, Status status) {}
+        });
     }
 
     public void save(){
@@ -169,5 +171,30 @@ public class NewTaskMaker extends Composite {
             @Override
             public void onSuccess(Method method, Status status) {}
         });
+
+
+            for (Widget widget:
+                 answers) {
+                if (!type.equals(LessonProperty.typeText())) {
+                    ((NewAnswerMaker)widget).clean();
+                }else {
+                    ((NewAnswerMaker)widget).save();
+            }
+        }
+    }
+
+    public void end(){
+        question.setText("");
+
+        for (Widget widget:
+                answers) {
+            ((NewAnswerMaker)widget).end();
+            widget.removeFromParent();
+        }
+
+        id = null;
+        answers.clear();
+        answerBus = null;
+        eventBus = null;
     }
 }

@@ -1,6 +1,7 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "answers", schema = "toodle")
@@ -60,5 +61,26 @@ public class AnswersEntity {
 
     public void setAnswImg(byte[] answImg) {
         this.answImg = answImg;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AnswersEntity that = (AnswersEntity) o;
+
+        return id == that.id && task == that.task && rght == that.rght && (answ != null ? answ.equals(that.answ) : that.answ == null && Arrays.equals(answImg, that.answImg));
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (answ != null ? answ.hashCode() : 0);
+        result = 31 * result + task;
+        result = 31 * result + rght;
+        result = 31 * result + Arrays.hashCode(answImg);
+        return result;
     }
 }

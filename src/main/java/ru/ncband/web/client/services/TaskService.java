@@ -96,10 +96,4 @@ public interface TaskService extends RestService {
     void deleteAnswer(@FormParam("id") String id,
                 MethodCallback<Status> callback);
 
-    @POST
-    @Path("/lesson/id")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    void saveId(@FormParam("id") String id,
-                    MethodCallback<Status> callback);
 }

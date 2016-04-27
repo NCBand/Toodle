@@ -4,10 +4,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import ru.ncband.web.shared.classes.Answers;
 
-/**
- * Created by Дом on 26.04.2016.
- */
 public class AnswerCell extends Composite {
     interface AnswerCellUiBinder extends UiBinder<HTMLPanel, AnswerCell> {
     }
@@ -16,5 +14,9 @@ public class AnswerCell extends Composite {
 
     public AnswerCell() {
         initWidget(ourUiBinder.createAndBindUi(this));
+    }
+
+    public void check(Answers answers){
+
     }
 }

@@ -9,6 +9,7 @@ public class TasksEntity {
     private String question;
     private int type;
     private int lesson;
+    private byte[] taskImage;
 
     @Id
     @Column(name = "id")
@@ -69,5 +70,15 @@ public class TasksEntity {
         result = 31 * result + type;
         result = 31 * result + lesson;
         return result;
+    }
+
+    @Basic
+    @Column(name = "task_image")
+    public byte[] getTaskImage() {
+        return taskImage;
+    }
+
+    public void setTaskImage(byte[] taskImage) {
+        this.taskImage = taskImage;
     }
 }

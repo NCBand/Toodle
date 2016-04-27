@@ -5,7 +5,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 
 import com.google.gwt.uibinder.client.UiField;
@@ -156,9 +155,7 @@ public class UiMainSpace extends Composite {
                     }
                 });
 
-                String dateString = DateTimeFormat.getFormat("dd"+ BasicProperty.dateSeparator()+
-                        "MM"+ BasicProperty.dateSeparator() +
-                        "yyyy").format(datePicker.getValue());
+                String dateString = BasicProperty.dateFormat().format(datePicker.getValue());
                 date_title.setText(dateString);
 
                 MessageService service = GWT.create(MessageService.class);
@@ -196,9 +193,7 @@ public class UiMainSpace extends Composite {
         datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<Date> event) {
-                    String dateString = DateTimeFormat.getFormat("dd"+ BasicProperty.dateSeparator()+
-                                                                "MM"+ BasicProperty.dateSeparator() +
-                                                                "yyyy").format(event.getValue());
+                    String dateString = BasicProperty.dateFormat().format(event.getValue());
                     date_title.setText(dateString);
 
                     MessageService service = GWT.create(MessageService.class);

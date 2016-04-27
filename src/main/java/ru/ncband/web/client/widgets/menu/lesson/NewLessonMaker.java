@@ -10,13 +10,13 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
+import ru.ncband.web.client.events.LoadDataEvent;
 import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.lesson.events.DeleteEvent;
 import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 import ru.ncband.web.client.widgets.menu.lesson.task.NewTaskMaker;
 import ru.ncband.web.shared.classes.Status;
-
 
 public class NewLessonMaker extends Composite {
     interface NewTaskMakerUiBinder extends UiBinder<HTMLPanel, NewLessonMaker> {
@@ -80,15 +80,12 @@ public class NewLessonMaker extends Composite {
                 for(Widget widget:
                         tasks){
                     ((NewTaskMaker)widget).save();
+                    ((NewTaskMaker)widget).end();
                 }
 
-                name.setText("");
-                for (Widget widget:
-                        tasks) {
-                    ((NewTaskMaker)widget).clean();
-                }
-                tasks.clear();
-                
+                LoadDataEvent loadDataEvent = new LoadDataEvent();
+                eventBus.fireEvent(loadDataEvent);
+
                 OutEvent outEvent = new OutEvent();
                 eventBus.fireEvent(outEvent);
             }

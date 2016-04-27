@@ -119,7 +119,6 @@ public class Toodle implements EntryPoint {
             }
         });
 
-
         bus.addHandler(RegistrationEvent.TYPE, new RegistrationHandler() {
             @Override
             public void addUser(RegistrationEvent registrationEvent) {

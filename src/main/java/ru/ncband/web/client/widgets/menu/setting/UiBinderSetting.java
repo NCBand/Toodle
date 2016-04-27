@@ -25,12 +25,15 @@ public class UiBinderSetting extends Composite {
 
     private EventBus eventBus;
 
+    private boolean changeLogin = false;
     private boolean changeFirstName = false;
     private boolean changeSecondName = false;
     private boolean changePassword = false;
     private boolean changeEmail = false;
     private boolean changeAge = false;
 
+    @UiField
+    TextBox LoginBox;
     @UiField
     TextBox firstNameBox;
     @UiField
@@ -57,6 +60,8 @@ public class UiBinderSetting extends Composite {
     Label statusFirstName;
     @UiField
     Label statusSecondName;
+    @UiField
+    Label statusLogin;
     @UiField
     Label mainError;
 
@@ -122,9 +127,6 @@ public class UiBinderSetting extends Composite {
                 }
             }
         });
-
-
-
     }
 
     @UiHandler("backButton")
@@ -138,9 +140,11 @@ public class UiBinderSetting extends Composite {
     void checkFirstNameBox(ValueChangeEvent<String> event) {
         changeFirstName = true;
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
-            statusFirstName.setText("is Ok");
+            statusFirstName.setText("OK");
+            statusFirstName.getElement().getStyle().setColor("green");
         } else {
             statusFirstName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+            statusFirstName.getElement().getStyle().setColor("red");
         }
     }
 
@@ -148,9 +152,11 @@ public class UiBinderSetting extends Composite {
     void checkSecondNameBox(ValueChangeEvent<String> event) {
         changeSecondName = true;
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
-            statusSecondName.setText("is Ok");
+            statusSecondName.setText("OK");
+            statusSecondName.getElement().getStyle().setColor("green");
         } else {
             statusSecondName.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+            statusSecondName.getElement().getStyle().setColor("red");
         }
     }
 
@@ -158,9 +164,11 @@ public class UiBinderSetting extends Composite {
     void checkPassword(ValueChangeEvent<String> event) {
         changePassword = true;
         if (RegularExpressions.test(RegularExpressions.PASSWORD, event.getValue())) {
-            errorPassword.setText("is Ok");
+            errorPassword.setText("OK");
+            errorPassword.getElement().getStyle().setColor("green");
         } else {
             errorPassword.setText(RegularExpressions.REQUIREMENT_FOR_PASSWORD);
+            errorPassword.getElement().getStyle().setColor("red");
         }
     }
 
@@ -168,8 +176,10 @@ public class UiBinderSetting extends Composite {
     void checkRepeatPassword(ValueChangeEvent<String> event) {
         if (!event.getValue().equals(passwordBox.getValue())) {
             errorRepeatPassword.setText("doesn't match");
+            errorRepeatPassword.getElement().getStyle().setColor("red");
         } else {
-            errorRepeatPassword.setText("is Ok!");
+            errorRepeatPassword.setText("OK");
+            errorRepeatPassword.getElement().getStyle().setColor("green");
         }
     }
 
@@ -177,15 +187,24 @@ public class UiBinderSetting extends Composite {
     void checkAge(ValueChangeEvent<String> event) {
         changeAge = true;
         if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
-            errorAge.setText("is Ok");
+            errorAge.setText("OK");
+            errorAge.getElement().getStyle().setColor("green");
         } else {
             errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
+            errorAge.getElement().getStyle().setColor("red");
         }
     }
 
     @UiHandler("email")
     void checkEmail(ValueChangeEvent<String> event){
         changeAge = true;
+        if (RegularExpressions.test(RegularExpressions.EMAIL, event.getValue())) {
+            .setText("OK");
+            errorAge.getElement().getStyle().setColor("green");
+        } else {
+            errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
+            errorAge.getElement().getStyle().setColor("red");
+        }
     }
 
 

@@ -1,8 +1,9 @@
 package ru.ncband.web.server.controllers;
 
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.fusesource.restygwt.client.MethodCallback;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,14 +17,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.util.Iterator;
+import java.util.List;
 
 @RestController
 public class TaskController {
@@ -92,65 +90,51 @@ public class TaskController {
     @POST
     @RequestMapping(value = "/upload_task", method = RequestMethod.POST)
     public void uploadTask(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-        ServletFileUpload upload = new ServletFileUpload();
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        factory.setSizeThreshold(1 * 1024 * 1024);
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        TaskDB taskDB = new TaskDB();
 
-        try{
-            FileItemIterator iter = upload.getItemIterator(request);
+        try {
+            List<FileItem> items = upload.parseRequest(request);
 
-            while (iter.hasNext()) {
-                FileItemStream item = iter.next();
-
-                String name = item.getFieldName();
-                InputStream stream = item.openStream();
-
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                int len;
-                byte[] buffer = new byte[8192];
-                while ((len = stream.read(buffer, 0, buffer.length)) != -1) {
-                    out.write(buffer, 0, len);
-                }
-
-                int maxFileSize = 10*(1024*1024); //10 megs max
-                if (out.size() > maxFileSize) {
-                    throw new RuntimeException("File is > than " + maxFileSize);
-                }
+            for (FileItem fileitem:
+                 items){
+                taskDB.upload(fileitem.getName(),fileitem.getInputStream(), 1);
             }
+
         }
-        catch(Exception e){
-            throw new RuntimeException(e);
+        catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @POST
     @RequestMapping(value = "/upload_answer", method = RequestMethod.POST)
     public void uploadAnswer(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-        ServletFileUpload upload = new ServletFileUpload();
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        factory.setSizeThreshold(1 * 1024 * 1024);
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        TaskDB taskDB = new TaskDB();
 
-        try{
-            FileItemIterator iter = upload.getItemIterator(request);
+        try {
+            List<FileItem> items = upload.parseRequest(request);
 
-            while (iter.hasNext()) {
-                FileItemStream item = iter.next();
-
-                String name = item.getFieldName();
-                InputStream stream = item.openStream();
-
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                int len;
-                byte[] buffer = new byte[8192];
-                while ((len = stream.read(buffer, 0, buffer.length)) != -1) {
-                    out.write(buffer, 0, len);
-                }
-
-                int maxFileSize = 10*(1024*1024); //10 megs max
-                if (out.size() > maxFileSize){
-                    throw new RuntimeException("File is > than " + maxFileSize);
-                }
+            for (FileItem fileitem:
+                 items){
+                taskDB.upload(fileitem.getName(),fileitem.getInputStream(), 0);
             }
-        } catch(Exception e){
-            throw new RuntimeException(e);
-        }
 
+        }
+        catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @POST
@@ -160,17 +144,6 @@ public class TaskController {
     public Status delete(@FormParam("id")String id){
         TaskDB taskDB = new TaskDB();
         return taskDB.delete(id);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    @RequestMapping(value = "/image_id", method = RequestMethod.POST)
-    public Status setId(@FormParam("id") String id, HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.removeAttribute(RequestProperty.id());
-        session.setAttribute(RequestProperty.id(), id);
-        return new Status(BasicProperty.done());
     }
 
     @POST
@@ -198,5 +171,23 @@ public class TaskController {
     public Status saveAnswer(@RequestBody Answer task){
         TaskDB taskDB = new TaskDB();
         return taskDB.saveAnswer(task);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/delete_task", method = RequestMethod.POST)
+    public Status deleteTask(@FormParam("id") String id){
+        TaskDB taskDB = new TaskDB();
+        return taskDB.deleteTask(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/delete_answer", method = RequestMethod.POST)
+    public Status deleteAnswer(@FormParam("id") String id){
+        TaskDB taskDB = new TaskDB();
+        return taskDB.deleteTask(id);
     }
 }

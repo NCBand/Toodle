@@ -1,5 +1,6 @@
 package ru.ncband.web.server.db.servises;
 
+import org.apache.commons.io.IOUtils;
 import org.hibernate.*;
 import ru.ncband.web.server.db.HibernateSessionFactory;
 import ru.ncband.web.server.db.classes.AnswersEntity;
@@ -9,6 +10,8 @@ import ru.ncband.web.server.logic.Generator;
 import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.*;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -227,7 +230,7 @@ public class TaskDB {
             int res = query.executeUpdate();
             transaction.commit();
             if(res == 0){
-                return deleteTask(id);
+                return deleteTasks(id);
             }
             return new Status(BasicProperty.fault());
         } catch (NullPointerException e){
@@ -238,7 +241,7 @@ public class TaskDB {
         return null;
     }
 
-    private Status deleteTask(String lesson_id){
+    private Status deleteTasks(String lesson_id){
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
@@ -249,7 +252,7 @@ public class TaskDB {
             transaction.commit();
 
             for(LessonsEntity task:
-                tasks){
+                    tasks){
                 if(!deleteAnswer(task.getId())){
                     return new Status(BasicProperty.fault());
                 }
@@ -263,7 +266,7 @@ public class TaskDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            if(res == 0){
+            if(res != 0){
                 return new Status(BasicProperty.done());
             }
             return new Status(BasicProperty.fault());
@@ -285,13 +288,59 @@ public class TaskDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            return res == 0;
+            return res != 0;
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Status deleteTask(String id){
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            Query query = session.createQuery("delete TasksEntity where id =:param");
+            query.setParameter("param",Integer.parseInt(id));
+
+            int res = query.executeUpdate();
+            transaction.commit();
+            if(res != 0){
+                return new Status(BasicProperty.done());
+            }
+            return new Status(BasicProperty.fault());
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Status deleteAnswer(String id){
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            Query query = session.createQuery("delete AnswersEntity where id =:param");
+            query.setParameter("param",Integer.parseInt(id));
+
+            int res = query.executeUpdate();
+            transaction.commit();
+
+            Status status = new Status(BasicProperty.fault());
+            if(res != 0){
+                status.setMsg(BasicProperty.done());
+            }
+            return status;
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Status save(String name, String id){
@@ -351,5 +400,30 @@ public class TaskDB {
             e.printStackTrace();
         }
         return new Status(BasicProperty.fault());
+    }
+
+    public void upload(String id, InputStream stream, int type){
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            if(type == 1) {
+                TasksEntity entity = session.get(TasksEntity.class, Integer.parseInt(id));
+                entity.setTaskImage(IOUtils.toByteArray(stream));
+                session.update(entity);
+            }else {
+                AnswersEntity entity = session.get(AnswersEntity.class, Integer.parseInt(id));
+                entity.setAnswImg(IOUtils.toByteArray(stream));
+                session.update(entity);
+            }
+
+            transaction.commit();
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
