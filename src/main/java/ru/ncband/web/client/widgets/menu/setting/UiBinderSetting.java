@@ -68,6 +68,10 @@ public class UiBinderSetting extends Composite {
     @UiHandler("saveButton")
     void doClickSubmit(ClickEvent event) {
         UserForm setting = new UserForm();
+        if(changeLogin){
+            setting.setLogin(LoginBox.getValue());
+        }
+
         if (changeFirstName) {
             setting.setFirstname(firstNameBox.getValue());
         }
@@ -98,14 +102,10 @@ public class UiBinderSetting extends Composite {
 
             @Override
             public void onSuccess(Method method, Status status) {
+                clear();
                 mainError.setText(status.getMsg());
             }
         });
-
-
-        OutEvent outEvent = new OutEvent();
-        clear();
-        eventBus.fireEvent(outEvent);
     }
 
     @UiHandler("delete")
@@ -136,10 +136,22 @@ public class UiBinderSetting extends Composite {
         eventBus.fireEvent(outEvent);
     }
 
+    @UiHandler("LoginBox")
+    void checklogin(ValueChangeEvent<String> event){
+        if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
+            changeLogin = true;
+            statusLogin.setText("OK");
+            statusLogin.getElement().getStyle().setColor("green");
+        } else {
+            statusLogin.setText(RegularExpressions.REQUIREMENT_FOR_NAME);
+            statusLogin.getElement().getStyle().setColor("red");
+        }
+    }
+
     @UiHandler("firstNameBox")
     void checkFirstNameBox(ValueChangeEvent<String> event) {
-        changeFirstName = true;
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
+            changeFirstName = true;
             statusFirstName.setText("OK");
             statusFirstName.getElement().getStyle().setColor("green");
         } else {
@@ -150,8 +162,8 @@ public class UiBinderSetting extends Composite {
 
     @UiHandler("secondNameBox")
     void checkSecondNameBox(ValueChangeEvent<String> event) {
-        changeSecondName = true;
         if (RegularExpressions.test(RegularExpressions.NAME, event.getValue())) {
+            changeSecondName = true;
             statusSecondName.setText("OK");
             statusSecondName.getElement().getStyle().setColor("green");
         } else {
@@ -162,8 +174,8 @@ public class UiBinderSetting extends Composite {
 
     @UiHandler("passwordBox")
     void checkPassword(ValueChangeEvent<String> event) {
-        changePassword = true;
         if (RegularExpressions.test(RegularExpressions.PASSWORD, event.getValue())) {
+            changePassword = true;
             errorPassword.setText("OK");
             errorPassword.getElement().getStyle().setColor("green");
         } else {
@@ -185,8 +197,8 @@ public class UiBinderSetting extends Composite {
 
     @UiHandler("ageBox")
     void checkAge(ValueChangeEvent<String> event) {
-        changeAge = true;
         if (RegularExpressions.test(RegularExpressions.AGE, event.getValue())) {
+            changeAge = true;
             errorAge.setText("OK");
             errorAge.getElement().getStyle().setColor("green");
         } else {
@@ -197,9 +209,10 @@ public class UiBinderSetting extends Composite {
 
     @UiHandler("email")
     void checkEmail(ValueChangeEvent<String> event){
-        changeAge = true;
+
         if (RegularExpressions.test(RegularExpressions.EMAIL, event.getValue())) {
-            .setText("OK");
+            changeAge = true;
+            errorAge.setText("OK");
             errorAge.getElement().getStyle().setColor("green");
         } else {
             errorAge.setText(RegularExpressions.REQUIREMENT_FOR_AGE);
@@ -215,6 +228,7 @@ public class UiBinderSetting extends Composite {
     }
 
     private void clear(){
+        LoginBox.setValue("");
         firstNameBox.setValue("");
         secondNameBox.setValue("");
         passwordBox.setValue("");
@@ -229,5 +243,6 @@ public class UiBinderSetting extends Composite {
         changeFirstName = false;
         changeEmail = false;
         changePassword = false;
+        changeLogin = false;
     }
 }

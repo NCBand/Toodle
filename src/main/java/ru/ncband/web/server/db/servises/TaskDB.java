@@ -1,5 +1,6 @@
 package ru.ncband.web.server.db.servises;
 
+import com.google.gwt.user.server.Base64Utils;
 import org.apache.commons.io.IOUtils;
 import org.hibernate.*;
 import ru.ncband.web.server.db.HibernateSessionFactory;
@@ -9,10 +10,12 @@ import ru.ncband.web.server.db.classes.TasksEntity;
 import ru.ncband.web.server.logic.Generator;
 import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.*;
+import ru.ncband.web.shared.properties.LessonProperty;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TaskDB {
@@ -50,8 +53,32 @@ public class TaskDB {
         return null;
     }
 
+    public Answer getAnswer(String id){
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Transaction transaction = session.beginTransaction();
+            AnswersEntity entity = session.get(AnswersEntity.class, Integer.parseInt(id));
+            transaction.commit();
+
+            Answer answer = new Answer();
+            answer.setRight(Integer.toString(entity.getRght()));
+            answer.setId(Integer.toString(entity.getId()));
+
+            String image = "data:image/png;base64," + Base64Utils.toBase64(entity.getAnswImg());
+            answer.setImage(image);
+            answer.setAnswer(entity.getAnsw());
+
+            return answer;
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public Task getTask(String id){
-        /*try {
+        try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
             TasksEntity taskEntity = session.get(TasksEntity.class, Integer.parseInt(id));
@@ -60,98 +87,84 @@ public class TaskDB {
             Task task = new Task();
             task.setType(Integer.toString(taskEntity.getType()));
             task.setId(Integer.toString(taskEntity.getId()));
+            task.setQuestion(taskEntity.getQuestion());
 
-            List<String> strings = new ArrayList<String>();
-            strings.add(taskEntity.getQuestion());
+            String image = "data:image/png;base64," + Base64Utils.toBase64(taskEntity.getTaskImage());
+            task.setImage(image);
 
-            if(!(Integer.toString(taskEntity.getType())).equals(LessonProperty.typeText())) {
-                session = sessionFactory.openSession();
-                transaction = session.beginTransaction();
-                Query query = session.createQuery("FROM AnswersEntity where task=:param");
-                query.setParameter("param", taskEntity.getId());
-                List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
-                transaction.commit();
-
-                List<String> answer_ids = new ArrayList<String>();
-
-                for (AnswersEntity tmp:
-                     answers) {
-                    answer_ids.add(Integer.toString(tmp.getId()));
-                    strings.add(tmp.getAnsw());
-                }
-                task.setAnswer_ids(answer_ids);
-            }
-
-            task.setTexts(strings);
             return task;
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
-        }*/
+        }
         return null;
     }
     
-    public Lesson getLesson(String id){
-        /*try {
+    public Ids getIds(String id, String type){
+        try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM TasksEntity where lesson=:param");
-            query.setParameter("param", Integer.parseInt(id));
 
-            List<TasksEntity> tasks = (List<TasksEntity>) query.list();
+            Ids ids = new Ids();
+            List<String> strings = new ArrayList<String>();
+            if(type.equals(LessonProperty.task())) {
+                Query query = session.createQuery("FROM TasksEntity where lesson=:param");
+                query.setParameter("param", Integer.parseInt(id));
+
+                List<TasksEntity> tasks = (List<TasksEntity>) query.list();
+
+                for (TasksEntity task:
+                     tasks) {
+                    strings.add(Integer.toString(task.getId()));
+                }
+            }else{
+                Query query = session.createQuery("FROM AnswersEntity where task=:param");
+                query.setParameter("param", Integer.parseInt(id));
+
+                List<AnswersEntity> answers = (List<AnswersEntity>) query.list();
+                for (AnswersEntity answer:
+                     answers) {
+                    strings.add(Integer.toString(answer.getId()));
+                }
+            }
             transaction.commit();
 
-            Lesson lesson = new Lesson();
-            lesson.setId(id);
-            List<String> client_tasks = new ArrayList<String>();
-            for (TasksEntity task:
-                 tasks) {
-                client_tasks.add(Integer.toString(task.getId()));
-            }
-            lesson.setTasks(client_tasks);
-
-            return lesson;
+            ids.setIds(strings);
+            return ids;
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
-        }*/
+        }
         return null;
     }
     
-    public Status check( Answer answer){
-        /*try {
-            Session session = sessionFactory.getCurrentSession();
-            Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM AnswersEntity");
+    public Status check(Answers answers){
+        try {
+            Iterator<String> ids = answers.getIds().iterator();
+            Iterator<String> rights = answers.getRights().iterator();
 
-            ArrayList<AnswersEntity> answers = (ArrayList<AnswersEntity>) query.list();
+            while (ids.hasNext()) {
+                String id = ids.next();
+                String answer = rights.next();
 
-            Status status = new Status();
-            transaction.commit();
+                Session session = sessionFactory.openSession();
+                Transaction transaction = session.beginTransaction();
+                AnswersEntity answersEntity = session.get(AnswersEntity.class, Integer.parseInt(id));
+                transaction.commit();
 
-            int right = 0;
-            List<String> varient = answer.getAnswer();
-            for (String tmp:
-                 varient) {
-                for (AnswersEntity base:
-                     answers) {
-                    if(tmp.equals(Integer.toString(base.getId())) && base.getRght() == 1){ //// TODO: 21.04.2016  
-                       right++; 
-                    }
+                if(!answer.equals(Integer.toString(answersEntity.getRght()))){
+                    return new Status(BasicProperty.fault());
                 }
             }
 
-            if(right == varient.size()){
-                status.setMsg(BasicProperty.done());
-            }else{
-                status.setMsg(BasicProperty.fault());
-            }
-            return status;
+            return new Status(BasicProperty.done());
         } catch (NullPointerException e){
             e.printStackTrace();
-        }*/
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -208,6 +221,7 @@ public class TaskDB {
             answersEntity.setTask(Integer.parseInt(task_id));
             answersEntity.setId(generator.createNumInt());
 
+            session.save(answersEntity);
             transaction.commit();
 
             return Integer.toString(answersEntity.getId());
@@ -229,43 +243,6 @@ public class TaskDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            if(res == 0){
-                return deleteTasks(id);
-            }
-            return new Status(BasicProperty.fault());
-        } catch (NullPointerException e){
-            e.printStackTrace();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private Status deleteTasks(String lesson_id){
-        try {
-            Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
-
-            Query query = session.createQuery("from TasksEntity where lesson =:param");
-            query.setParameter("param",Integer.parseInt(lesson_id));
-            ArrayList<LessonsEntity> tasks = (ArrayList<LessonsEntity>) query.list();
-            transaction.commit();
-
-            for(LessonsEntity task:
-                    tasks){
-                if(!deleteAnswer(task.getId())){
-                    return new Status(BasicProperty.fault());
-                }
-            }
-
-            session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-
-            query = session.createQuery("delete TasksEntity where lesson =:param");
-            query.setParameter("param",Integer.parseInt(lesson_id));
-
-            int res = query.executeUpdate();
-            transaction.commit();
             if(res != 0){
                 return new Status(BasicProperty.done());
             }
@@ -276,25 +253,6 @@ public class TaskDB {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private boolean deleteAnswer(int task_id){
-        try {
-            Session session = sessionFactory.getCurrentSession();
-            Transaction transaction = session.beginTransaction();
-
-            Query query = session.createQuery("delete AnswersEntity where task =:param");
-            query.setParameter("param",task_id);
-
-            int res = query.executeUpdate();
-            transaction.commit();
-            return res != 0;
-        } catch (NullPointerException e){
-            e.printStackTrace();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     public Status deleteTask(String id){
@@ -343,13 +301,13 @@ public class TaskDB {
         return null;
     }
 
-    public Status save(String name, String id){
+    public Status save(Lesson lesson){
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
 
-            LessonsEntity lessonsEntity = session.get(LessonsEntity.class, Integer.parseInt(id));
-            lessonsEntity.setName(name);
+            LessonsEntity lessonsEntity = session.get(LessonsEntity.class, Integer.parseInt(lesson.getId()));
+            lessonsEntity.setName(lesson.getName());
 
             session.update(lessonsEntity);
             transaction.commit();

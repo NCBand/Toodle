@@ -1,6 +1,13 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
-
+        <g:VerticalPanel>
+            <g:HorizontalPanel>
+                <g:CheckBox ui:field="check"/>
+                <g:RadioButton name="" ui:field="radio"/>
+                <g:Label ui:field="text"/>
+            </g:HorizontalPanel>
+            <g:Image ui:field="image"/>
+        </g:VerticalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

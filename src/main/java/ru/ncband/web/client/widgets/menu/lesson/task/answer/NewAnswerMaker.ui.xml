@@ -6,10 +6,10 @@
                 <g:Label text="Answer:"/>
                 <g:CheckBox text="Is correct" ui:field="right"/>
                 <g:Button ui:field="delete" text="Delete"/>
-                <g:FormPanel ui:field="question_image">
-                    <g:FileUpload ui:field="upload"/>
-                </g:FormPanel>
             </g:HorizontalPanel>
+            <g:FormPanel ui:field="question_image">
+                <g:FileUpload ui:field="upload"/>
+            </g:FormPanel>
             <g:TextArea ui:field="text" text="Set Answer"/>
         </g:VerticalPanel>
     </g:HTMLPanel>

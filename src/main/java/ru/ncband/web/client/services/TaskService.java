@@ -21,17 +21,25 @@ public interface TaskService extends RestService {
                         MethodCallback<Task> callback);
 
     @POST
-    @Path("/lesson/get_lesson")
+    @Path("/lesson/get_answer")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    void getLesson(@FormParam("id") String id,
-                   MethodCallback<Lesson> callback);
+    void getAnswer(@FormParam("id") String id,
+                 MethodCallback<Answer> callback);
+
+    @POST
+    @Path("/lesson/get_ids")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    void getIds(@FormParam("id") String id,
+                @FormParam("type") String type,
+                 MethodCallback<Ids> callback);
 
     @POST
     @Path("/lesson/check")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    void check(Answer answer,
+    void check(Answers answers,
                MethodCallback<Status> callback);
 
     @POST
@@ -55,10 +63,9 @@ public interface TaskService extends RestService {
 
     @POST
     @Path("/lesson/save_lesson")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    void saveLesson(@FormParam("name") String name,
-                    @FormParam("id") String id,
+    void saveLesson(Lesson lesson,
                     MethodCallback<Status> callback);
 
     @POST

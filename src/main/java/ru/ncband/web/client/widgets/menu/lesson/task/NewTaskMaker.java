@@ -56,6 +56,11 @@ public class NewTaskMaker extends Composite {
         add.setVisible(true);
         type = LessonProperty.typeTest();
         answers.setVisible(true);
+
+        for(Widget widget:
+        answers){
+            ((NewAnswerMaker)widget).setType(type);
+        }
     }
 
     @UiHandler("text")
@@ -63,6 +68,11 @@ public class NewTaskMaker extends Composite {
         add.setVisible(false);
         type = LessonProperty.typeTest();
         answers.setVisible(false);
+
+        for(Widget widget:
+                answers){
+            ((NewAnswerMaker)widget).setType(type);
+        }
     }
 
     @UiHandler("multi")
@@ -70,6 +80,11 @@ public class NewTaskMaker extends Composite {
         add.setVisible(true);
         type = LessonProperty.typeMultiTest();
         answers.setVisible(true);
+
+        for(Widget widget:
+                answers){
+            ((NewAnswerMaker)widget).setType(type);
+        }
     }
 
     @UiHandler("add")
@@ -104,7 +119,7 @@ public class NewTaskMaker extends Composite {
 
                 text.setName(s);
                 test.setName(s);
-                test.setName(s);
+                multi.setName(s);
                 upload.setName(id);
             }
         });
@@ -142,18 +157,23 @@ public class NewTaskMaker extends Composite {
             widget.removeFromParent();
         }
 
-        id = null;
-        answers.clear();
-        answerBus = null;
-        eventBus = null;
-
         TaskService taskService = GWT.create(TaskService.class);
         taskService.deleteTask(id, new MethodCallback<Status>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {}
 
             @Override
-            public void onSuccess(Method method, Status status) {}
+            public void onSuccess(Method method, Status status) {
+                answerBus = null;
+                eventBus = null;
+                id = null;
+
+                for (Widget widget:
+                        answers) {
+                    ((NewAnswerMaker) widget).clean();
+                }
+                answers.clear();
+            }
         });
     }
 
@@ -172,15 +192,16 @@ public class NewTaskMaker extends Composite {
             public void onSuccess(Method method, Status status) {}
         });
 
-
-            for (Widget widget:
-                 answers) {
-                if (!type.equals(LessonProperty.typeText())) {
-                    ((NewAnswerMaker)widget).clean();
-                }else {
-                    ((NewAnswerMaker)widget).save();
+        for (Widget widget:
+                answers) {
+            if (type.equals(LessonProperty.typeText())) {
+                ((NewAnswerMaker)widget).clean();
+                widget.removeFromParent();
+            }else {
+                ((NewAnswerMaker)widget).save();
             }
         }
+        end();
     }
 
     public void end(){

@@ -16,6 +16,7 @@ import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.lesson.events.DeleteEvent;
 import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 import ru.ncband.web.client.widgets.menu.lesson.task.NewTaskMaker;
+import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Status;
 
 public class NewLessonMaker extends Composite {
@@ -70,8 +71,12 @@ public class NewLessonMaker extends Composite {
 
     @UiHandler("save")
     void save(ClickEvent event){
+        Lesson lesson = new Lesson();
+        lesson.setId(id);
+        lesson.setName(name.getText());
+
         TaskService taskService = GWT.create(TaskService.class);
-        taskService.saveLesson(name.getText(), id , new MethodCallback<Status>() {
+        taskService.saveLesson(lesson, new MethodCallback<Status>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {}
 

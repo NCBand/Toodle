@@ -5,7 +5,7 @@ public class Task {
     private String id;
     private String type;
     private String question;
-    private byte[] image = null;
+    private String image = null;
 
     public Task(){}
 
@@ -25,11 +25,11 @@ public class Task {
         this.type = type;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

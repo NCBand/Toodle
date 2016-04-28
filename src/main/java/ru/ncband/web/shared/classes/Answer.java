@@ -5,7 +5,6 @@ public class Answer {
     private String answer = null;
     private String image = null;
     private String right = null;
-    private String task = null;
 
     public Answer() {}
 
@@ -41,11 +40,4 @@ public class Answer {
         this.right = right;
     }
 
-    public String getTask() {
-        return task;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
 }

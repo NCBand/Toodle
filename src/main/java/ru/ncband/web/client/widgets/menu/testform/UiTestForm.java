@@ -13,9 +13,13 @@ import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
 import ru.ncband.web.shared.classes.Answers;
+import ru.ncband.web.shared.classes.Ids;
 import ru.ncband.web.shared.classes.Status;
 import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.properties.LessonProperty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UiTestForm extends Composite{
     interface UiBinderLoginUiBinder extends UiBinder<HTMLPanel, UiTestForm> {
@@ -37,11 +41,14 @@ public class UiTestForm extends Composite{
     @UiHandler("done")
     void doClickDone(ClickEvent event){
         Answers answers = new Answers();
+        List<String> ids = new ArrayList<String>();
+        List<String> rights = new ArrayList<String>();
+
+        answers.setRights(rights);
+        answers.setIds(ids);
         for (Widget widget:
              tasks) {
-            if(widget.getClass().equals(TestCell.class)){
                 ((TestCell)widget).check(answers);
-            }
         }
 
         TaskService taskService = GWT.create(TaskService.class);
@@ -80,11 +87,28 @@ public class UiTestForm extends Composite{
         this.eventbus = bus;
     }
 
-    public void setTask(String id, String name){
+    public void setTask(String id, final String name){
+        clear();
         this.task.setText(name);
 
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.getIds(id, LessonProperty.task());
+        final TaskService taskService = GWT.create(TaskService.class);
+        taskService.getIds(id, LessonProperty.task(), new MethodCallback<Ids>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {
+                error.setText("Server error");
+                error.getElement().getStyle().setColor("red");
+            }
+
+            @Override
+            public void onSuccess(Method method, Ids ids) {
+                for (String id:
+                     ids.getIds()) {
+                    TestCell testCell = new TestCell();
+                    testCell.setTask(id);
+                    tasks.add(testCell);
+                }
+            }
+        });
     }
 
     private void clear(){

@@ -17,8 +17,7 @@ import java.util.List;
 public class MessageDB{
     private static SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
 
-    public MessageDB() {
-    }
+    public MessageDB() {}
 
     public Messages getMessagesForDate(String date){
         try {
@@ -47,7 +46,6 @@ public class MessageDB{
     }
 
     public Status set(String date, String message){
-        Status status = new Status();
         try {
             Session session = sessionFactory.getCurrentSession();
             Transaction transaction = session.beginTransaction();
@@ -55,21 +53,20 @@ public class MessageDB{
             MessageEntity entity = new MessageEntity();
 
             if (!isValidDate(date)) {
-                return status; //// TODO: 21.04.2016
+                return new Status(BasicProperty.fault());
             }
             entity.setDate(date);
             entity.setText(message);
 
             session.save(entity);
             transaction.commit();
-            status.setMsg(BasicProperty.done());
-            return status;
+            return new Status(BasicProperty.done());
         }catch (NullPointerException e){
             e.printStackTrace();
         } catch (TypeNotPresentException e){
             e.printStackTrace();
         }
-        return status;
+        return null;
     }
 
     private List<String> convertEntity(List<MessageEntity> entities){

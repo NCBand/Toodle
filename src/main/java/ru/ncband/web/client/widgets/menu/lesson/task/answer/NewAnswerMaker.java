@@ -43,6 +43,7 @@ public class NewAnswerMaker extends Composite {
     void setChecked(ClickEvent event){
         if(type.equals(LessonProperty.typeTest())){
             OneCheckEvent oneCheckEvent = new OneCheckEvent();
+            oneCheckEvent.setId(id);
             eventBus.fireEvent(oneCheckEvent);
         }
     }
@@ -71,7 +72,9 @@ public class NewAnswerMaker extends Composite {
         eventBus.addHandler(OneCheckEvent.TYPE, new OneCheckEventHandler() {
             @Override
             public void onOneCheck(OneCheckEvent event) {
-                right.setChecked(false);
+                if(!event.getId().equals(id)) {
+                    right.setChecked(false);
+                }
             }
         });
 
@@ -92,24 +95,24 @@ public class NewAnswerMaker extends Composite {
         return id;
     }
 
-    void setType(String type){
+    public void setType(String type){
         this.type = type;
         right.setChecked(false);
     }
 
     public void clean(){
-        text.setValue("");
-        eventBus = null;
-        type = null;
-        id = null;
-
         TaskService taskService = GWT.create(TaskService.class);
         taskService.deleteAnswer(id, new MethodCallback<Status>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {}
 
             @Override
-            public void onSuccess(Method method, Status status) {}
+            public void onSuccess(Method method, Status status) {
+                text.setValue("");
+                eventBus = null;
+                type = null;
+                id = null;
+            }
         });
     }
 
@@ -126,7 +129,9 @@ public class NewAnswerMaker extends Composite {
             public void onFailure(Method method, Throwable throwable) {}
 
             @Override
-            public void onSuccess(Method method, Status status) {}
+            public void onSuccess(Method method, Status status) {
+                end();
+            }
         });
     }
 

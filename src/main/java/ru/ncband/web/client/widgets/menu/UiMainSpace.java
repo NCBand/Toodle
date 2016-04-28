@@ -145,6 +145,13 @@ public class UiMainSpace extends Composite {
                         Iterator<String> ids = lessonLabel.getIds().iterator();
                         Iterator<String> names = lessonLabel.getLabels().iterator();
 
+                        if(lessonLabel.getIds().isEmpty()){
+                            task.addItem(new MenuItem("No Tasks", new Command() {
+                                @Override
+                                public void execute() {}
+                            }));
+                        }
+
                         while(ids.hasNext()){
                             TaskCommand command = new TaskCommand();
                             command.setId(ids.next());

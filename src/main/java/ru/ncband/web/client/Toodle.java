@@ -149,9 +149,10 @@ public class Toodle implements EntryPoint {
                                         if (!widget.getClass().equals(UiBinderLogin.class)) {
                                             widget.setVisible(false);
                                         } else {
+                                            if(widget.getClass().equals(UiBinderRegistration.class)){
+                                                ((UiBinderRegistration)widget).clear();
+                                            }
                                             widget.setVisible(true);
-                                            UiBinderRegistration registration = ((UiBinderRegistration) widget);
-                                            registration.clear();
                                         }
                                     }
                                 }

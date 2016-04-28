@@ -9,7 +9,9 @@ import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.testform.testcell.answercell.AnswerCell;
 import ru.ncband.web.shared.classes.Answers;
+import ru.ncband.web.shared.classes.Ids;
 import ru.ncband.web.shared.classes.Task;
+import ru.ncband.web.shared.properties.LessonProperty;
 
 public class TestCell extends Composite {
     interface TestCellUiBinder extends UiBinder<HTMLPanel, TestCell> {
@@ -22,6 +24,8 @@ public class TestCell extends Composite {
 
     @UiField
     VerticalPanel answers;
+    private String id;
+    private String type;
 
     @UiField
     Image image;
@@ -30,15 +34,45 @@ public class TestCell extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
-    public void setTask(String id){
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.getTask(id, new MethodCallback<Task>() {
+    public void setTask(String _id){
+        this.id = _id;
+        TaskService taskService1 = GWT.create(TaskService.class);
+        taskService1.getTask(_id, new MethodCallback<Task>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {}
 
             @Override
             public void onSuccess(Method method, Task task) {
+                question.setText(task.getQuestion());
+                image.setUrl(task.getImage());
 
+                if(task.getImage().contains("null")){
+                    image.setVisible(false);
+                }
+
+                if(task.getQuestion()== null){
+                    question.setVisible(false);
+                }
+
+                type = task.getType();
+
+                if(!task.getType().equals(LessonProperty.typeTest())){
+                    TaskService taskService2 = GWT.create(TaskService.class);
+                    taskService2.getIds(task.getId(), LessonProperty.answer(), new MethodCallback<Ids>() {
+                        @Override
+                        public void onFailure(Method method, Throwable throwable) {}
+
+                        @Override
+                        public void onSuccess(Method method, Ids ids) {
+                            for (String answer_id:
+                                 ids.getIds()) {
+                                AnswerCell answercell = new AnswerCell();
+                                answercell.setAnswer(id, answer_id, type);
+                                answers.add(answercell);
+                            }
+                        }
+                    });
+                }
             }
         });
     }
@@ -51,6 +85,15 @@ public class TestCell extends Composite {
     }
 
     public void clear(){
+        question.setText("");
+        id = null;
+        type = null;
+        image.setUrl("");
 
+        for (Widget widget:
+             answers) {
+            ((AnswerCell)widget).clear();
+        }
+        answers.clear();
     }
 }
