@@ -14,26 +14,11 @@ public interface TaskService extends RestService {
     void getLabels(MethodCallback<LessonLabel> callback);
 
     @POST
-    @Path("/lesson/get_task")
+    @Path("/lesson/get_lesson")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    void getTask(@FormParam("id") String id,
-                        MethodCallback<Task> callback);
-
-    @POST
-    @Path("/lesson/get_answer")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    void getAnswer(@FormParam("id") String id,
-                 MethodCallback<Answer> callback);
-
-    @POST
-    @Path("/lesson/get_ids")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    void getIds(@FormParam("id") String id,
-                @FormParam("type") String type,
-                 MethodCallback<Ids> callback);
+    void getLesson(@FormParam("id") String id,
+                   MethodCallback<Lesson> callback);
 
     @POST
     @Path("/lesson/check")
@@ -66,20 +51,6 @@ public interface TaskService extends RestService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     void saveLesson(Lesson lesson,
-                    MethodCallback<Status> callback);
-
-    @POST
-    @Path("/lesson/save_task")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    void saveTask(Task task,
-                    MethodCallback<Status> callback);
-
-    @POST
-    @Path("/lesson/save_answer")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    void saveAnswer(Answer answer,
                     MethodCallback<Status> callback);
 
     @POST

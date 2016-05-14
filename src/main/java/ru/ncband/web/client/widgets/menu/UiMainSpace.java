@@ -99,17 +99,19 @@ public class UiMainSpace extends Composite {
                 }
             }
         }));
-        menu.addItem(new MenuItem("Add lesson", new Command() {
+        MenuItem menuItem = new MenuItem("Add lesson", new Command() {
             @Override
             public void execute() {
                 for (Widget widget:
-                    left){
+                        left){
                     widget.setVisible(false);
                 }
                 NewLessonMaker newLessonMaker = new NewLessonMaker(bus);
                 left.add(newLessonMaker);
             }
-        }));
+        });
+        //menuItem.addStyleName("some-style");
+        menu.addItem(menuItem);
         menu.addItem(new MenuItem("Settings",new Command(){
             @Override
             public void execute() {
@@ -252,7 +254,7 @@ public class UiMainSpace extends Composite {
                          left) {
                         if(widget.getClass().equals(UiTestForm.class)){
                             widget.setVisible(true);
-                            ((UiTestForm)widget).setTask(id, name);
+                            ((UiTestForm)widget).setTask(id);
                         }else {
                             widget.setVisible(false);
                         }

@@ -47,8 +47,9 @@ body {
     border: 1px none transparent;
     color: #000000;
     font-size: 11px;
-    margin-left: 45%;
-    margin-top: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 500px;
     padding: 6px;
 }
 

@@ -18,6 +18,9 @@ import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 import ru.ncband.web.client.widgets.menu.lesson.task.NewTaskMaker;
 import ru.ncband.web.shared.classes.Lesson;
 import ru.ncband.web.shared.classes.Status;
+import ru.ncband.web.shared.classes.Task;
+
+import java.util.ArrayList;
 
 public class NewLessonMaker extends Composite {
     interface NewTaskMakerUiBinder extends UiBinder<HTMLPanel, NewLessonMaker> {
@@ -75,22 +78,28 @@ public class NewLessonMaker extends Composite {
         lesson.setId(id);
         lesson.setName(name.getText());
 
+        ArrayList<Task> taskArrayList = new ArrayList<Task>();
+        for(Widget widget:
+                tasks){
+            taskArrayList.add(((NewTaskMaker)widget).save());
+            ((NewTaskMaker)widget).end();
+        }
+        lesson.setTasks(taskArrayList);
+
         TaskService taskService = GWT.create(TaskService.class);
         taskService.saveLesson(lesson, new MethodCallback<Status>() {
             @Override
-            public void onFailure(Method method, Throwable throwable) {}
+            public void onFailure(Method method, Throwable throwable) {
+                LoadDataEvent loadDataEvent = new LoadDataEvent();
+                eventBus.fireEvent(loadDataEvent);
+                OutEvent outEvent = new OutEvent();
+                eventBus.fireEvent(outEvent);
+            }
 
             @Override
             public void onSuccess(Method method, Status status) {
-                for(Widget widget:
-                        tasks){
-                    ((NewTaskMaker)widget).save();
-                    ((NewTaskMaker)widget).end();
-                }
-
                 LoadDataEvent loadDataEvent = new LoadDataEvent();
                 eventBus.fireEvent(loadDataEvent);
-
                 OutEvent outEvent = new OutEvent();
                 eventBus.fireEvent(outEvent);
             }

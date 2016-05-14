@@ -4,9 +4,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.shared.classes.Answer;
 import ru.ncband.web.shared.classes.Answers;
 import ru.ncband.web.shared.properties.LessonProperty;
@@ -35,39 +32,21 @@ public class AnswerCell extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
-    public void setAnswer(String task_id, String id, String type){
+    public void setAnswer(Answer answer, String type, String task_id){
         this.type = type;
-        this.id = id;
+        id = answer.getId();
+        image.setUrl(answer.getImage());
 
         radio.setName(task_id);
         if (type.equals(LessonProperty.typeTest())){
             check.setVisible(false);
             radio.setVisible(true);
+            radio.setText(answer.getAnswer());
         }else {
             check.setVisible(true);
             radio.setVisible(false);
+            check.setText(answer.getAnswer());
         }
-
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.getAnswer(id, new MethodCallback<Answer>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {}
-
-            @Override
-            public void onSuccess(Method method, Answer answer) {
-                image.setUrl(answer.getImage());
-                text.setText(answer.getAnswer());
-
-                if(answer.getImage().contains("null")){
-                    image.setVisible(false);
-                }
-
-                if(answer.getAnswer()== null){
-                    text.setVisible(false);
-                }
-            }
-        });
-
     }
 
     public void check(Answers answers){
@@ -76,9 +55,9 @@ public class AnswerCell extends Composite {
 
         ids.add(id);
         if(type.equals(LessonProperty.typeTest())){
-            rights.add((radio.isChecked())? LessonProperty.right(): LessonProperty.wrong());
+            rights.add((radio.getValue())? LessonProperty.right(): LessonProperty.wrong());
         }else {
-            rights.add((check.isChecked())? LessonProperty.right(): LessonProperty.wrong());
+            rights.add((check.getValue())? LessonProperty.right(): LessonProperty.wrong());
         }
         answers.setIds(ids);
         answers.setRights(rights);

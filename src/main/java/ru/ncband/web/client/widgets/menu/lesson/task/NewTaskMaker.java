@@ -15,9 +15,12 @@ import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.lesson.events.DeleteEvent;
 import ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler;
 import ru.ncband.web.client.widgets.menu.lesson.task.answer.NewAnswerMaker;
+import ru.ncband.web.shared.classes.Answer;
 import ru.ncband.web.shared.classes.Status;
 import ru.ncband.web.shared.classes.Task;
 import ru.ncband.web.shared.properties.LessonProperty;
+
+import java.util.ArrayList;
 
 public class NewTaskMaker extends Composite {
     interface NewTaskMakerUI extends UiBinder<HTMLPanel, NewTaskMaker> {
@@ -102,6 +105,7 @@ public class NewTaskMaker extends Composite {
 
     @UiHandler("upload")
     void saveImage(ChangeEvent event){
+        upload.setName(id);
         question_image.submit();
     }
 
@@ -177,31 +181,26 @@ public class NewTaskMaker extends Composite {
         });
     }
 
-    public void save(){
+    public Task save(){
         Task task = new Task();
         task.setId(id);
         task.setQuestion(question.getText());
         task.setType(type);
 
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.saveTask(task, new MethodCallback<Status>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {}
 
-            @Override
-            public void onSuccess(Method method, Status status) {}
-        });
-
+        ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
         for (Widget widget:
                 answers) {
             if (type.equals(LessonProperty.typeText())) {
                 ((NewAnswerMaker)widget).clean();
                 widget.removeFromParent();
             }else {
-                ((NewAnswerMaker)widget).save();
+                answerArrayList.add(((NewAnswerMaker)widget).save());
             }
         }
+        task.setAnswers(answerArrayList);
         end();
+        return task;
     }
 
     public void end(){

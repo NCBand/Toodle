@@ -1,16 +1,26 @@
 package ru.ncband.web.shared.classes;
 
+import java.util.List;
 
 public class Task {
     private String id;
     private String type;
     private String question;
     private String image = null;
+    private List<Answer> answers = null;
 
     public Task(){}
 
     public String getId() {
         return id;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 
     public void setId(String id) {

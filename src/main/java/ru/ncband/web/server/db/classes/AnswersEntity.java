@@ -1,7 +1,6 @@
 package ru.ncband.web.server.db.classes;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 @Table(name = "answers", schema = "toodle")
@@ -11,7 +10,7 @@ public class AnswersEntity {
     private String answ;
     private int task;
     private int rght;
-    private byte[] answImg;
+    private String answImg;
 
     @Id
     @Column(name = "id")
@@ -55,11 +54,11 @@ public class AnswersEntity {
 
     @Basic
     @Column(name = "answ_img")
-    public byte[] getAnswImg() {
+    public String getAnswImg() {
         return answImg;
     }
 
-    public void setAnswImg(byte[] answImg) {
+    public void setAnswImg(String answImg) {
         this.answImg = answImg;
     }
 
@@ -70,7 +69,7 @@ public class AnswersEntity {
 
         AnswersEntity that = (AnswersEntity) o;
 
-        return id == that.id && task == that.task && rght == that.rght && (answ != null ? answ.equals(that.answ) : that.answ == null && Arrays.equals(answImg, that.answImg));
+        return id == that.id && task == that.task && rght == that.rght && (answ != null ? answ.equals(that.answ) : that.answ == null && answImg.equals(that.answImg));
 
     }
 
@@ -80,7 +79,7 @@ public class AnswersEntity {
         result = 31 * result + (answ != null ? answ.hashCode() : 0);
         result = 31 * result + task;
         result = 31 * result + rght;
-        result = 31 * result + Arrays.hashCode(answImg);
+        result = 31 * result + answImg.hashCode();
         return result;
     }
 }

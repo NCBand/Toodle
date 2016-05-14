@@ -12,11 +12,8 @@ import org.fusesource.restygwt.client.MethodCallback;
 import ru.ncband.web.client.events.OutEvent;
 import ru.ncband.web.client.services.TaskService;
 import ru.ncband.web.client.widgets.menu.testform.testcell.TestCell;
-import ru.ncband.web.shared.classes.Answers;
-import ru.ncband.web.shared.classes.Ids;
-import ru.ncband.web.shared.classes.Status;
+import ru.ncband.web.shared.classes.*;
 import ru.ncband.web.shared.properties.BasicProperty;
-import ru.ncband.web.shared.properties.LessonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,12 +84,11 @@ public class UiTestForm extends Composite{
         this.eventbus = bus;
     }
 
-    public void setTask(String id, final String name){
+    public void setTask(String id){
         clear();
-        this.task.setText(name);
 
-        final TaskService taskService = GWT.create(TaskService.class);
-        taskService.getIds(id, LessonProperty.task(), new MethodCallback<Ids>() {
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.getLesson(id, new MethodCallback<Lesson>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
                 error.setText("Server error");
@@ -100,12 +96,15 @@ public class UiTestForm extends Composite{
             }
 
             @Override
-            public void onSuccess(Method method, Ids ids) {
-                for (String id:
-                     ids.getIds()) {
-                    TestCell testCell = new TestCell();
-                    testCell.setTask(id);
-                    tasks.add(testCell);
+            public void onSuccess(Method method, Lesson lesson) {
+                List<Task> taskList = lesson.getTasks();
+                task.setText(lesson.getName());
+
+                for (Task task:
+                     taskList) {
+                    TestCell cell = new TestCell();
+                    cell.setTask(task);
+                    tasks.add(cell);
                 }
             }
         });

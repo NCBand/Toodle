@@ -50,6 +50,7 @@ public class NewAnswerMaker extends Composite {
 
     @UiHandler("upload")
     void setUpload(ChangeEvent event){
+        upload.setName(id);
         question_image.submit();
     }
 
@@ -73,7 +74,7 @@ public class NewAnswerMaker extends Composite {
             @Override
             public void onOneCheck(OneCheckEvent event) {
                 if(!event.getId().equals(id)) {
-                    right.setChecked(false);
+                    right.setValue(false);
                 }
             }
         });
@@ -97,7 +98,7 @@ public class NewAnswerMaker extends Composite {
 
     public void setType(String type){
         this.type = type;
-        right.setChecked(false);
+        right.setValue(false);
     }
 
     public void clean(){
@@ -116,23 +117,13 @@ public class NewAnswerMaker extends Composite {
         });
     }
 
-    public void save(){
+    public Answer save(){
         Answer answer = new Answer();
         answer.setAnswer(text.getValue());
         answer.setId(id);
-        String res = (right.isChecked())? "1": "0";
+        String res = (right.getValue())? "1": "0";
         answer.setRight(res);
-
-        TaskService taskService = GWT.create(TaskService.class);
-        taskService.saveAnswer(answer, new MethodCallback<Status>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {}
-
-            @Override
-            public void onSuccess(Method method, Status status) {
-                end();
-            }
-        });
+        return answer;
     }
 
     public void end(){

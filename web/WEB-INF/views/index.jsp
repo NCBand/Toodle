@@ -4,6 +4,7 @@
 <html>
   <head>
     <title>Toodle Page</title>
+    <link href="all_styles.css" rel="stylesheet" media="all" />
   </head>
 
   <body>

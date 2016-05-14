@@ -9,7 +9,7 @@ public class TasksEntity {
     private String question;
     private int type;
     private int lesson;
-    private byte[] taskImage;
+    private String taskImage;
 
     @Id
     @Column(name = "id")
@@ -74,11 +74,11 @@ public class TasksEntity {
 
     @Basic
     @Column(name = "task_image")
-    public byte[] getTaskImage() {
+    public String getTaskImage() {
         return taskImage;
     }
 
-    public void setTaskImage(byte[] taskImage) {
+    public void setTaskImage(String taskImage) {
         this.taskImage = taskImage;
     }
 }
