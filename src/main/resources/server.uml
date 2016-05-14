@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ru.ncband.web.shared.RegularExpressions</OriginalElement>
+  <nodes>
+    <node x="2322.6467803030305" y="0.0">ru.ncband.web.shared.classes.Answer</node>
+    <node x="1974.5" y="1796.0">ru.ncband.web.server.db.servises.TaskDB</node>
+    <node x="0.0" y="1148.0">ru.ncband.web.server.db.classes.MessageEntity</node>
+    <node x="2383.0" y="2884.0">ru.ncband.web.server.logic.Generator</node>
+    <node x="1574.5" y="412.0">ru.ncband.web.shared.classes.Task</node>
+    <node x="212.49431818181847" y="2012.0">ru.ncband.web.server.db.servises.MessageDB</node>
+    <node x="1342.0" y="2884.0">ru.ncband.web.shared.classes.Answers</node>
+    <node x="319.0" y="1256.0">ru.ncband.web.shared.classes.Messages</node>
+    <node x="2073.5" y="2451.0">ru.ncband.web.server.controllers.TaskController</node>
+    <node x="0.0" y="2884.0">ru.ncband.web.shared.classes.UserForm</node>
+    <node x="3149.0" y="1215.5">ru.ncband.web.shared.classes.LessonLabel</node>
+    <node x="2709.0" y="1067.0">ru.ncband.web.server.db.classes.AnswersEntity</node>
+    <node x="1674.0" y="2884.0">ru.ncband.web.shared.properties.RequestProperty</node>
+    <node x="982.0" y="2884.0">ru.ncband.web.shared.properties.LessonProperty</node>
+    <node x="1148.9943181818185" y="2012.0">ru.ncband.web.server.db.servises.UserDB</node>
+    <node x="3640.0" y="2884.0">ru.ncband.web.shared.classes.Ids</node>
+    <node x="2665.0" y="2884.0">ru.ncband.web.server.controllers.UserFilter</node>
+    <node x="238.99431818181847" y="2599.5">ru.ncband.web.server.controllers.MessageController</node>
+    <node x="2270.0" y="1067.0">ru.ncband.web.server.db.classes.TasksEntity</node>
+    <node x="3387.0" y="2884.0">ru.ncband.web.shared.properties.BasicProperty</node>
+    <node x="3035.0" y="2884.0">ru.ncband.web.server.logic.Salt</node>
+    <node x="1513.0" y="1256.0">ru.ncband.web.shared.classes.Status</node>
+    <node x="2017.0" y="2884.0">ru.ncband.web.server.db.HibernateSessionFactory</node>
+    <node x="1710.0" y="1175.0">ru.ncband.web.shared.classes.Lesson</node>
+    <node x="1211.9943181818185" y="2559.0">ru.ncband.web.server.controllers.UserController</node>
+    <node x="593.0" y="905.0">ru.ncband.web.server.db.classes.UserEntity</node>
+    <node x="0.0" y="3534.0">ru.ncband.web.server.controllers.MainController</node>
+    <node x="587.0" y="2884.0">ru.ncband.web.shared.RegularExpressions</node>
+    <node x="2011.0" y="1188.5">ru.ncband.web.server.db.classes.LessonsEntity</node>
+    <node x="1272.0" y="1215.5">ru.ncband.web.server.classes.Id</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.ncband.web.shared.classes.Lesson" target="ru.ncband.web.shared.classes.Task">
+      <point x="0.0" y="-140.5" />
+      <point x="1850.5" y="880.0" />
+      <point x="1875.25" y="880.0" />
+      <point x="100.25" y="221.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.UserDB" target="ru.ncband.web.server.classes.Id">
+      <point x="1.1368683772161603E-13" y="-86.5" />
+      <point x="1319.4943181818185" y="1756.0" />
+      <point x="1382.5" y="1756.0" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.server.db.classes.LessonsEntity">
+      <point x="-41.3125" y="-302.5" />
+      <point x="2263.6875" y="1746.0" />
+      <point x="2130.5" y="1746.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.shared.classes.LessonLabel">
+      <point x="289.1875" y="-302.5" />
+      <point x="2594.1875" y="1776.0" />
+      <point x="3283.5" y="1776.0" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="ru.ncband.web.server.controllers.MessageController" target="ru.ncband.web.server.db.servises.MessageDB">
+      <point x="0.0" y="-45.5" />
+      <point x="0.0" y="86.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.shared.classes.Status">
+      <point x="-289.1875" y="-302.5" />
+      <point x="2015.8125" y="1776.0" />
+      <point x="1667.0" y="1776.0" />
+      <point x="66.0" y="59.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.controllers.UserController" target="ru.ncband.web.shared.classes.Status">
+      <point x="116.0" y="-86.0" />
+      <point x="1559.9943181818185" y="2426.0" />
+      <point x="1623.0" y="2426.0" />
+      <point x="22.0" y="59.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.controllers.TaskController" target="ru.ncband.web.server.db.servises.TaskDB">
+      <point x="0.0" y="-194.0" />
+      <point x="0.0" y="302.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.server.db.classes.TasksEntity">
+      <point x="41.3125" y="-302.5" />
+      <point x="2346.3125" y="1746.0" />
+      <point x="2479.5" y="1746.0" />
+      <point x="0.0" y="248.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.shared.classes.Task">
+      <point x="-206.5625" y="-302.5" />
+      <point x="2098.4375" y="1766.0" />
+      <point x="1699.5" y="1766.0" />
+      <point x="1699.5" y="880.0" />
+      <point x="1674.75" y="880.0" />
+      <point x="-100.25" y="221.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.MessageDB" target="ru.ncband.web.shared.classes.Messages">
+      <point x="0.0" y="-86.5" />
+      <point x="382.99431818181847" y="1776.0" />
+      <point x="446.0" y="1776.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.MessageDB" target="ru.ncband.web.shared.classes.Status">
+      <point x="113.66666666666669" y="-86.5" />
+      <point x="496.6609848484852" y="1766.0" />
+      <point x="1535.0" y="1766.0" />
+      <point x="-66.0" y="59.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.UserDB" target="ru.ncband.web.shared.classes.Status">
+      <point x="113.66666666666686" y="-86.5" />
+      <point x="1433.1609848484852" y="1776.0" />
+      <point x="1579.0" y="1776.0" />
+      <point x="-22.0" y="59.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.shared.classes.Answer">
+      <point x="206.5625" y="-302.5" />
+      <point x="2511.5625" y="1766.0" />
+      <point x="3138.5" y="1766.0" />
+      <point x="3138.5" y="387.0" />
+      <point x="2578.3967803030305" y="387.0" />
+      <point x="85.25" y="181.0" />
+    </edge>
+    <edge source="ru.ncband.web.shared.classes.Task" target="ru.ncband.web.shared.classes.Answer">
+      <point x="0.0" y="-221.5" />
+      <point x="1775.0" y="387.0" />
+      <point x="2407.8967803030305" y="387.0" />
+      <point x="-85.25" y="181.0" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.shared.classes.Lesson">
+      <point x="-123.9375" y="-302.5" />
+      <point x="2181.0625" y="1756.0" />
+      <point x="1850.5" y="1756.0" />
+      <point x="0.0" y="140.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.controllers.UserController" target="ru.ncband.web.server.db.servises.UserDB">
+      <point x="-116.0" y="-86.0" />
+      <point x="1327.9943181818185" y="2426.0" />
+      <point x="1319.4943181818185" y="2426.0" />
+      <point x="0.0" y="86.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.TaskDB" target="ru.ncband.web.server.db.classes.AnswersEntity">
+      <point x="123.9375" y="-302.5" />
+      <point x="2428.9375" y="1756.0" />
+      <point x="2918.5" y="1756.0" />
+      <point x="0.0" y="248.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.MessageDB" target="ru.ncband.web.server.db.classes.MessageEntity">
+      <point x="-113.66666666666669" y="-86.5" />
+      <point x="269.32765151515173" y="1776.0" />
+      <point x="149.5" y="1776.0" />
+      <point x="0.0" y="167.5" />
+    </edge>
+    <edge source="ru.ncband.web.server.db.servises.UserDB" target="ru.ncband.web.server.db.classes.UserEntity">
+      <point x="-113.66666666666663" y="-86.5" />
+      <point x="1205.8276515151517" y="1756.0" />
+      <point x="922.5" y="1756.0" />
+      <point x="0.0" y="410.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.1" x="82.0" y="1079.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

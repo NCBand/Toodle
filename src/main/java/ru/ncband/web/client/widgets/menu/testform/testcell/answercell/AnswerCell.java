@@ -35,7 +35,9 @@ public class AnswerCell extends Composite {
     public void setAnswer(Answer answer, String type, String task_id){
         this.type = type;
         id = answer.getId();
-        image.setUrl(answer.getImage());
+        if(answer.getImage() != null) {
+            image.setUrl(answer.getImage());
+        }
 
         radio.setName(task_id);
         if (type.equals(LessonProperty.typeTest())){

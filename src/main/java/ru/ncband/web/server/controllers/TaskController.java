@@ -11,6 +11,7 @@ import ru.ncband.web.server.db.servises.TaskDB;
 import ru.ncband.web.shared.classes.*;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
@@ -153,5 +154,12 @@ public class TaskController {
     public Status deleteAnswer(@FormParam("id") String id){
         TaskDB taskDB = new TaskDB();
         return taskDB.deleteAnswer(id);
+    }
+
+    @GET
+    @RequestMapping(method = RequestMethod.GET)
+    public void load(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        TaskDB taskDB = new TaskDB();
+        taskDB.load(request, response);
     }
 }

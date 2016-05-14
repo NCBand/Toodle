@@ -33,7 +33,9 @@ public class TestCell extends Composite {
 
     public void setTask(Task task){
         question.setText(task.getQuestion());
-        image.setUrl(task.getImage());
+        if(task.getImage() != null) {
+            image.setUrl(task.getImage());
+        }
 
         if(!task.getType().equals(LessonProperty.typeText())){
             List<Answer> answerList = task.getAnswers();

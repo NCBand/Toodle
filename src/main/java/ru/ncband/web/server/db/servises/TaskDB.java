@@ -12,7 +12,12 @@ import ru.ncband.web.server.logic.Salt;
 import ru.ncband.web.shared.properties.BasicProperty;
 import ru.ncband.web.shared.classes.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +25,7 @@ import java.util.List;
 public class TaskDB {
     private static SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
     private static String imageDir = File.separator+"image"+File.separator;
+    private static String url = File.separator+"lesson"+File.separator+"image"+File.separator;
 
     public TaskDB(){}
 
@@ -92,7 +98,10 @@ public class TaskDB {
                 task.setQuestion(entity.getQuestion());
                 task.setType(Integer.toString(entity.getType()));
                 task.setAnswers(getAnswers(entity.getId()));
-                task.setImage("");
+
+                if(entity.getTaskImage() != null) {
+                    task.setImage(getURL(entity.getTaskImage()));
+                }
                 tasks.add(task);
             }
 
@@ -120,7 +129,10 @@ public class TaskDB {
                 Answer answer = new Answer();
                 answer.setRight(Integer.toString(entity.getRght()));
                 answer.setId(Integer.toString(entity.getId()));
-                answer.setImage("");
+
+                if(entity.getAnswImg() != null) {
+                    answer.setImage(getURL(entity.getAnswImg()));
+                }
                 answer.setAnswer(entity.getAnsw());
                 answers.add(answer);
             }
@@ -425,6 +437,33 @@ public class TaskDB {
             out.close();
         }
 
-        return hash;
+        return hash+"."+encode;
+    }
+
+    public void load(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String uri = request.getRequestURI();
+        if(!uri.contains("image")){
+            return;
+        }
+
+        uri = uri.replace("/",File.separator);
+        String path = uri.substring(uri.indexOf(imageDir));
+        String encode = uri.substring(uri.indexOf(".")+1);
+        response.setContentType("image/"+encode);
+
+        File file = new File(System.getProperty("user.dir")+path);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        response.setContentLength(new BigDecimal(file.length()).intValue());
+
+        ServletOutputStream outStream = response.getOutputStream();
+        IOUtils.copy(fileInputStream,outStream);
+        outStream.close();
+        fileInputStream.close();
+    }
+
+    private static String getURL(String hash){
+        return  url+hash.substring(0,10)+File.separator
+                +hash.substring(10,20)+File.separator
+                +hash.substring(20);
     }
 }

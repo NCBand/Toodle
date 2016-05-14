@@ -74,7 +74,7 @@ public class NewAnswerMaker extends Composite {
             @Override
             public void onOneCheck(OneCheckEvent event) {
                 if(!event.getId().equals(id)) {
-                    right.setValue(false);
+                    right.setChecked(false);
                 }
             }
         });
@@ -121,7 +121,7 @@ public class NewAnswerMaker extends Composite {
         Answer answer = new Answer();
         answer.setAnswer(text.getValue());
         answer.setId(id);
-        String res = (right.getValue())? "1": "0";
+        String res = (right.isChecked())? "1": "0";
         answer.setRight(res);
         return answer;
     }
