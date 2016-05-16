@@ -110,7 +110,6 @@ public class UiMainSpace extends Composite {
                 left.add(newLessonMaker);
             }
         });
-        //menuItem.addStyleName("some-style");
         menu.addItem(menuItem);
         menu.addItem(new MenuItem("Settings",new Command(){
             @Override

@@ -153,14 +153,6 @@ public class NewTaskMaker extends Composite {
     }
 
     public void clean(){
-        question.setText("");
-
-        for (Widget widget:
-             answers) {
-            ((NewAnswerMaker)widget).clean();
-            widget.removeFromParent();
-        }
-
         TaskService taskService = GWT.create(TaskService.class);
         taskService.deleteTask(id, new MethodCallback<Status>() {
             @Override
@@ -168,15 +160,7 @@ public class NewTaskMaker extends Composite {
 
             @Override
             public void onSuccess(Method method, Status status) {
-                answerBus = null;
-                eventBus = null;
-                id = null;
-
-                for (Widget widget:
-                        answers) {
-                    ((NewAnswerMaker) widget).clean();
-                }
-                answers.clear();
+                end();
             }
         });
     }

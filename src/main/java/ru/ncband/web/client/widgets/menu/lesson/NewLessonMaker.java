@@ -42,13 +42,6 @@ public class NewLessonMaker extends Composite {
 
     @UiHandler("back")
     void back(ClickEvent event){
-        name.setText("");
-        for (Widget widget:
-             tasks) {
-            ((NewTaskMaker)widget).clean();
-        }
-        tasks.clear();
-
         TaskService taskService = GWT.create(TaskService.class);
         taskService.delete(id, new MethodCallback<Status>() {
             @Override
@@ -56,10 +49,13 @@ public class NewLessonMaker extends Composite {
 
             @Override
             public void onSuccess(Method method, Status status) {
+                name.setText("");
                 for (Widget widget:
                         tasks) {
-                    ((NewTaskMaker)widget).clean();
+                    ((NewTaskMaker)widget).end();
                 }
+                tasks.clear();
+
                 OutEvent outEvent = new OutEvent();
                 eventBus.fireEvent(outEvent);
             }
@@ -82,7 +78,7 @@ public class NewLessonMaker extends Composite {
         for(Widget widget:
                 tasks){
             taskArrayList.add(((NewTaskMaker)widget).save());
-            ((NewTaskMaker)widget).end();
+
         }
         lesson.setTasks(taskArrayList);
 
@@ -90,14 +86,18 @@ public class NewLessonMaker extends Composite {
         taskService.saveLesson(lesson, new MethodCallback<Status>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                LoadDataEvent loadDataEvent = new LoadDataEvent();
-                eventBus.fireEvent(loadDataEvent);
-                OutEvent outEvent = new OutEvent();
-                eventBus.fireEvent(outEvent);
+                error.setText("Server error");
+                error.getElement().getStyle().setColor("red");
             }
 
             @Override
             public void onSuccess(Method method, Status status) {
+                for (Widget widget: tasks){
+                    ((NewTaskMaker)widget).end();
+                }
+                name.setText("");
+                tasks.clear();
+
                 LoadDataEvent loadDataEvent = new LoadDataEvent();
                 eventBus.fireEvent(loadDataEvent);
                 OutEvent outEvent = new OutEvent();

@@ -7,23 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6387ecd-0814-4b07-811c-56a56aafd1b6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/client.uml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/054f1b39a0/796031089f/e2f68fb76f0cbdd86cd5f09a37c99fff2542ce30a4ed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/05bb6607f6/daacdf2b09/d1315ee0f8d5288711df17fe3f8f46dc05b08ea0903a.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/166380f4ab/ca6b77a845/e5072bacfe83ba53b4707443a3166e74b06040df6d25.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/1a8fb12df2/39f4a27ccb/5de1bf0a5f5c9645d9c1c87e5d001a36c5b55292d620.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/48ba440428/e71d7c9135/acee7ee9a9e4d5e4f012bb820d08f26e79b1f642174f.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/614b6dff12/1374521a01/349154b7c5664b64100c9d2222f6b900d4baa54ab6fa.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/8e5b2bf35e/750f1c8df6/8de8b0dfcfe6fb2f5cc3c28d73037e2d600757f621bb.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/image/ed94bf825a/efba6f39fc/1930a0f29382eb3f8e4d805f55f3ab0c7ef17631e18f.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/server.uml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/webapp/css/testcell.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/TaskController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/TaskController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.ui.xml" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.ui.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/1.sql" afterPath="$PROJECT_DIR$/src/main/resources/1.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/webapp/css/mainspace.css" afterPath="$PROJECT_DIR$/src/main/java/webapp/css/mainspace.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/all_styles.css" afterPath="$PROJECT_DIR$/web/WEB-INF/views/all_styles.css" />
     </list>
     <ignored path="Toodle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,6 +45,10 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="hibernate.cfg.xml/Hibernate" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -60,13 +57,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="TaskDB.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TaskDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="801">
-              <caret line="461" column="0" selection-start-line="461" selection-start-column="0" selection-end-line="461" selection-end-column="0" />
+            <state relative-caret-position="2838">
+              <caret line="336" column="49" selection-start-line="336" selection-start-column="49" selection-end-line="336" selection-end-column="49" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#getLabels#0;class#TaskDB#0" expanded="false" />
                 <element signature="method#check#0;class#TaskDB#0" expanded="false" />
                 <element signature="method#newLesson#0;class#TaskDB#0" expanded="false" />
@@ -74,87 +70,78 @@
                 <element signature="method#newAnswer#0;class#TaskDB#0" expanded="false" />
                 <element signature="method#delete#0;class#TaskDB#0" expanded="false" />
                 <element signature="method#deleteTask#0;class#TaskDB#0" expanded="false" />
-                <element signature="method#deleteAnswer#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#save#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#saveTask#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#saveAnswer#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#upload#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#saveFile#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#load#0;class#TaskDB#0" expanded="false" />
+                <element signature="method#getURL#0;class#TaskDB#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvocableHandlerMethod.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.5.RELEASE/spring-web-4.1.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <file leaf-file-name="all_styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/all_styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+            <state relative-caret-position="-619">
+              <caret line="201" column="20" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Toodle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/Toodle.java">
+      <file leaf-file-name="NewTaskMaker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/UserFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="362">
+              <caret line="154" column="23" selection-start-line="154" selection-start-column="23" selection-end-line="154" selection-end-column="23" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="method#NewTaskMaker#0;class#NewTaskMaker#0" expanded="false" />
+                <element signature="method#clean#0;class#NewTaskMaker#0" expanded="false" />
+                <element signature="method#save#0;class#NewTaskMaker#0" expanded="false" />
+                <element signature="method#end#0;class#NewTaskMaker#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnswerCell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#835#836#0" expanded="false" />
-                <element signature="e#896#897#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/TaskController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#uploadTask#0;class#TaskController#0" expanded="false" />
-                <element signature="method#uploadAnswer#0;class#TaskController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewAnswerMaker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2354">
-              <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/1.sql">
+      <file leaf-file-name="lessonmaker.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/lessonmaker.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/login.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1078">
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registration.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/registration.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1100">
+              <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testcell.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/testcell.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -173,8 +160,8 @@
         <option value="Singleton" />
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -195,9 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/events/DeleteEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/properties/RequestProperty.java" />
         <option value="$PROJECT_DIR$/src/main/java/webapp/css/messagemaker.css" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/message/NewMessageMaker.ui.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.ui.xml" />
@@ -210,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/classes/Answers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/classes/Ids.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/properties/LessonProperty.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/properties/BasicProperty.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/message/NewMessageMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/setting/UiBinderSetting.ui.xml" />
@@ -225,7 +208,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/registration/UiBinderRegistration.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/style.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/index.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/all_styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.ui.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/classes/AnswersEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/classes/TasksEntity.java" />
@@ -234,9 +216,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/services/TaskService.java" />
         <option value="$PROJECT_DIR$/src/main/java/webapp/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/java/webapp/css/registration.css" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/webapp/css/firstview.css" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/ImageConvertor.java" />
@@ -245,6 +224,14 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/TaskController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.ui.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/webapp/css/mainspace.css" />
+        <option value="$PROJECT_DIR$/src/main/java/webapp/css/testcell.css" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/all_styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java" />
       </list>
     </option>
@@ -279,7 +266,6 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
-    <option name="y" value="-9" />
     <option name="width" value="1932" />
     <option name="height" value="1048" />
   </component>
@@ -355,15 +341,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Toodle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Toodle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1490,14 +1486,10 @@
       <workItem from="1463142322073" duration="16620000" />
       <workItem from="1463205653845" duration="7662000" />
       <workItem from="1463231460662" duration="5233000" />
-      <workItem from="1463240603281" duration="7300000" />
-    </task>
-    <task id="LOCAL-00001" summary="+basic project structure">
-      <created>1456260244149</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1456260244149</updated>
+      <workItem from="1463240603281" duration="7377000" />
+      <workItem from="1463253343838" duration="62000" />
+      <workItem from="1463255339903" duration="1098000" />
+      <workItem from="1463381205875" duration="8676000" />
     </task>
     <task id="LOCAL-00002" summary="+spring connected with gwt">
       <created>1456327164358</created>
@@ -1835,7 +1827,14 @@
       <option name="project" value="LOCAL" />
       <updated>1463206462171</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="+preparetion part 4">
+      <created>1463249747070</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1463249747096</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1847,7 +1846,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="732865000" />
+    <option name="totallyTimeSpent" value="742778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1859,27 +1858,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
+    <frame x="-9" y="0" width="1932" height="1048" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23250565" sideWeight="0.5166846" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26072234" sideWeight="0.56458557" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11512415" sideWeight="0.49571276" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16684607" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30301398" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23250565" sideWeight="0.48331538" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23250565" sideWeight="0.48331538" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32844242" sideWeight="0.4951857" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14108352" sideWeight="0.33853605" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14108352" sideWeight="0.3320775" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32860824" sideWeight="0.49763355" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.101580136" sideWeight="0.49034336" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26072234" sideWeight="0.44187298" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26072234" sideWeight="0.43541443" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32731378" sideWeight="0.49302575" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32844242" sideWeight="0.49570817" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29471034" sideWeight="0.325" order="3" side_tool="true" content_ui="tabs" />
@@ -1941,7 +1940,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+todo" />
     <MESSAGE value="+connections between login and registration - done" />
     <MESSAGE value="+connections to database" />
     <MESSAGE value="+Post works, needs JSON" />
@@ -1966,7 +1964,8 @@
     <MESSAGE value="+preparetion" />
     <MESSAGE value="+preparetion part 2" />
     <MESSAGE value="+preparetion part 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="+preparetion part 3" />
+    <MESSAGE value="+preparetion part 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="+preparetion part 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1987,78 +1986,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.7.0/gwt-servlet-2.7.0.jar!/com/google/gwt/user/client/ui/MenuItem.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/all_styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/classes/AnswersEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding>
-            <element signature="e#346#347#0" expanded="false" />
-            <element signature="e#371#372#0" expanded="false" />
-            <element signature="e#404#405#0" expanded="false" />
-            <element signature="e#432#433#0" expanded="false" />
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#528#529#0" expanded="false" />
-            <element signature="e#568#569#0" expanded="false" />
-            <element signature="e#600#601#0" expanded="false" />
-            <element signature="e#666#667#0" expanded="false" />
-            <element signature="e#693#694#0" expanded="false" />
-            <element signature="e#730#731#0" expanded="false" />
-            <element signature="e#762#763#0" expanded="false" />
-            <element signature="e#828#829#0" expanded="false" />
-            <element signature="e#855#856#0" expanded="false" />
-            <element signature="e#892#893#0" expanded="false" />
-            <element signature="e#924#925#0" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
-            <element signature="e#1076#1077#0" expanded="false" />
-            <element signature="e#1114#1115#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/classes/TasksEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1364">
-          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/logic/Salt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/classes/LessonLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/RegularExpressions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -2094,14 +2021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -2113,14 +2032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2164,13 +2075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.ui.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -2192,24 +2096,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1716">
-          <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.ui.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -2220,79 +2110,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/registration.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4493#4494#0" expanded="false" />
-            <element signature="e#4518#4519#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/shared/ImageBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/firstview.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1056">
-          <caret line="100" column="47" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
-          <folding>
-            <element signature="method#doClickDone#0;class#UiTestForm#0" expanded="false" />
-            <element signature="method#doClickBack#0;class#UiTestForm#0" expanded="false" />
-            <element signature="method#exit#0;class#UiTestForm#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#864#865#0" expanded="false" />
-            <element signature="e#925#926#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#835#836#0" expanded="false" />
-            <element signature="e#896#897#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/UserFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -2326,7 +2144,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.9334389857369255" x="-8.886247877758933" y="307.11375212224107" />
+          <settings layout="Hierarchic Group" zoom="0.9334389857369255" x="-9.0" y="307.0" />
           <SelectedNodes>
             <node>ru</node>
           </SelectedNodes>
@@ -2350,16 +2168,16 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="-175.3333333333333" y="55.083333333333314" />
+          <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="-175.0" y="55.0" />
           <SelectedNodes>
             <node>ru.ncband.web.shared</node>
           </SelectedNodes>
           <Categories>
-            <Category>Inner Classes</Category>
-            <Category>Properties</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
             <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
@@ -2481,15 +2299,116 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/Toodle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="2816">
           <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.5.RELEASE/spring-webmvc-4.1.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/client.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ru.ncband.web.client.Toodle</OriginalElement>
+          <nodes>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.setting.UiBinderSetting</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Answer</node>
+            <node x="" y="">ru.ncband.web.client.services.UserService</node>
+            <node x="" y="">ru.ncband.web.client.events.OutEvent</node>
+            <node x="" y="">ru.ncband.web.client.handlers.LogOutHandler</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.events.DeleteEvent</node>
+            <node x="" y="">ru.ncband.web.client.Toodle</node>
+            <node x="" y="">com.google.gwt.core.client.EntryPoint</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Task</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.task.NewTaskMaker</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Answers</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Messages</node>
+            <node x="" y="">ru.ncband.web.client.widgets.registration.UiBinderRegistration</node>
+            <node x="" y="">ru.ncband.web.client.handlers.RegistrationHandler</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.message.NewMessageMaker</node>
+            <node x="" y="">ru.ncband.web.shared.classes.UserForm</node>
+            <node x="" y="">ru.ncband.web.shared.classes.LessonLabel</node>
+            <node x="" y="">ru.ncband.web.client.widgets.login.UiBinderLogin</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.task.answer.NewAnswerMaker</node>
+            <node x="" y="">ru.ncband.web.shared.properties.RequestProperty</node>
+            <node x="" y="">ru.ncband.web.client.services.TaskService</node>
+            <node x="" y="">ru.ncband.web.shared.properties.LessonProperty</node>
+            <node x="" y="">ru.ncband.web.client.events.LoadDataEvent</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Ids</node>
+            <node x="" y="">ru.ncband.web.client.handlers.SignInHandler</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.handlers.OneCheckEventHandler</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.events.OneCheckEvent</node>
+            <node x="" y="">ru.ncband.web.client.services.MessageService</node>
+            <node x="" y="">ru.ncband.web.client.events.LogOutEvent</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.NewLessonMaker</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.firstview.UiFisrtView</node>
+            <node x="" y="">ru.ncband.web.shared.properties.BasicProperty</node>
+            <node x="" y="">ru.ncband.web.client.events.SignInEvent</node>
+            <node x="" y="">ru.ncband.web.client.events.SignUpEvent</node>
+            <node x="" y="">ru.ncband.web.client.handlers.SignUpHandler</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Status</node>
+            <node x="" y="">ru.ncband.web.shared.classes.Lesson</node>
+            <node x="" y="">ru.ncband.web.client.handlers.OutEventHandler</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.UiMainSpace</node>
+            <node x="" y="">ru.ncband.web.client.widgets.menu.lesson.handlers.DeleteEventHandler</node>
+            <node x="" y="">ru.ncband.web.shared.RegularExpressions</node>
+            <node x="" y="">ru.ncband.web.client.handlers.LoadDataEventHandler</node>
+            <node x="" y="">ru.ncband.web.client.events.RegistrationEvent</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.1" x="2963.0" y="3227.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/UserFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/answercell/AnswerCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#835#836#0" expanded="false" />
+            <element signature="e#896#897#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/controllers/TaskController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
+        <state relative-caret-position="950">
           <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2499,50 +2418,163 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.5.RELEASE/spring-webmvc-4.1.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.5.RELEASE/spring-web-4.1.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
+        <state relative-caret-position="784">
           <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="801">
-          <caret line="461" column="0" selection-start-line="461" selection-start-column="0" selection-end-line="461" selection-end-column="0" />
+        <state relative-caret-position="734">
+          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getLabels#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#check#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#newLesson#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#newTask#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#newAnswer#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#delete#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#deleteTask#0;class#TaskDB#0" expanded="false" />
-            <element signature="method#deleteAnswer#0;class#TaskDB#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/18d041bb/aa8f88c1-de0d-4671-9a23-c3ebc088a0e2/toodle.lessons">
-      <provider editor-type-id="text-editor">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="100" column="47" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/UiTestForm.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/NewLessonMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="method#back#0;class#NewLessonMaker#0" expanded="false" />
+            <element signature="method#addTask#0;class#NewLessonMaker#0" expanded="false" />
+            <element signature="method#save#0;class#NewLessonMaker#0" expanded="false" />
+            <element signature="method#NewLessonMaker#0;class#NewLessonMaker#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1582">
+          <caret line="111" column="11" selection-start-line="111" selection-start-column="11" selection-end-line="111" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3542#3885#0" expanded="true" />
+            <element signature="e#3884#3885#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/UiMainSpace.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/testform/testcell/TestCell.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/mainspace.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/messagemaker.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/firstview.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/lessonmaker.css">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/testcell.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/webapp/css/registration.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/all_styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-619">
+          <caret line="201" column="20" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/NewTaskMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="154" column="23" selection-start-line="154" selection-start-column="23" selection-end-line="154" selection-end-column="23" />
+          <folding>
+            <element signature="method#NewTaskMaker#0;class#NewTaskMaker#0" expanded="false" />
+            <element signature="method#clean#0;class#NewTaskMaker#0" expanded="false" />
+            <element signature="method#save#0;class#NewTaskMaker#0" expanded="false" />
+            <element signature="method#end#0;class#NewTaskMaker#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2572,19 +2604,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/client/widgets/menu/lesson/task/answer/NewAnswerMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2354">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/1.sql">
-      <provider selected="true" editor-type-id="text-editor">
+    <entry file="dbDummy://dbtable:/18d041bb/aa8f88c1-de0d-4671-9a23-c3ebc088a0e2/toodle.lessons">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ncband/web/server/db/servises/TaskDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2838">
+          <caret line="336" column="49" selection-start-line="336" selection-start-column="49" selection-end-line="336" selection-end-column="49" />
+          <folding>
+            <element signature="method#getLabels#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#check#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#newLesson#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#newTask#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#newAnswer#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#delete#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#deleteTask#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#save#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#saveTask#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#saveAnswer#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#upload#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#saveFile#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#load#0;class#TaskDB#0" expanded="false" />
+            <element signature="method#getURL#0;class#TaskDB#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

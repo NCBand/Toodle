@@ -1,6 +1,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel>
+    <ui:style src="../../../../../../../../webapp/css/testcell.css"/>
+    <g:HTMLPanel styleName="{style.center}">
         <g:Label ui:field="question"/>
         <g:Image ui:field="image"/>
         <g:VerticalPanel ui:field="answers"/>

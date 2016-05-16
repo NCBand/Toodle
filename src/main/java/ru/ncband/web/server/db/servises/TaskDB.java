@@ -249,16 +249,43 @@ public class TaskDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            if(res != 0){
-                return new Status(BasicProperty.done());
+
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            query = session.createQuery("from TasksEntity where lesson =:param");
+            query.setParameter("param",Integer.parseInt(id));
+
+            List<TasksEntity> tasksEntities = query.list();
+            transaction.commit();
+
+            for (TasksEntity entity:
+                     tasksEntities) {
+                session = sessionFactory.openSession();
+                transaction = session.beginTransaction();
+
+                query = session.createQuery("delete AnswersEntity where task =:param");
+                query.setParameter("param",entity.getId());
+
+                res = query.executeUpdate();
+                transaction.commit();
             }
-            return new Status(BasicProperty.fault());
+
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            query = session.createQuery("delete TasksEntity where lesson =:param");
+            query.setParameter("param",Integer.parseInt(id));
+
+            res = query.executeUpdate();
+            transaction.commit();
+            return new Status(BasicProperty.done());
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return null;
+        return new Status(BasicProperty.fault());
     }
 
     public Status deleteTask(String id){
@@ -271,16 +298,23 @@ public class TaskDB {
 
             int res = query.executeUpdate();
             transaction.commit();
-            if(res != 0){
-                return new Status(BasicProperty.done());
-            }
-            return new Status(BasicProperty.fault());
+
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            query = session.createQuery("delete AnswersEntity where task =:param");
+            query.setParameter("param",Integer.parseInt(id));
+
+            res = query.executeUpdate();
+            transaction.commit();
+
+            return new Status(BasicProperty.done());
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return null;
+        return new Status(BasicProperty.fault());
     }
 
     public Status deleteAnswer(String id){
@@ -294,17 +328,13 @@ public class TaskDB {
             int res = query.executeUpdate();
             transaction.commit();
 
-            Status status = new Status(BasicProperty.fault());
-            if(res != 0){
-                status.setMsg(BasicProperty.done());
-            }
-            return status;
+            return new Status(BasicProperty.done());
         } catch (NullPointerException e){
             e.printStackTrace();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        return null;
+        return new Status(BasicProperty.fault());
     }
 
     public Status save(Lesson lesson){
