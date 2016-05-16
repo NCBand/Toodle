@@ -96,6 +96,9 @@ public class UiMainSpace extends Composite {
                     }else {
                         widget.setVisible(false);
                     }
+                    if (widget.getClass().equals(NewLessonMaker.class)){
+                        ((NewLessonMaker)widget).clean();
+                    }
                 }
             }
         }));
@@ -104,6 +107,9 @@ public class UiMainSpace extends Composite {
             public void execute() {
                 for (Widget widget:
                         left){
+                    if (widget.getClass().equals(NewLessonMaker.class)){
+                        ((NewLessonMaker)widget).clean();
+                    }
                     widget.setVisible(false);
                 }
                 NewLessonMaker newLessonMaker = new NewLessonMaker(bus);
@@ -121,12 +127,21 @@ public class UiMainSpace extends Composite {
                     }else {
                         widget.setVisible(false);
                     }
+                    if (widget.getClass().equals(NewLessonMaker.class)){
+                        ((NewLessonMaker)widget).clean();
+                    }
                 }
             }
         }));
         menu.addItem(new MenuItem("Exit", new Command(){
             @Override
             public void execute() {
+                for (Widget widget:
+                        left){
+                    if (widget.getClass().equals(NewLessonMaker.class)){
+                        ((NewLessonMaker)widget).clean();
+                    }
+                }
                 LogOutEvent logOutEvent = new LogOutEvent();
                 eventBus.fireEvent(logOutEvent);
             }
@@ -251,12 +266,16 @@ public class UiMainSpace extends Composite {
         public void execute() {
                     for (Widget widget:
                          left) {
-                        if(widget.getClass().equals(UiTestForm.class)){
-                            widget.setVisible(true);
-                            ((UiTestForm)widget).setTask(id);
-                        }else {
-                            widget.setVisible(false);
-                        }
+                            if (widget.getClass().equals(NewLessonMaker.class)) {
+                                ((NewLessonMaker) widget).clean();
+                            }
+
+                            if(widget.getClass().equals(UiTestForm.class)){
+                                widget.setVisible(true);
+                                ((UiTestForm)widget).setTask(id);
+                            }else {
+                                widget.setVisible(false);
+                            }
                     }
                 }
             }

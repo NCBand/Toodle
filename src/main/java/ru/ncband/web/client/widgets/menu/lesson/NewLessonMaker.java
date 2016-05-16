@@ -137,4 +137,22 @@ public class NewLessonMaker extends Composite {
             }
         });
     }
+
+    public void clean(){
+        TaskService taskService = GWT.create(TaskService.class);
+        taskService.delete(id, new MethodCallback<Status>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {}
+
+            @Override
+            public void onSuccess(Method method, Status status) {
+                name.setText("");
+                for (Widget widget:
+                        tasks) {
+                    ((NewTaskMaker)widget).end();
+                }
+                tasks.clear();
+            }
+        });
+    }
 }
