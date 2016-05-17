@@ -90,6 +90,10 @@
       <element id="gwt-compiler-output" facet="Toodle/gwt/GWT" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/webapp" />
       <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/views/all_styles.css" />
+      <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/views/templatemo_style.css" />
+      <element id="directory" name="img">
+        <element id="dir-copy" path="$PROJECT_DIR$/web/WEB-INF/views/img" />
+      </element>
     </root>
   </artifact>
 </component>

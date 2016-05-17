@@ -1,16 +1,15 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:style src="../../../../../../webapp/css/mainspace.css"/>
     <g:HTMLPanel>
         <div>
-            <g:MenuBar ui:field="menu"/>
-            <g:HorizontalPanel styleName="{style.field}">
-                <g:VerticalPanel ui:field="left" styleName="{style.left}"/>
-                <g:VerticalPanel styleName="{style.right_field}">
-                    <g:VerticalPanel ui:field="calendar">
-                        <g:Label ui:field="date_title" styleName="{style.center}"/>
+            <g:MenuBar ui:field="menu" addStyleNames="templatemo_menu"/>
+            <g:HorizontalPanel>
+                <g:VerticalPanel ui:field="left" addStyleNames="templatemo_content_wrapper"/>
+                <g:VerticalPanel addStyleNames="sidebar">
+                    <g:VerticalPanel ui:field="calendar" addStyleNames="news_section">
+                        <g:Label ui:field="date_title"/>
                     </g:VerticalPanel>
-                    <g:VerticalPanel ui:field="message" styleName="{style.right}">
+                    <g:VerticalPanel ui:field="message" addStyleNames="testimonial_section">
                         <g:Label text="Messages:"/>
                     </g:VerticalPanel>
                 </g:VerticalPanel>

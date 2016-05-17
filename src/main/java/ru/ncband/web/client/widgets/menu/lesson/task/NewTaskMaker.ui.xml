@@ -2,20 +2,21 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:style src="../../../../../../../../webapp/css/lessonmaker.css"/>
     <g:HTMLPanel>
-        <g:VerticalPanel styleName="{style.task}">
-            <g:HorizontalPanel><g:VerticalPanel>
-                <g:TextArea ui:field="question"/>
-                <g:FormPanel ui:field="question_image">
-                    <g:FileUpload ui:field="upload"/>
-                </g:FormPanel>
+        <g:VerticalPanel styleName="{style.taskwhite}">
+            <g:VerticalPanel><g:VerticalPanel>
+
                 <g:HorizontalPanel>
                     <g:RadioButton name="type" ui:field="text" text="Text"/>
                     <g:RadioButton name="type" ui:field="test" text="Test"/>
                     <g:RadioButton name="type" ui:field="multi" text="Multitest"/>
                 </g:HorizontalPanel>
+                <g:TextArea ui:field="question" text="Set question" styleName="{style.questionfield}"/>
+                <g:FormPanel ui:field="question_image">
+                    <g:FileUpload ui:field="upload"/>
+                </g:FormPanel>
             </g:VerticalPanel>
             <g:VerticalPanel ui:field="answers"/>
-            </g:HorizontalPanel>
+            </g:VerticalPanel>
             <g:HorizontalPanel styleName="{style.center}">
                 <g:Button ui:field="delete" text="Delete task"/>
                 <g:Button ui:field="add" text="Add Answer"/>

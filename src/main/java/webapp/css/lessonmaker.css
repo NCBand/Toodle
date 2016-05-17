@@ -4,8 +4,19 @@
     margin-right: auto;
 }
 
+.center.questionfield{
+    height: 25px;
+    width: 300px;
+}
+
 .task .center{
     background-color: burlywood;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.taskwhite {
+    background-color: white;
+    padding: 20px;
+}
+
