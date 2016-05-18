@@ -3,6 +3,7 @@
     <ui:style src="../../../../../../webapp/css/registration.css"/>
     <g:HTMLPanel>
         <div>
+            <form>
             <g:VerticalPanel styleName="{style.background}">
                 <g:HorizontalPanel>
                     <g:Label text="First name:" styleName="{style.blackText}"/>
@@ -50,6 +51,7 @@
                     <g:Button ui:field="backButton" text="Back" styleName="{style.loginButton}"/>
                 </g:HorizontalPanel>
             </g:VerticalPanel>
+            </form>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

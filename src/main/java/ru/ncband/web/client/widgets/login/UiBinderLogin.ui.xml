@@ -3,17 +3,19 @@
     <ui:style src="../../../../../../webapp/css/login.css" />
     <g:HTMLPanel>
         <div>
-            <g:VerticalPanel styleName="{style.background}">
-                <g:Label text="Login" styleName="{style.blackText}"/>
-                <g:TextBox ui:field="loginBox" styleName="{style.box}"/>
-                <g:Label text="Password" styleName="{style.blackText}"/>
-                <g:PasswordTextBox ui:field="passwordBox" styleName="{style.box}"/>
-                <g:HorizontalPanel>
-                    <g:Button ui:field="loginButton" text="Login in" styleName="{style.loginButton}"/>
-                    <g:Button ui:field="registration" text="Sign up" styleName="{style.loginButton}"/>
-                </g:HorizontalPanel>
-                <g:Label ui:field="errorLabel" styleName="{style.redText}"/>
-            </g:VerticalPanel>
+            <form>
+                    <g:VerticalPanel styleName="{style.background}">
+                        <g:Label text="Login" styleName="{style.blackText}"/>
+                    <g:TextBox ui:field="loginBox" styleName="{style.box}"/>
+                    <g:Label text="Password" styleName="{style.blackText}"/>
+                    <g:PasswordTextBox ui:field="passwordBox" styleName="{style.box}"/>
+                    <g:HorizontalPanel>
+                        <g:Button ui:field="loginButton" text="Login in" styleName="{style.loginButton}"/>
+                        <g:Button ui:field="registration" text="Sign up" styleName="{style.loginButton}"/>
+                    </g:HorizontalPanel>
+                    <g:Label ui:field="errorLabel" styleName="{style.redText}"/>
+                </g:VerticalPanel>
+            </form>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

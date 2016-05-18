@@ -5,16 +5,19 @@
 .gwt-MenuBar .gwt-MenuItem {
     cursor: default;
     font-family: Arial Unicode MS, Arial, sans-serif;
+    color: white;
 }
 
 .gwt-MenuBar .gwt-MenuItem-selected {
     background: #E3E8F3;
+    color: black;
 }
 
 .gwt-MenuBar-horizontal .gwt-MenuItem {
     padding: 5px 10px;
     vertical-align: bottom;
-    color: #000;
+    color: white;
+    background: black;
     font-weight: bold;
 }
 

@@ -16,6 +16,12 @@ body {
     text-align: left;
 }
 
+.whiteText {
+    color: black;
+    font-size: 11px;
+    text-align: left;
+}
+
 .redText {
     color: darkred;
     font-size: 11px;

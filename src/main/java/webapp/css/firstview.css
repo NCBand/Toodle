@@ -1,5 +1,6 @@
 .message{
     position: relative;
     top: 40px;
-    left: 40%;
+    left: auto;
+    right: auto;
 }
